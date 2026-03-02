@@ -156,7 +156,8 @@ const Player = (() => {
       find("#tachie_holder").innerHTML = "";
       find("#text").innerHTML = "";
       set_bg(null);
-      Sound.BGM(null);
+      Sound.BGM(0, null);
+      Sound.BGM(1, null);
     },
   });
   Object.defineProperty(obj, "to_cover", {
@@ -228,7 +229,8 @@ const Player = (() => {
       case "背景": return set_bg(play_cnt.url);
       case "背景效果": return play_bg_effect(play_cnt);
       case "效果清空": return find("#bg_effect_holder").innerHTML = "";
-      case "BGM": return Sound.BGM(play_cnt.url, play_cnt.volume);
+      case "BGM_A": return Sound.BGM(0, play_cnt.url, play_cnt.volume);
+      case "BGM_B": return Sound.BGM(1, play_cnt.url, play_cnt.volume);
       case "SE": return Sound.SE(play_cnt.url);
       case "立繪": return play_tachie(play_cnt);
       case "立繪清空": return find("#tachie_holder").innerHTML = "";
@@ -310,7 +312,7 @@ const Player = (() => {
     if(!str) return null;
     else if(/^@\[背景\]/.test(str)) return opp_bg(str);
     else if(/^@\[背景效果:[^\]]*\]/.test(str)) return opp_bg_effect(str);
-    else if(/^@\[BGM(:.*)?\]/.test(str)) return opp_bgm(str);
+    else if(/^@\[BGM_(A|B)(:.*)?\]/.test(str)) return opp_bgm(str);
     else if(/^@\[SE\]/.test(str)) return opp_se(str);
     else if(/^@\[立繪:[^\]]*\]/.test(str)) return opp_tachie(str);
     else if(/^@\[立繪清空\]/.test(str)) return {type: "立繪清空"};
@@ -326,11 +328,12 @@ const Player = (() => {
   }
   /* 背景音樂 */
   function opp_bgm(str) {
-    let key = str.replace(/^@\[BGM(:.*)?\]/, "").split(/\r|\n/)[0];
+    let type = /^@\[BGM_A/.test(str) ? "BGM_A" : "BGM_B";
+    let key = str.replace(/^@\[BGM_(A|B)(:.*)?\]/, "").split(/\r|\n/)[0];
     let url = sounds[key] || null;
-    let volume = str.replace(/^@\[BGM:?|\].*$/g, "").split(/\r|\n/)[0];
+    let volume = str.replace(/^@\[BGM_(A|B):?|\].*$/g, "").split(/\r|\n/)[0];
     volume = +volume || 1;
-    return {type: "BGM", url, volume};
+    return {type, url, volume};
   }
   /* 音效 */
   function opp_se(str) {
@@ -377,7 +380,7 @@ const Player = (() => {
 /* ================================ */
 const Sound = (() => {
   let obj = {};
-  let cur_bgm = null;
+  let cur_bgm = [null, null];
 
   Object.defineProperty(obj, "SE", {
     writable: false, value: (url) => {
@@ -388,30 +391,30 @@ const Sound = (() => {
   });
 
   Object.defineProperty(obj, "BGM", {
-    writable: false, value: (url, volume) => {
+    writable: false, value: (index, url, volume) => {
       if(!volume) volume = 1;
-      stop_bgm();
-      if(url) start_bgm(url, volume);
+      stop_bgm(index);
+      if(url) start_bgm(index, url, volume);
     },
   });
-  function start_bgm(url, volume) {
-    let this_bgm = cur_bgm = new Audio();
+  function start_bgm(index, url, volume) {
+    let this_bgm = cur_bgm[index] = new Audio();
     this_bgm.loop = true;
     this_bgm.addEventListener("loadedmetadata", async () => {
       this_bgm.volume = 0.02;
       this_bgm.play();
       while(this_bgm.volume < volume) {
-        if(cur_bgm != this_bgm) return;
+        if(cur_bgm[index] != this_bgm) return;
         await wait(0.1);
         this_bgm.volume = Math.min(this_bgm.volume / 0.7, volume);
       }
     });
     this_bgm.src = url;
   }
-  async function stop_bgm() {
-    if(!cur_bgm) return;
-    let target_bgm = cur_bgm;
-    cur_bgm = null;
+  async function stop_bgm(index) {
+    if(!cur_bgm[index]) return;
+    let target_bgm = cur_bgm[index];
+    cur_bgm[index] = null;
     while(target_bgm.volume >= 0.01) {
       await wait(0.1);
       target_bgm.volume *= 0.7;
