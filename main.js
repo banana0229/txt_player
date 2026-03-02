@@ -394,24 +394,25 @@ const Sound = (() => {
       if(url) start_bgm(url, volume);
     },
   });
-
   function start_bgm(url, volume) {
-    cur_bgm = new Audio();
-    cur_bgm.loop = true;
-    cur_bgm.addEventListener("loadedmetadata", async () => {
-      cur_bgm.volume = 0.02;
-      cur_bgm.play();
-      while(cur_bgm.volume < volume) {
+    let this_bgm = cur_bgm = new Audio();
+    this_bgm.loop = true;
+    this_bgm.addEventListener("loadedmetadata", async () => {
+      this_bgm.volume = 0.02;
+      this_bgm.play();
+      while(this_bgm.volume < volume) {
+        if(cur_bgm != this_bgm) return;
         await wait(0.1);
-        cur_bgm.volume = Math.min(cur_bgm.volume / 0.7, volume);
+        this_bgm.volume = Math.min(this_bgm.volume / 0.7, volume);
       }
     });
-    cur_bgm.src = url;
+    this_bgm.src = url;
   }
   async function stop_bgm() {
     if(!cur_bgm) return;
     let target_bgm = cur_bgm;
-    while(target_bgm.volume >= 0.001) {
+    cur_bgm = null;
+    while(target_bgm.volume >= 0.01) {
       await wait(0.1);
       target_bgm.volume *= 0.7;
     }
