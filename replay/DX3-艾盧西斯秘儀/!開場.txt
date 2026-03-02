@@ -1,0 +1,23 @@
+```圖片
+標題畫面:https://images.plurk.com/77HInbb19xk1NI8nAaanTa.png
+雨:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/5acc81bd8407bdf0c4771a996b142a9e5b8a51cfef98dfade19c0a67d661b8e9
+```
+```聲音
+標題畫面:https://projects.skratchdot.com/audio-files/loops/loop004.mp3
+測試:http://projects.skratchdot.com/audio-files/waves/Perverse/Utopia%20Critical%20Stop.WAV
+```
+@[背景]標題畫面
+@[背景效果:雨]雨
+@[BGM]標題畫面
+@[SE]測試
+@[文字:GM]全球各處頻傳背教者災害，在災害的影響下無數的人們化為超越者、化為原菌。
+`
+@[文字:GM]據說，那些災害的源頭都是出自於某個『遺產』。
+`
+@[文字:GM]某個，向周圍散播背教者病毒污染的遺產——
+`
+@[文字:GM]其名為『艾盧西斯秘儀』。
+`
+@[文字:GM]Double Cross The 3rd Edition
+`
+@[文字:GM]Double Cross——那是代表「背叛」的詞語。
