@@ -1,4 +1,5 @@
 window.addEventListener("load", async () => {
+  Articles.init();
   let folder_name = decodeURIComponent(location.hash).replace(/^#/, "").split(/\r|\n/)[0].trim();
   if(folder_name) {
     try {
