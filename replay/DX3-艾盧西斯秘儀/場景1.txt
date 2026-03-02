@@ -1,7 +1,6 @@
 ```圖片
 列車:https://images.plurk.com/2gzZSuEo5aIEL0uOaupGBA.png
 速度線:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/9ebeab9459317d844cdadf4a31588446d72aa8bbdb3f08945ff6552851fa3c27
-增援:https://images.plurk.com/7ssO68MJVoQTVues0qcz63.png
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 阿里翁皺眉:https://images.plurk.com/R0fFzgnBv6zbDOqHGBYRz.png
@@ -12,11 +11,8 @@
 列車聲音:./bgm/8AVikqbv4veLutmzXyBN.mp3
 列車BGM:./bgm/z6YzA2GdrY9TIVtU9WxF.mp3
 腳踏車:./bgm/PerituneMaterial_Raid_FolkMetal2.mp3
-對峙:./bgm/GDHK1fIclBj3EKhIyJF7.mp3
 衝鋒:./se/c7mGqLFfuX0Lz4hJKNES.mp3
 打擊:./se/uN9kSrbOV1FOMzTPCY0e.mp3
-煞車:./se/YoSbjlJTSB03dPnQJMYF.mp3
-破門而入:./se/pq0xdvaUpUtahidmY2wZ.mp3
 ```
 @[背景]列車
 @[BGM_A]列車BGM
@@ -61,12 +57,10 @@
 @[文字:阿里翁]「是是是，真不愧是主人。不過小心，馬上就要抵達『軍團之主』所在的包廂了，請做好接戰的準備。」
 `
 @[立繪:阿里翁]
+@[背景效果:速度線]
 @[SE]打擊
 @[文字:GM]一闖入『軍團之主』所在的包廂後，你立刻抓住那因意料之外的入侵，而露出的片刻空檔，迅速將守衛在『軍團之主』身邊的軍團，一一打回了地上的血泊。
 `
-@[背景效果:速度線]
-@[BGM_A]對峙
-@[SE]煞車
 @[立繪:PC4]s:暗
 @[立繪:巴西爾]巴西爾,r:0
 @[文字:巴西爾·格拉斯]「原來入侵者就是你啊，『漫遊騎士』。」
@@ -102,8 +96,6 @@
 `
 @[文字:巴西爾·格拉斯]「不好意思，打鬧就到此為止吧。我還有不得不去做的事情。」
 `
-@[SE]破門而入
-@[背景效果:增援]增援
 @[文字:GM]伴隨著巴西爾的話語，無數的『軍團』再次出現，包圍了你。
 `
 @[立繪:巴西爾]
