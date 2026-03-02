@@ -7,10 +7,11 @@
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
 ```
 ```聲音
+測試:https://projects.skratchdot.com/audio-files/loops/loop004.mp3
 BGM:https://peritune.com/music/PerituneMaterial_Raid_FolkMetal2.mp3
 ```
 @[背景]列車
-@[BGM:0.4]BGM
+@[BGM]測試
 @[文字:GM]開始階段
 `
 @[文字:GM]豪華臥鋪列車「海雪號」。
@@ -36,6 +37,7 @@ BGM:https://peritune.com/music/PerituneMaterial_Raid_FolkMetal2.mp3
 `
 @[文字:GM]列車上，無數的『軍團』盤據其中嚴陣以待。
 `
+@[BGM:0.4]BGM
 @[背景效果:速度線]速度線
 @[文字:GM]然而，你就宛如一陣旋風一樣，巧妙地駕駛著自行車，時而迂迴時而突進，自在地奔馳在路面、牆面，橫掃眼前一切阻礙。
 `
