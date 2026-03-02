@@ -3,7 +3,7 @@
 ```
 ```聲音
 標題畫面:https://projects.skratchdot.com/audio-files/loops/loop004.mp3
-測試:http://projects.skratchdot.com/audio-files/waves/Perverse/Utopia%20Critical%20Stop.WAV
+測試:https://projects.skratchdot.com/audio-files/waves/Perverse/Utopia%20Critical%20Stop.WAV
 ```
 @[背景]標題畫面
 @[BGM]標題畫面
