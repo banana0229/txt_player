@@ -1,7 +1,8 @@
 |================================|
 |  來源                          |
 |================================|
-CCF 香蕉
+
+-------- CCF 香蕉 --------
 
   c7mGqLFfuX0Lz4hJKNES.mp3
     SE：衝鋒
@@ -18,3 +19,24 @@ CCF 香蕉
   pq0xdvaUpUtahidmY2wZ.mp3
     SE：破門而入
     パンチで壁を破壊.mp3
+
+  azuEU6ob8WuqL1c7esgV.mp3
+    SE：水波
+    涙のしずく.mp3
+
+-------- 小森平 --------
+
+  attack1.mp3
+  attack2.mp3
+  damage7.mp3
+    https://taira-komori.net/attack01tw.html
+
+-------- Pixabay --------
+
+  ragecore29-htf-blood-splatter-explode-478992.mp3
+    https://pixabay.com/zh/sound-effects/htf-blood-splatter-explode-478992/
+
+-------- 効果音ラボ --------
+
+  水滴1.mp3
+    https://soundeffect-lab.info/sound/various/
