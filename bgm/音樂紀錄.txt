@@ -1,13 +1,16 @@
 |================================|
 |  來源                          |
 |================================|
-YT: https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
+
+-------- studio youtube --------
+https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
+
   Nebula - The Grey Room _ Density & Time.mp3
   Pulsar - The Grey Room _ Density & Time.mp3
   Frame-Dragging - The Grey Room _ Density & Time.mp3
   Event Horizon - The Grey Room _ Density & Time.mp3
 
-CCF 香蕉
+-------- CCF 香蕉 --------
 
   z6YzA2GdrY9TIVtU9WxF.mp3
     Virus_Entry.mp3
@@ -18,11 +21,37 @@ CCF 香蕉
   GDHK1fIclBj3EKhIyJF7.mp3
     激戰.mp3
 
-其他
+  Vq9H7tKPPk4Z5rKd4xKS.mp3
+    ヘリコプター飛行中（機外）.mp3
+
+-------- dova --------
+
+  時計図書館_2.mp3
+    https://dova-s.jp/bgm/detail/6694
+
+  悪魔の行進.mp3
+    https://dova-s.jp/bgm/detail/2582
+
+  Mechanical_Wars.mp3
+    https://dova-s.jp/bgm/detail/23098
+
+  Tailshaft.mp3
+    https://dova-s.jp/bgm/detail/22912
+
+  Graviton_Down.mp3
+    https://dova-s.jp/bgm/detail/22519
+
+  甲虫機兵団突撃.mp3
+    https://dova-s.jp/bgm/detail/17812
+
+  Go_to_the_top.mp3
+    https://dova-s.jp/bgm/detail/13152
+
+-------- 其他 --------
 
   PerituneMaterial_Raid_FolkMetal2.mp3
-  https://peritune.com/blog/2020/01/17/raid_folkmetal2/
-  https://peritune.com/music/PerituneMaterial_Raid_FolkMetal2.mp3
+    https://peritune.com/blog/2020/01/17/raid_folkmetal2/
+    https://peritune.com/music/PerituneMaterial_Raid_FolkMetal2.mp3
 
 |================================|
 |  使用                          |
