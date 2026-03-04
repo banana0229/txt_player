@@ -7,7 +7,7 @@ window.addEventListener("load", async () => {
       find("#folder_url").remove();
       return;
     }
-    catch (err) {}
+    catch (err) { console.error(err); }
   }
   let url_el = find("#folder_url");
   if(url_el) url_el.addEventListener("keydown", async e => {
@@ -18,7 +18,6 @@ window.addEventListener("load", async () => {
     }
     catch (err) {}
   });
-  // http://localhost/txt_replay/replay/DX3-艾盧西斯秘儀
 });
 
 /* ================================ */
@@ -94,6 +93,13 @@ const Articles = (() => {
       bg_effect_str = bg_effect_str.replace(/^@\[背景效果\]/, "").trim();
       bg_effect_list.push(bg_effect_str);
     });
+    /* 動態效果列 */
+    let cvsa_list = [];
+    let cvsa_list_str = txt.match(/@\[CVSA\][^@\r\n]*/g) || [];
+    cvsa_list_str.forEach((cvsa_str, i) => {
+      let ef_name = cvsa_str.replace(/^@\[CVSA\]/, "").trim();
+      cvsa_list.push(ef_name);
+    });
     /* 劇本名 */
     let scenario_name = txt.match(/@\[劇本名\].*/)?.[0] || "";
     if(scenario_name) {
@@ -121,6 +127,7 @@ const Articles = (() => {
       imgs,
       bg: bg_key || null,
       bg_effect_list,
+      cvsa_list,
       scenario_name,
       describe,
       section_list,
@@ -156,6 +163,7 @@ const Player = (() => {
       find("#tachie_holder").innerHTML = "";
       find("#text").innerHTML = "";
       set_bg(null);
+      CanvasEffect.clear();
       Sound.BGM(0, null);
       Sound.BGM(1, null);
     },
@@ -172,6 +180,7 @@ const Player = (() => {
         let el = new_el_to_el("#bg_effect_holder", "div.bg_effect");
         el.style.setProperty("--img", `url(${url})`);
       });
+      data.cvsa_list.forEach((ef_name, i) => CanvasEffect.add(i, ef_name));
       find("#name").innerText = data.scenario_name || "";
       find("#text").innerText = data.describe || "";
     },
@@ -229,6 +238,8 @@ const Player = (() => {
       case "背景": return set_bg(play_cnt.url);
       case "背景效果": return play_bg_effect(play_cnt);
       case "效果清空": return find("#bg_effect_holder").innerHTML = "";
+      case "CVSA": return play_canvas_effect(play_cnt);
+      case "CVSA清空": return CanvasEffect.clear();
       case "BGM_A": return Sound.BGM(0, play_cnt.url, play_cnt.volume);
       case "BGM_B": return Sound.BGM(1, play_cnt.url, play_cnt.volume);
       case "SE": return Sound.SE(play_cnt.url);
@@ -236,6 +247,11 @@ const Player = (() => {
       case "立繪清空": return find("#tachie_holder").innerHTML = "";
       case "文字": return play_text(play_cnt);
     }
+  }
+  /* 動態效果 */
+  function play_canvas_effect(play_cnt) {
+    if(play_cnt.del) CanvasEffect.del(play_cnt.key);
+    else CanvasEffect.add(play_cnt.key, play_cnt.ef_name);
   }
   /* 背景效果 */
   function play_bg_effect(play_cnt) {
@@ -312,6 +328,8 @@ const Player = (() => {
     if(!str) return null;
     else if(/^@\[背景\]/.test(str)) return opp_bg(str);
     else if(/^@\[背景效果:[^\]]*\]/.test(str)) return opp_bg_effect(str);
+    else if(/^@\[CVSA:[^\]]*\]/.test(str)) return opp_cvsa_effect(str);
+    else if(/^@\[CVSA清空\]/.test(str)) return {type: "CVSA清空"};
     else if(/^@\[BGM_(A|B)(:.*)?\]/.test(str)) return opp_bgm(str);
     else if(/^@\[SE\]/.test(str)) return opp_se(str);
     else if(/^@\[立繪:[^\]]*\]/.test(str)) return opp_tachie(str);
@@ -356,6 +374,15 @@ const Player = (() => {
     let key = str.replace(/^@\[背景效果[^\]]*\]/, "").split("\n")[0].trim();
     if(!key) data.del = true;
     else data.url = imgs[key] || null;
+    return data;
+  }
+  /* 動態效果 */
+  function opp_cvsa_effect(str) {
+    let data = {type: "CVSA"};
+    data.key = str.replace(/^@\[CVSA:|\].*/g, "").split("\n")[0];
+    let ef_name = str.replace(/^@\[CVSA[^\]]*\]/, "").split("\n")[0].trim();
+    if(!ef_name) data.del = true;
+    else data.ef_name = ef_name;
     return data;
   }
   /* 立繪 */

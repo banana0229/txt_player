@@ -138,7 +138,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-#bg_effect_holder {
+#bg_effect_holder, #canvas_effect {
   position: absolute;
   top: 0;
   left: 0;
