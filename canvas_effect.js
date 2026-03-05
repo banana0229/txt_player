@@ -31,6 +31,7 @@ const CanvasEffect = (() => {
       case "霧": cur_efs[key] = add_mist(); break;
       case "橫向速度線": cur_efs[key] = add_speed_h(); break;
       case "血": cur_efs[key] = add_blood(); break;
+      case "警告": cur_efs[key] = add_warning(); break;
     }
   }
   function del(key) {
@@ -83,6 +84,12 @@ const CanvasEffect = (() => {
     });
     rain.init();
     return [rain];
+  }
+  /* 警告 */
+  function add_warning() {
+    let warning = new Cvsa_warning(cvs);
+    warning.init();
+    return [warning];
   }
   /* 噴血 */
   function add_blood() {

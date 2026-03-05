@@ -10,20 +10,6 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   Frame-Dragging - The Grey Room _ Density & Time.mp3
   Event Horizon - The Grey Room _ Density & Time.mp3
 
--------- CCF 香蕉 --------
-
-  z6YzA2GdrY9TIVtU9WxF.mp3
-    Virus_Entry.mp3
-
-  8AVikqbv4veLutmzXyBN.mp3
-    電車通過3.mp3
-
-  GDHK1fIclBj3EKhIyJF7.mp3
-    激戰.mp3
-
-  Vq9H7tKPPk4Z5rKd4xKS.mp3
-    ヘリコプター飛行中（機外）.mp3
-
 -------- dova --------
 
   時計図書館_2.mp3
@@ -52,6 +38,26 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   PerituneMaterial_Raid_FolkMetal2.mp3
     https://peritune.com/blog/2020/01/17/raid_folkmetal2/
     https://peritune.com/music/PerituneMaterial_Raid_FolkMetal2.mp3
+
+  PerituneMaterial_EpicBattle.mp3
+    https://peritune.com/blog/2020/08/28/epicbattle/
+
+-------- 香蕉的CCF房間抓出來的 --------
+
+  z6YzA2GdrY9TIVtU9WxF.mp3
+    Virus_Entry.mp3
+
+  8AVikqbv4veLutmzXyBN.mp3
+    電車通過3.mp3
+
+  GDHK1fIclBj3EKhIyJF7.mp3
+    激戰.mp3
+
+  Vq9H7tKPPk4Z5rKd4xKS.mp3
+    ヘリコプター飛行中（機外）.mp3
+
+  qgSqntqyrcGg0gKvUHSw.mp3
+    警報が鳴る.mp3
 
 |================================|
 |  使用                          |

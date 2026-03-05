@@ -1,4 +1,5 @@
 (() => {
+  const GeomR = Math.PI / 180;
   if(typeof Cvs == "undefined") return;
   Cvs.add_ex("fd", fast_draw);
 
@@ -21,12 +22,13 @@
       switch(dot.type) {
         case "M": case "m": ctx.moveTo(dot.x, dot.y); break;
         case "L": case "l": ctx.lineTo(dot.x, dot.y); break;
+        case "C": case "c": ctx.arc(dot.x, dot.y, dot.r, dot.sdeg * GeomR, dot.edeg * GeomR); break;
         case "Z": case "z": ctx.closePath(); break;
       }
       if(typeof dot.x == "number") cursor.x = dot.x;
       if(typeof dot.y == "number") cursor.y = dot.y;
     });
-    ctx.stroke();
+    if(!style.no_color) ctx.stroke();
   }
 
   /* ================================ */
@@ -45,6 +47,12 @@
           return {type, x: +args[0], y: +args[1]};
         case "m": case "l":
           return {type, rx: +args[0], ry: +args[1]};
+        case "C": case "c": {
+          let data = {type, r: +args[2], sdeg: +args[3], edeg: +args[4] };
+          if(type == "C") { data.x = +args[0]; data.y = +args[1]; }
+          else { data.rx = +args[0]; data.ry = +args[1]; }
+          return data;
+        }
         case "Z": case "z": return {type};
         default: return null;
       }

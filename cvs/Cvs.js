@@ -44,6 +44,7 @@ const Cvs = (() => {
           width: ctx.lineWidth,
           cap: ctx.lineCap,
           bg: ctx.fillStyle,
+          filter: ctx.filter,
         };
       },
       set: (opt) => {
@@ -52,6 +53,7 @@ const Cvs = (() => {
         if(opt.width) ctx.lineWidth = +opt.width || 1;
         if(opt.cap) ctx.lineCap = opt.cap || "butt";
         if(opt.bg) ctx.fillStyle = opt.bg || "#000";
+        if(opt.filter) ctx.filter = opt.filter || "none";
       },
     });
 
