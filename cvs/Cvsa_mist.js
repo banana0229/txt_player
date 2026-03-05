@@ -18,7 +18,6 @@ const Cvsa_mist = (() => {
     }
     init() {
       create_lumpys(this);
-      console.log(this.lumpys)
     }
     run() {
       this.lumpys.forEach(lumpy => {
@@ -42,7 +41,6 @@ const Cvsa_mist = (() => {
 
     let radius = lumpy.r + lumpy.max_swell * swell_pct;
     let ctx = cvsa.cvs.ctx;
-    console.log();
     let grad = ctx.createRadialGradient(
       lumpy.x, lumpy.y, 0,
       lumpy.x, lumpy.y, radius

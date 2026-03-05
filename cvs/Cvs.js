@@ -50,8 +50,8 @@ const Cvs = (() => {
         if(!opt) return;
         if(opt.color) ctx.strokeStyle = opt.color || "#000";
         if(opt.width) ctx.lineWidth = +opt.width || 1;
-        if(opt.cap) ctx.lineCap = +opt.cap || "butt";
-        if(opt.bg) ctx.fillStyle = +opt.bg || "#000";
+        if(opt.cap) ctx.lineCap = opt.cap || "butt";
+        if(opt.bg) ctx.fillStyle = opt.bg || "#000";
       },
     });
 

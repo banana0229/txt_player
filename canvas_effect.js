@@ -11,11 +11,13 @@ const CanvasEffect = (() => {
     cvs = Cvs.create(canvas_effect);
     setInterval(() => {
       cvs.clear();
-      Object.values(cur_efs).forEach(cvsa_arr => {
-        cvsa_arr.forEach(cvsa => {
+      Object.entries(cur_efs).forEach(([key, cvsa_arr]) => {
+        cvsa_arr = cvsa_arr.filter(cvsa => {
           cvsa.run();
           cvsa.draw();
+          return !cvsa.is_end;
         });
+        if(cvsa_arr.length == 0) delete cur_efs[key];
       });
     }, 60);
   });
@@ -28,6 +30,7 @@ const CanvasEffect = (() => {
       case "雨": cur_efs[key] = add_rain(); break;
       case "霧": cur_efs[key] = add_mist(); break;
       case "橫向速度線": cur_efs[key] = add_speed_h(); break;
+      case "血": cur_efs[key] = add_blood(); break;
     }
   }
   function del(key) {
@@ -80,5 +83,27 @@ const CanvasEffect = (() => {
     });
     rain.init();
     return [rain];
+  }
+  /* 噴血 */
+  function add_blood() {
+    let bloods_data = [
+      {x: 0.55, y: 0.4, r: 0.3, speed: 24, delay: 10},
+      {x: 0.36, y: 0.55, r: 0.2, speed: 16, delay: 120},
+      {x: 0.42, y: 0.25, r: 0.14, speed: 12, delay: 200},
+    ];
+    let bloods = [];
+    bloods_data.forEach((data, i) => {
+      Object.assign(data, {
+        x: cvs.width * data.x,
+        y: cvs.height * data.y,
+        r: cvs.width * data.r,
+      });
+      let blood = new CvsFx_blood(cvs, data);
+      blood.init();
+      setTimeout(() => {
+        bloods.push(blood);
+      }, data.delay);
+    });
+    return bloods;
   }
 })();

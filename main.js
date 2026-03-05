@@ -238,7 +238,7 @@ const Player = (() => {
       case "背景": return set_bg(play_cnt.url);
       case "背景效果": return play_bg_effect(play_cnt);
       case "效果清空": return find("#bg_effect_holder").innerHTML = "";
-      case "CVSA": return play_canvas_effect(play_cnt);
+      case "CVSA": case "CVSFX": return play_canvas_effect(play_cnt);
       case "CVSA清空": return CanvasEffect.clear();
       case "BGM_A": return Sound.BGM(0, play_cnt.url, play_cnt.volume);
       case "BGM_B": return Sound.BGM(1, play_cnt.url, play_cnt.volume);
@@ -329,6 +329,7 @@ const Player = (() => {
     else if(/^@\[背景\]/.test(str)) return opp_bg(str);
     else if(/^@\[背景效果:[^\]]*\]/.test(str)) return opp_bg_effect(str);
     else if(/^@\[CVSA:[^\]]*\]/.test(str)) return opp_cvsa_effect(str);
+    else if(/^@\[CVSFX\]/.test(str)) return opp_cvs_effect_os(str);
     else if(/^@\[CVSA清空\]/.test(str)) return {type: "CVSA清空"};
     else if(/^@\[BGM_(A|B)(:.*)?\]/.test(str)) return opp_bgm(str);
     else if(/^@\[SE\]/.test(str)) return opp_se(str);
@@ -379,11 +380,18 @@ const Player = (() => {
   /* 動態效果 */
   function opp_cvsa_effect(str) {
     let data = {type: "CVSA"};
-    data.key = str.replace(/^@\[CVSA:|\].*/g, "").split("\n")[0];
-    let ef_name = str.replace(/^@\[CVSA[^\]]*\]/, "").split("\n")[0].trim();
+    data.key = str.replace(/^@\[CVSA:|\].*/g, "").split(/\r|\n/)[0];
+    let ef_name = str.replace(/^@\[CVSA[^\]]*\]/, "").split(/\r|\n/)[0].trim();
     if(!ef_name) data.del = true;
     else data.ef_name = ef_name;
     return data;
+  }
+  /* cvs特效 (one shot) */
+  function opp_cvs_effect_os(str) {
+    let data = {type: "CVSFX"};
+    data.key = data;
+    data.ef_name = str.replace(/^@\[CVSFX\]/, "").split(/\r|\n/)[0].trim();
+    return data.ef_name ? data : null;
   }
   /* 立繪 */
   function opp_tachie(str) {
