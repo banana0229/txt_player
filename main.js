@@ -428,11 +428,27 @@ const Player = (() => {
 const Sound = (() => {
   let obj = {};
   let cur_bgm = [null, null];
+  let main_volume = 0.5;
+
+  window.addEventListener("load", () => {
+    let el = find("#main_volume");
+    el.addEventListener("input", () => {
+      let new_volume = el.value / 100;
+      cur_bgm.forEach(bgm => {
+        if(bgm) bgm.volume = new_volume;
+      });
+      main_volume = new_volume;
+    });
+    main_volume = el.value / 100;
+  });
 
   Object.defineProperty(obj, "SE", {
     writable: false, value: (url) => {
       let se = new Audio();
-      se.addEventListener("loadedmetadata", () => se.play());
+      se.addEventListener("loadedmetadata", () => {
+        se.volume = main_volume;
+        se.play();
+      });
       se.src = url;
     },
   });
@@ -445,15 +461,16 @@ const Sound = (() => {
     },
   });
   function start_bgm(index, url, volume) {
+    let target_volume = volume * main_volume;
     let this_bgm = cur_bgm[index] = new Audio();
     this_bgm.loop = true;
     this_bgm.addEventListener("loadedmetadata", async () => {
       this_bgm.volume = 0.02;
       this_bgm.play();
-      while(this_bgm.volume < volume) {
+      while(this_bgm.volume < target_volume) {
         if(cur_bgm[index] != this_bgm) return;
         await wait(0.1);
-        this_bgm.volume = Math.min(this_bgm.volume / 0.7, volume);
+        this_bgm.volume = Math.min(this_bgm.volume / 0.7, target_volume);
       }
     });
     this_bgm.src = url;
