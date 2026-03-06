@@ -37,14 +37,25 @@ const Cvs = (() => {
     /* ================================ */
     /*  設定                            */
     /* ================================ */
+    Object.defineProperty(canvas, "set_size", {
+      writable: false, value: (w, h) => {
+        canvas.width = Math.min(Math.max(+w || 1, 1), 12000);
+        canvas.height = Math.min(Math.max(+h || 1, 1), 12000);
+        return canvas;
+      },
+    });
     Object.defineProperty(ctx, "style", {
       get: () => {
+        let matrix = ctx.getTransform();
         return {
           color: ctx.strokeStyle,
           width: ctx.lineWidth,
           cap: ctx.lineCap,
           bg: ctx.fillStyle,
           filter: ctx.filter,
+          alpha: ctx.globalAlpha,
+          scale_x: matrix.a,
+          scale_y: matrix.b,
         };
       },
       set: (opt) => {
@@ -54,6 +65,13 @@ const Cvs = (() => {
         if(opt.cap) ctx.lineCap = opt.cap || "butt";
         if(opt.bg) ctx.fillStyle = opt.bg || "#000";
         if(opt.filter) ctx.filter = opt.filter || "none";
+        if(typeof opt.alpha == "number") ctx.globalAlpha = +opt.alpha || 0;
+        if([typeof opt.scale_x, typeof opt.scale_y].includes("number")) {
+          let matrix = ctx.getTransform();
+          if(typeof opt.scale_x != "number") opt.scale_x = matrix.a;
+          if(typeof opt.scale_y != "number") opt.scale_y = matrix.b;
+          ctx.scale(opt.scale_x, opt.scale_y);
+        }
       },
     });
 

@@ -25,8 +25,8 @@ const Cvsa_rain = (() => {
       this.cvs.ctx.style = {color: this.color};
       this.deg %= 360;
       this.drops.forEach(drop => {
-        this.cvs.fd(
-          {width: drop.width},
+        this.cvs.ctx.style = {width: drop.width};
+        this.cvs.fl(
           `M ${drop.x} ${drop.y}`,
           `l ${drop.len_vec.x} ${drop.len_vec.y}`
         );

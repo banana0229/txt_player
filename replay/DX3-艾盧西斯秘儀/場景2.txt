@@ -17,7 +17,7 @@
 少女登場:./bgm/時計図書館_2.mp3
 巴西爾登場:./bgm/悪魔の行進.mp3
 風:./se/attack1.mp3
-殲滅:./se/damage7.mp3
+殲滅:./se/rzOKh9C3GxbW0eWAdsbK.mp3
 刺流血:./se/ragecore29-htf-blood-splatter-explode-478992.mp3
 水滴:./se/azuEU6ob8WuqL1c7esgV.mp3
 ```
@@ -173,6 +173,7 @@
 @[文字:GM]而就在這時，你突然發現自己能動了。
 `
 @[SE]水滴
+@[CVSFX]水波紋
 @[立繪:巴西爾]s:暗
 @[立繪:少女]s:一般
 @[立繪:PC1]s:暗

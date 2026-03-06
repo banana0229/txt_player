@@ -251,7 +251,7 @@ const Player = (() => {
   /* 動態效果 */
   function play_canvas_effect(play_cnt) {
     if(play_cnt.del) CanvasEffect.del(play_cnt.key);
-    else CanvasEffect.add(play_cnt.key, play_cnt.ef_name);
+    else CanvasEffect.add(play_cnt.key, play_cnt.ef_name, play_cnt);
   }
   /* 背景效果 */
   function play_bg_effect(play_cnt) {
@@ -381,9 +381,18 @@ const Player = (() => {
   function opp_cvsa_effect(str) {
     let data = {type: "CVSA"};
     data.key = str.replace(/^@\[CVSA:|\].*/g, "").split(/\r|\n/)[0];
-    let ef_name = str.replace(/^@\[CVSA[^\]]*\]/, "").split(/\r|\n/)[0].trim();
-    if(!ef_name) data.del = true;
-    else data.ef_name = ef_name;
+    let sets = str.replace(/^@\[CVSA[^\]]*\]/, "").split(/\r|\n/)[0].trim();
+    if(!sets) data.del = true;
+    else {
+      sets.split(",").forEach(set => {
+        if(!/:/.test(set)) data.ef_name = set.trim();
+        else {
+          let key = set.replace(/:.*/, "");
+          let val = set.replace(/^[^:]*:/, "");
+          data[key.trim()] = val.trim();
+        }
+      });
+    }
     return data;
   }
   /* cvs特效 (one shot) */
@@ -401,9 +410,12 @@ const Player = (() => {
     if(!sets) data.del = true;
     else {
       sets.split(",").forEach(set => {
-        if(!/:/.test(set)) set = "img:" + set;
-        let [key, val] = set.split(":");
-        data[key.trim()] = val.trim();
+        if(!/:/.test(set)) data.img = set.trim();
+        else {
+          let key = set.replace(/:.*/, "");
+          let val = set.replace(/^[^:]*:/, "");
+          data[key.trim()] = val.trim();
+        }
       });
     }
     return data;

@@ -3,11 +3,13 @@
 螢幕馬面鯨:https://images.plurk.com/3Nq7R2FolBPqJbpakUbLFW.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
 艾潔:https://images.plurk.com/29xXI9Id1BKakOzmNWheBI.png
+轉場:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/744256c757b2f611cad23562405597d539753f4df85a0deb466d95e82324f3a8
 ```
 ```聲音
 裝甲列車:./bgm/PerituneMaterial_EpicBattle.mp3
 列車聲:./bgm/8AVikqbv4veLutmzXyBN.mp3
 警報聲:./bgm/qgSqntqyrcGg0gKvUHSw.mp3
+碰撞:./se/9kCSp4STA4uZICwlfwhr.mp3
 ```
 @[背景]裝甲列車
 @[BGM_A:0.4]裝甲列車
@@ -42,6 +44,7 @@
 @[文字:艾潔·阿爾圖]「您說的是，如此危險的『遺產』絕不能置之不理。」
 `
 @[BGM_B:0.7]警報聲
+@[CVSA:馬面鯨]HUD框,img:https://images.plurk.com/5vuCsy0ZczOFxrTgIoHc4h.png
 @[CVSA:警告]警告
 @[立繪:PC2]s:暗
 @[立繪:艾潔]s:暗
@@ -71,5 +74,7 @@
 `
 @[文字:艾潔·阿爾圖]「馬可班，行動開始！」
 `
+@[SE]碰撞
+@[CVSA:衝過]衝過_關
 @[立繪清空]
 @[文字:GM]場景結束

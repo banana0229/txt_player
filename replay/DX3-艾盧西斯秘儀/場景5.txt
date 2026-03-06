@@ -1,5 +1,5 @@
 ```圖片
-月台:https://images.plurk.com/3Nq7R2FolBPqJbpakUbLFW.png
+月台:https://images.plurk.com/2Y1zfWLYfRXQ2dep486TpV.png
 冰室:https://images.plurk.com/NeCQqXlT33YfxynMJKzNk.png
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 大地懶:https://images.plurk.com/7zJVyTVL84rwODjDPz4EOC.png
@@ -9,7 +9,15 @@
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 艾潔:https://images.plurk.com/29xXI9Id1BKakOzmNWheBI.png
 ```
+```聲音
+月台:./bgm/Umwelt.mp3
+列車失控:./bgm/YIJZPogHeUVrVN4mNKyI.mp3
+收尾:./bgm/xgrCuBbX2W49AFOYByNP.ogg
+巨獸:./se/4hPAbvabMLE0lujZpb76.mp3
+火車煞車:./se/KMQgtt2XQyOL6yYHVsxH.mp3
+```
 @[背景]月台
+@[BGM_A:0.8]月台
 @[文字:GM]場景5：豪華臥鋪列車「海雪號」的終點
 場景角色：PC3
 請進行登場侵蝕
@@ -64,6 +72,7 @@
 @[立繪:大賀]s:暗
 @[文字:GM]就在這時——
 `
+@[BGM_A:0.5]列車失控
 @[文字:GM]監控著列車的顯示器響起了警報。
 `
 @[文字:GM]看過去，你發現上面顯示的病毒反應已經變成了一片紅。
@@ -88,6 +97,7 @@
 `
 @[文字:大賀輝生]「哦哦！！我要上了！」
 `
+@[SE]巨獸
 @[立繪:大賀]大地懶,z:2.5
 @[文字:GM]他一邊奔跑著，一邊變化身形。他的身體越來越大，最後變成了全長15m的巨大生物——已經滅絕的史上最大哺乳動物「大地懶」。
 `
@@ -116,6 +126,7 @@
 `
 @[文字:GM]高速與地面磨擦的大賀腳下，傳出了一點有些香的氣味。
 `
+@[SE]火車煞車
 @[文字:GM]就這樣，海雪號漸漸地減慢速度……勉勉強強在車站內停住了。
 `
 @[立繪:大賀]s:暗
@@ -136,6 +147,7 @@
 `
 @[文字:GM]那是——抱著少女的蘭斯洛特，以及杜洛斯和有馬。
 `
+@[BGM_A]收尾
 @[立繪:大賀]l:1
 @[立繪:PC1]蘭斯,r:0
 @[文字:蘭斯洛特]「支部長…！大賀！」下車的蘭斯洛特馬上來到支部的夥伴這。
@@ -269,4 +281,3 @@
 @[立繪清空]
 @[文字:GM]場景結束
 開始階段結束
-`

@@ -33,6 +33,18 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   Go_to_the_top.mp3
     https://dova-s.jp/bgm/detail/13152
 
+  BGM_-_087_-_Mind_Collapse.mp3
+    https://dova-s.jp/bgm/detail/21832
+
+  Umwelt.mp3
+    https://dova-s.jp/bgm/detail/21360
+
+  焦燥.mp3
+    https://dova-s.jp/bgm/detail/19400
+
+  逃げた実験体.mp3
+    https://dova-s.jp/bgm/detail/16771
+
 -------- 其他 --------
 
   PerituneMaterial_Raid_FolkMetal2.mp3
@@ -41,6 +53,9 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
 
   PerituneMaterial_EpicBattle.mp3
     https://peritune.com/blog/2020/08/28/epicbattle/
+
+  PerituneMaterial_Havoc.mp3
+    https://peritune.com/blog/2018/08/01/havoc/
 
 -------- 香蕉的CCF房間抓出來的 --------
 
@@ -58,6 +73,20 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
 
   qgSqntqyrcGg0gKvUHSw.mp3
     警報が鳴る.mp3
+
+  Integral_One_Material_Loop.mp3
+    Integral-one-material_loop(決戰).ogg
+    https://downloads.khinsider.com/game-soundtracks/album/hat-world-new-testament-windows-gamerip-2019
+
+  Zil7KN0nn2E1wdqZB9q8
+    鳥叫聲
+
+  YIJZPogHeUVrVN4mNKyI.mp3
+    彗星のエクリフス.mp3
+    https://booth.pm/ja/items/4755387
+
+  xgrCuBbX2W49AFOYByNP.ogg
+    Funky_Magic.ogg
 
 |================================|
 |  使用                          |
