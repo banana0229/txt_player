@@ -242,7 +242,7 @@ const Player = (() => {
       case "CVSA清空": return CanvasEffect.clear();
       case "BGM_A": return Sound.BGM(0, play_cnt.url, play_cnt.volume);
       case "BGM_B": return Sound.BGM(1, play_cnt.url, play_cnt.volume);
-      case "SE": return Sound.SE(play_cnt.url);
+      case "SE": return Sound.SE(play_cnt.url, play_cnt);
       case "立繪": return play_tachie(play_cnt);
       case "立繪清空": return find("#tachie_holder").innerHTML = "";
       case "文字": return play_text(play_cnt);
@@ -356,9 +356,21 @@ const Player = (() => {
   }
   /* 音效 */
   function opp_se(str) {
-    let key = str.replace(/^@\[SE\]/, "").split(/\r|\n/)[0];
-    let url = sounds[key] || null;
-    return {type: "SE", url};
+    let data = {type: "SE"};
+    let sets = str.replace(/^@\[SE\]/, "").split(/\r|\n/)[0].trim();
+    if(!sets) return null;
+    sets.split(",").forEach(set => {
+      if(!/:/.test(set)) {
+        let sound_key = set.trim();
+        data.url = sounds[sound_key] || null;
+      }
+      else {
+        let key = set.replace(/:.*/, "");
+        let val = set.replace(/^[^:]*:/, "");
+        data[key.trim()] = val.trim();
+      }
+    });
+    return data;
   }
   /* 文字 */
   function opp_text(str) {
@@ -450,15 +462,19 @@ const Sound = (() => {
   });
 
   Object.defineProperty(obj, "SE", {
-    writable: false, value: (url) => {
-      let se = new Audio();
-      se.addEventListener("loadedmetadata", () => {
-        se.volume = main_volume;
-        se.play();
-      });
-      se.src = url;
+    writable: false, value: (url, args = {}) => {
+      if(args.delay > 0) setTimeout(() => play_se(url), 1e3 * args.delay);
+      else play_se(url);
     },
   });
+  function play_se(url) {
+    let se = new Audio();
+    se.addEventListener("loadedmetadata", () => {
+      se.volume = main_volume;
+      se.play();
+    });
+    se.src = url;
+  }
 
   Object.defineProperty(obj, "BGM", {
     writable: false, value: (index, url, volume) => {

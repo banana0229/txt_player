@@ -25,6 +25,30 @@
     鳴きながら飛び去る
     https://soundeffect-lab.info/sound/animal/
 
+
+  https://soundeffect-lab.info/sound/battle/
+    剣で斬る5.mp3
+      乱舞攻撃。5連続
+    剣で斬る6.mp3
+      力を溜めてから斬り裂く
+
+  https://soundeffect-lab.info/sound/battle/battle2.html
+    サブマシンガンの弾倉をセット.mp3
+      マガジンを手ではめ込む
+    サブマシンガンのボルトリリース.mp3
+      リロード後の撃つ準備
+    サブマシンガン発射1.mp3
+      遠くまで反響する
+    サブマシンガン発射2.mp3
+      長めの連射
+
+    大型狙撃銃の弾倉をセット.mp3
+      対物ライフルともいう
+    大型狙撃銃のボルトアクション.mp3
+      ボルトハンドルを引く。本物の音
+    大型狙撃銃を発射.mp3
+      二脚付きの、伏せて撃つ銃。ほぼ大砲
+
 -------- 香蕉的CCF房間抓出來的 --------
 
   c7mGqLFfuX0Lz4hJKNES.mp3
