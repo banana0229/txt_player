@@ -17,7 +17,13 @@
 -------- 効果音ラボ --------
 
   水滴1.mp3
+    ピッ。一滴の涙
     https://soundeffect-lab.info/sound/various/
+
+
+  ヒヨドリの鳴き声3.mp3
+    鳴きながら飛び去る
+    https://soundeffect-lab.info/sound/animal/
 
 -------- 香蕉的CCF房間抓出來的 --------
 

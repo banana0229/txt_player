@@ -383,24 +383,31 @@ const Player = (() => {
     data.key = str.replace(/^@\[CVSA:|\].*/g, "").split(/\r|\n/)[0];
     let sets = str.replace(/^@\[CVSA[^\]]*\]/, "").split(/\r|\n/)[0].trim();
     if(!sets) data.del = true;
-    else {
-      sets.split(",").forEach(set => {
-        if(!/:/.test(set)) data.ef_name = set.trim();
-        else {
-          let key = set.replace(/:.*/, "");
-          let val = set.replace(/^[^:]*:/, "");
-          data[key.trim()] = val.trim();
-        }
-      });
-    }
+    sets.split(",").forEach(set => {
+      if(!/:/.test(set)) data.ef_name = set.trim();
+      else {
+        let key = set.replace(/:.*/, "");
+        let val = set.replace(/^[^:]*:/, "");
+        data[key.trim()] = val.trim();
+      }
+    });
     return data;
   }
   /* cvs特效 (one shot) */
   function opp_cvs_effect_os(str) {
     let data = {type: "CVSFX"};
     data.key = data;
-    data.ef_name = str.replace(/^@\[CVSFX\]/, "").split(/\r|\n/)[0].trim();
-    return data.ef_name ? data : null;
+    let sets = str.replace(/^@\[CVSFX\]/, "").split(/\r|\n/)[0].trim();
+    if(!sets) return null;
+    sets.split(",").forEach(set => {
+      if(!/:/.test(set)) data.ef_name = set.trim();
+      else {
+        let key = set.replace(/:.*/, "");
+        let val = set.replace(/^[^:]*:/, "");
+        data[key.trim()] = val.trim();
+      }
+    });
+    return data;
   }
   /* 立繪 */
   function opp_tachie(str) {

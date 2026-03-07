@@ -29,7 +29,7 @@ const CanvasEffect = (() => {
       case "血": cur_efs[key] = add_blood(); break;
       case "警告": cur_efs[key] = add_warning(); break;
       case "HUD框": cur_efs[key] = add_hud_frame(args); break;
-      case "水波紋": cur_efs[key] = add_ripples(); break;
+      case "水波紋": cur_efs[key] = add_ripples(args); break;
       case "衝過_關": cur_efs[key] = add_dash_over({type: "close"}); break;
       case "衝過_開": cur_efs[key] = add_dash_over({type: "open"}); break;
     }
@@ -127,7 +127,7 @@ const CanvasEffect = (() => {
     return {cvs, cvsa_arr: [dash_over]};
   }
   /* 水波紋 */
-  function add_ripples() {
+  function add_ripples(args) {
     let cvs = new_cvs();
     let ripples_data = [
       {size: 0.30, speed: 24, width: 3},
@@ -136,8 +136,8 @@ const CanvasEffect = (() => {
     ];
     let ripples = ripples_data.map((data, i) => {
       Object.assign(data, {
-        x: cvs.width * 0.4,
-        y: cvs.height * 0.6 - 8 * i,
+        x: cvs.width * (args.x || 0.5),
+        y: cvs.height * (args.y || 0.4) - 8 * i,
         scale_y: 0.8,
         size: cvs.width * data.size,
         width: data.width,
