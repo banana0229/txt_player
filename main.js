@@ -215,7 +215,7 @@ const Player = (() => {
       if(next_play_cd) return;
       next_play_cd = true;
       await _next_play();
-      setTimeout(() => { next_play_cd = false; }, 600);
+      setTimeout(() => { next_play_cd = false; }, 100);
     },
   });
   async function _next_play() {
