@@ -1,4 +1,7 @@
 window.addEventListener("load", async () => {
+  Fight.cvs.id = "fight_canvas";
+  find("#fight_canvas_holder").after(Fight.cvs);
+  find("#fight_canvas_holder").remove();
   Articles.init();
   let folder_name = decodeURIComponent(location.hash).replace(/^#/, "").split(/\r|\n/)[0].trim();
   if(folder_name) {
@@ -166,6 +169,7 @@ const Player = (() => {
       CanvasEffect.clear();
       Sound.BGM(0, null);
       Sound.BGM(1, null);
+      Fight.stop();
     },
   });
   Object.defineProperty(obj, "to_cover", {
@@ -238,14 +242,68 @@ const Player = (() => {
       case "背景": return set_bg(play_cnt.url);
       case "背景效果": return play_bg_effect(play_cnt);
       case "效果清空": return find("#bg_effect_holder").innerHTML = "";
+
       case "CVSA": case "CVSFX": return play_canvas_effect(play_cnt);
       case "CVSA清空": return CanvasEffect.clear();
+
       case "BGM_A": return Sound.BGM(0, play_cnt.url, play_cnt.volume);
       case "BGM_B": return Sound.BGM(1, play_cnt.url, play_cnt.volume);
       case "SE": return Sound.SE(play_cnt.url, play_cnt);
+
       case "立繪": return play_tachie(play_cnt);
       case "立繪清空": return find("#tachie_holder").innerHTML = "";
       case "文字": return play_text(play_cnt);
+
+      case "戰鬥開始": return Fight.play();
+      case "戰鬥結束": return Fight.stop();
+      case "戰鬥控制": return play_fight_ctrl(play_cnt);
+    }
+  }
+  /* 戰鬥控制 */
+  function play_fight_ctrl(play_cnt) {
+    if(play_cnt.action == "接戰區") {
+      Fight.area_create(
+        play_cnt.origin || null,
+        play_cnt.key,
+        +play_cnt.size || 80,
+        +play_cnt.deg || 0,
+        +play_cnt.dist || 0,
+      );
+    }
+    else if(play_cnt.action == "接戰區刪除") {
+      Fight.area_del(play_cnt.key);
+    }
+    else if(play_cnt.action == "接戰區移動") {
+      Fight.area_move(
+        play_cnt.key,
+        play_cnt.deg || 0,
+        play_cnt.dist || 0,
+      );
+    }
+    else if(play_cnt.action == "棋子") {
+      let data = {name: play_cnt.key, i: play_cnt.i || 0};
+      if(play_cnt.color) data.color = play_cnt.color;
+      if(play_cnt.img) data.img_url = imgs[play_cnt.img] || null;
+      Fight.item_enter(play_cnt.area, data);
+      console.log(play_cnt);
+    }
+    else if(play_cnt.action == "棋子移動") {
+      if(play_cnt.area) Fight.item_move(play_cnt.key, play_cnt.area);
+      if(play_cnt.i) Fight.item_set(play_cnt.key, {
+        i: play_cnt.i,
+      });
+    }
+    else if(play_cnt.action == "棋子刪除") {
+      Fight.item_leave(play_cnt.key);
+    }
+    else if(play_cnt.action == "連線") {
+      Fight.line_create(play_cnt.area1, play_cnt.area2);
+    }
+    else if(play_cnt.action == "連線刪除") {
+      Fight.line_del(play_cnt.area1, play_cnt.area2);
+    }
+    else if(play_cnt.action == "設定") {
+      if(play_cnt.area_color) Fight.set_area_color(play_cnt.area_color);
     }
   }
   /* 動態效果 */
@@ -328,15 +386,22 @@ const Player = (() => {
     if(!str) return null;
     else if(/^@\[背景\]/.test(str)) return opp_bg(str);
     else if(/^@\[背景效果:[^\]]*\]/.test(str)) return opp_bg_effect(str);
+
     else if(/^@\[CVSA:[^\]]*\]/.test(str)) return opp_cvsa_effect(str);
     else if(/^@\[CVSFX\]/.test(str)) return opp_cvs_effect_os(str);
     else if(/^@\[CVSA清空\]/.test(str)) return {type: "CVSA清空"};
+
     else if(/^@\[BGM_(A|B)(:.*)?\]/.test(str)) return opp_bgm(str);
     else if(/^@\[SE\]/.test(str)) return opp_se(str);
+
     else if(/^@\[立繪:[^\]]*\]/.test(str)) return opp_tachie(str);
     else if(/^@\[立繪清空\]/.test(str)) return {type: "立繪清空"};
     else if(/^@\[效果清空\]/.test(str)) return {type: "效果清空"};
     else if(/^@\[文字:[^\]]*\]/.test(str)) return opp_text(str);
+
+    else if(/^@\[戰鬥開始\]/.test(str)) return {type: "戰鬥開始"};
+    else if(/^@\[戰鬥結束\]/.test(str)) return {type: "戰鬥結束"};
+    else if(/^@\[戰鬥:[^\]]*\]/.test(str)) return opp_fight_ctrl(str);
     return null;
   }
   /* 背景 */
@@ -437,6 +502,22 @@ const Player = (() => {
         }
       });
     }
+    return data;
+  }
+  /* 戰鬥控制 */
+  function opp_fight_ctrl(str) {
+    let data = {type: "戰鬥控制"};
+    data.action = str.replace(/^@\[戰鬥:|\].*/g, "").split(/\r|\n/)[0].trim();
+    let sets = str.replace(/^@\[戰鬥:[^\]]*\]/, "").trim();
+    if(!sets) return;
+    sets.split(",").forEach(set => {
+      if(!/:/.test(set)) data.key = set.trim();
+      else {
+        let key = set.split(":")[0];
+        let val = set.replace(/^[^:]*:/, "");
+        data[key.trim()] = val.trim() || null;
+      }
+    });
     return data;
   }
 })();

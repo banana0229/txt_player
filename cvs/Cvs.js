@@ -26,7 +26,11 @@ const Cvs = (() => {
     _save();
     Object.defineProperty(ctx, "save", { writable: false, value: new Error("Disable save") });
     Object.defineProperty(ctx, "restore", { writable: false, value: new Error("Disable restore") });
-    Object.defineProperty(ctx, "reset", { writable: false, value: () => { _restore(); _save(); } });
+    Object.defineProperty(ctx, "reset", { writable: false, value: () => {
+      _restore();
+      _save();
+      ctx.style = {filter: "none"};
+    } });
     /* 清除 */
     Object.defineProperty(canvas, "clear", {
       writable: false, value: () => {
@@ -51,6 +55,7 @@ const Cvs = (() => {
           color: ctx.strokeStyle,
           width: ctx.lineWidth,
           cap: ctx.lineCap,
+          turn: ctx.lineJoin,
           bg: ctx.fillStyle,
           filter: ctx.filter,
           alpha: ctx.globalAlpha,
@@ -63,6 +68,7 @@ const Cvs = (() => {
         if(opt.color) ctx.strokeStyle = opt.color || "#000";
         if(opt.width) ctx.lineWidth = +opt.width || 1;
         if(opt.cap) ctx.lineCap = opt.cap || "butt";
+        if(opt.turn) ctx.lineJoin = opt.turn || "miter";
         if(opt.bg) ctx.fillStyle = opt.bg || "#000";
         if(opt.filter) ctx.filter = opt.filter || "none";
         if(typeof opt.alpha == "number") ctx.globalAlpha = +opt.alpha || 0;

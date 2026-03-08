@@ -1,0 +1,53 @@
+<script src="./cvs/MathEx.js"></script>
+<script src="./cvs/Geom.js"></script>
+<script src="./cvs/Cvs.js"></script>
+<script src="./cvs/Cvs_fast_draw.js"></script>
+<script src="./Fight.js"></script>
+
+<style>
+  canvas {
+    outline: 1px solid #aaa;
+    background: #aaa;
+  }
+</style>
+
+<script>
+  window.addEventListener("load", () => {
+    document.body.append(Fight.cvs);
+    Fight.play();
+    Fight.area_create(null, "玩家", 80, 45, 200);
+    Fight.area_create("玩家", "軍團主", 80, 225, 400);
+    Fight.area_create("玩家", "雜魚A", 80, 165, 400);
+    Fight.area_create("玩家", "雜魚B", 80, 285, 400);
+
+    Fight.items_enter("玩家", {
+      name: "蘭斯",
+      img_url: "https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png",
+      color: "",
+    });
+    Fight.items_enter("玩家", {
+      name: "蘭斯B",
+      img_url: "https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png",
+      color: "",
+    });
+    Fight.items_enter("玩家", {
+      name: "蘭斯C",
+      img_url: "https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png",
+      color: "",
+    });
+    Fight.items_enter("玩家", {
+      name: "蘭斯D",
+      img_url: "https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png",
+      color: "",
+    });
+
+    setTimeout(() => {
+      Fight.area_del("雜魚B");
+      Fight.items_leave("蘭斯B");
+    }, 3e3);
+
+    setTimeout(() => {
+      Fight.items_move("蘭斯C", "雜魚A");
+    }, 6e3);
+  });
+</script>

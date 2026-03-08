@@ -162,13 +162,16 @@ body {
   position: relative;
   overflow: hidden;
 }
-#bg_effect_holder, #canvas_effect_holder canvas {
+#bg_effect_holder, #fight_canvas, #canvas_effect_holder canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+#fight_canvas {
+  object-fit: contain;
 }
 #bg_effect_holder .bg_effect {
   position: absolute;
