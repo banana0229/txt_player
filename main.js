@@ -205,24 +205,31 @@ const Player = (() => {
         return;
       }
       cur_section_file_name = file_name;
-      Player.next_play();
+      _next_play();
     },
   });
   let playing = false;
+  let next_play_cd = false;
   Object.defineProperty(obj, "next_play", {
     writable: false, value: async () => {
-      if(playing) return;
-      if(!playlist?.length) {
-        let next_name = Articles.next_section_name(cur_section_file_name);
-        if(next_name) Player.read_section(next_name);
-        return;
-      }
-      playing = true;
-      let target_play = playlist.shift();
-      await Promise.all(target_play.map(play));
-      playing = false;
+      if(next_play_cd) return;
+      next_play_cd = true;
+      await _next_play();
+      setTimeout(() => { next_play_cd = false; }, 600);
     },
   });
+  async function _next_play() {
+    if(playing) return;
+    if(!playlist?.length) {
+      let next_name = Articles.next_section_name(cur_section_file_name);
+      if(next_name) Player.read_section(next_name);
+      return;
+    }
+    playing = true;
+    let target_play = playlist.shift();
+    await Promise.all(target_play.map(play));
+    playing = false;
+  }
   return obj;
 
   /* ================================ */
