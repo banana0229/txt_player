@@ -226,7 +226,7 @@ const Player = (() => {
       let next_name = Articles.next_section_name(cur_section_file_name);
       if(next_name) await Player.read_section(next_name);
       playing = false;
-      auto_next_play();
+      if(next_name) auto_next_play();
       return;
     }
     let target_play = playlist.shift();
