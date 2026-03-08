@@ -71,9 +71,9 @@ const Articles = (() => {
       /* 列表生成 */
       articles.section_list.forEach(section => {
         let btn = new_el_to_el(list_el, "button.section", section.name);
-        btn.addEventListener("click", () => {
-          Player.read_section(section.file_name);
-          _next_play();
+        btn.addEventListener("click", async () => {
+          await Player.read_section(section.file_name);
+          Player.auto_next_play();
         });
         btn.addEventListener("keydown", e => e.preventDefault());
       });
@@ -214,18 +214,19 @@ const Player = (() => {
     writable: false, value: async () => {
       if(next_play_cd) return;
       next_play_cd = true;
-      await _next_play();
+      await auto_next_play();
       setTimeout(() => { next_play_cd = false; }, 100);
     },
   });
-  async function _next_play() {
+  Object.defineProperty(obj, "auto_next_play", {writable: false, value: auto_next_play});
+  async function auto_next_play() {
     if(playing) return;
     playing = true;
     if(!playlist?.length) {
       let next_name = Articles.next_section_name(cur_section_file_name);
       if(next_name) await Player.read_section(next_name);
       playing = false;
-      _next_play();
+      auto_next_play();
       return;
     }
     let target_play = playlist.shift();
