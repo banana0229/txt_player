@@ -215,17 +215,18 @@ const Player = (() => {
       if(next_play_cd) return;
       next_play_cd = true;
       await _next_play();
-      setTimeout(() => { next_play_cd = false; }, 400);
+      setTimeout(() => { next_play_cd = false; }, 100);
     },
   });
   async function _next_play() {
     if(playing) return;
+    playing = true;
     if(!playlist?.length) {
       let next_name = Articles.next_section_name(cur_section_file_name);
-      if(next_name) Player.read_section(next_name);
+      if(next_name) await Player.read_section(next_name);
+      playing = false;
       return;
     }
-    playing = true;
     let target_play = playlist.shift();
     await Promise.all(target_play.map(play));
     playing = false;
