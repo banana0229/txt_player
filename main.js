@@ -73,6 +73,7 @@ const Articles = (() => {
         let btn = new_el_to_el(list_el, "button.section", section.name);
         btn.addEventListener("click", () => {
           Player.read_section(section.file_name);
+          _next_play();
         });
         btn.addEventListener("keydown", e => e.preventDefault());
       });
@@ -205,7 +206,6 @@ const Player = (() => {
         return;
       }
       cur_section_file_name = file_name;
-      _next_play();
     },
   });
   let playing = false;
@@ -225,6 +225,7 @@ const Player = (() => {
       let next_name = Articles.next_section_name(cur_section_file_name);
       if(next_name) await Player.read_section(next_name);
       playing = false;
+      _next_play();
       return;
     }
     let target_play = playlist.shift();
