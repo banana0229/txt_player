@@ -285,7 +285,6 @@ const Player = (() => {
       if(play_cnt.color) data.color = play_cnt.color;
       if(play_cnt.img) data.img_url = imgs[play_cnt.img] || null;
       Fight.item_enter(play_cnt.area, data);
-      console.log(play_cnt);
     }
     else if(play_cnt.action == "棋子移動") {
       if(play_cnt.area) Fight.item_move(play_cnt.key, play_cnt.area);
