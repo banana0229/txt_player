@@ -3,25 +3,44 @@ window.addEventListener("load", async () => {
   find("#fight_canvas_holder").after(Fight.cvs);
   find("#fight_canvas_holder").remove();
   Articles.init();
-  let folder_name = decodeURIComponent(location.hash).replace(/^#/, "").split(/\r|\n/)[0].trim();
-  if(folder_name) {
-    try {
-      await Articles.read("./replay/" + folder_name);
-      find("#folder_url").remove();
-      return;
-    }
-    catch (err) { console.error(err); }
+  auto_read_articles();
+});
+async function auto_read_articles() {
+  let hash = decodeURIComponent(location.hash).replace(/^#/, "").split(/\r|\n/)[0].trim();
+  let target_url = "";
+  if(/^@/.test(hash)) {
+    target_url = "google_word/" + hash.replace(/^@/, "");
+  }
+  else if(hash) {
+    target_url = "./replay/" + hash;
+  }
+  if(target_url) {
+    let result = await read_go(target_url);
+    if(result) return;
   }
   let url_el = find("#folder_url");
   if(url_el) url_el.addEventListener("keydown", async e => {
     if(e.keyCode != 13) return;
-    try {
-      await Articles.read(url_el.value);
-      find("#folder_url").remove();
-    }
-    catch (err) {}
+    await read_go(url_el.value);
   });
-});
+  async function read_go(target_url) {
+    if(!target_url) return;
+    let folder_url_input = find("#folder_url");
+    folder_url_input.setAttribute("disabled", "");
+    folder_url_input.value = "讀取中...";
+    try {
+      await Articles.read(target_url);
+      folder_url_input.remove();
+      return true;
+    }
+    catch (err) {
+      folder_url_input.removeAttribute("disabled");
+      folder_url_input.value = "";
+      alert(err);
+      return false;
+    }
+  }
+}
 
 /* ================================ */
 /*  目錄讀取                        */
@@ -59,8 +78,8 @@ const Articles = (() => {
       /* 重置 */
       Articles.init();
       /* 讀取 */
-      let articles_txt = await get_txt(target_folder_url, "!目錄");
-      if(!articles_txt) return null;
+      let articles_txt = await get_file_cnt_text(target_folder_url, "!目錄");
+      if(!articles_txt) throw new Error("無內容");
       articles = articles_parse(articles_txt);
       cur_folder_url = target_folder_url;
       /* 封面按紐 */
@@ -72,8 +91,8 @@ const Articles = (() => {
       articles.section_list.forEach(section => {
         let btn = new_el_to_el(list_el, "button.section", section.name);
         btn.addEventListener("click", async () => {
-          await Player.read_section(section.file_name);
-          Player.auto_next_play();
+          let result_to_cover = await Player.read_section(section.file_name);
+          if(!result_to_cover) Player.auto_next_play();
         });
         btn.addEventListener("keydown", e => e.preventDefault());
       });
@@ -193,17 +212,17 @@ const Player = (() => {
   Object.defineProperty(obj, "read_section", {
     writable: false, value: async (file_name) => {
       Player.init();
-      let section_txt = await get_txt(Articles.folder_url, file_name);
+      let section_txt = await get_file_cnt_text(Articles.folder_url, file_name);
       if(!section_txt) {
         Player.to_cover();
-        return;
+        return -1;
       }
       imgs = imgs_parse(section_txt);
       sounds = sounds_parse(section_txt);
       playlist = section_parse(section_txt);
       if(!playlist.length) {
         Player.to_cover();
-        return;
+        return -1;
       }
       cur_section_file_name = file_name;
     },
@@ -634,19 +653,55 @@ function sounds_parse(txt) {
   return sounds;
 }
 
-function get_txt(folder_url, file) {
+/* ================================ */
+/*  取得 text                       */
+/* ================================ */
+function get_txt_url(folder_url, file) {
+}
+let cur_word_id = null;
+let cur_word_file = {};
+function get_word_url(file_id, tab_name) {
+  file_id = file_id.replace(/^google_word\//, "").trim();
+  if(!file_id) return null;
+  let get_url = "https://script.google.com/macros/s/AKfycbwvYFK-HeY8uVvp4k6OHUQxt3qAn5RjpU-HTPvhwzS6fLufYp3tW-OyhJ-7xU-TdxaM/exec";
+  let url = `${get_url}?id=${file_id}`;
+  if(tab_name) url += `&tab=${tab_name}`;
+  return url;
+}
+async function get_file_cnt_text(url, tab_name) {
   if(!window.XMLHttpRequest) {
     alert('無法連線，請更換瀏覽器');
     return;
   }
-  if(!folder_url || !file) return null;
+  if(/^google_word\//.test(url)) {
+    let word_id = url.replace(/^google_word\//, "").trim();
+    if(!word_id) return null;
+    if(cur_word_id == word_id) return cur_word_file[tab_name] || null;
+    cur_word_id = word_id;
+    let get_url = "https://script.google.com/macros/s/AKfycbwvYFK-HeY8uVvp4k6OHUQxt3qAn5RjpU-HTPvhwzS6fLufYp3tW-OyhJ-7xU-TdxaM/exec";
+    let result_url = `${get_url}?id=${word_id}`;
+    cur_word_file = await get_text(result_url, "json");
+    return cur_word_file[tab_name] || null;
+  }
+  else {
+    if(!url || !tab_name) return null;
+    let result_url = `${url}/${tab_name}.txt`;
+    return await get_text(result_url, "text");
+  }
+}
+function get_text(url, type) {
   return new Promise((resolve, reject) => {
-    let url = `${folder_url}/${file}.txt`;
     let xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
+    if(type == "json") xhr.responseType = "json";
+    else xhr.responseType = "text";
     xhr.addEventListener('load', () => {
       if(xhr.status == 200){
-        resolve(xhr.responseText);
+        if(type == "json") {
+          if(xhr.response?.err) reject(xhr.response?.err);
+          else resolve(xhr.response);
+        }
+        else resolve(xhr.response);
       }
       else {
         reject(xhr.status);
