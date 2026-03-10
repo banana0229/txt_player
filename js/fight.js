@@ -57,7 +57,6 @@ const Fight = (() => {
     draw_areas();
     draw_lines();
     draw_items();
-    // console.log(areas);
   }
 
   /* ================================ */
@@ -112,7 +111,6 @@ const Fight = (() => {
   /* 物件 */
   let areas = {};
   let del_areas = [];
-  Object.defineProperty(obj, "areas", {get: () => areas});
   Object.defineProperty(obj, "area_create", {writable: false, value: area_create});
   function area_create(origin_area_key, new_key, r, deg, len) {
     let dot_x = ox, dot_y = oy;
@@ -274,7 +272,7 @@ const Fight = (() => {
         name: item_data.name,
         enter: -10,
         img: target_img,
-        i: item_data.i || 0
+        i: +item_data.i || 0
       };
       draw_item_base(new_item, item_data.color);
       area.items.push(new_item);

@@ -111,7 +111,7 @@ const CanvasEffect = (() => {
   function add_hud_frame(args) {
     let cvs = new_cvs();
     let hud_frame = new Cvsa_hud_frame(cvs, {
-      img_url: args.img,
+      img_url: args.img_url,
       ry: -100,
       w: 500,
       h: 300,

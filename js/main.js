@@ -48,33 +48,6 @@ function wait(sec) {
 }
 
 /* ================================ */
-/*  其他                            */
-/* ================================ */
-function line_split(str) {
-  return str.split(/\r|\n/).filter(v => v);
-}
-function imgs_parse(txt) {
-  let imgs = {};
-  let imgs_str = txt.match(/```圖片[^`]*```/)?.[0] || "";
-  line_split(imgs_str).slice(1, -1).forEach(img_str => {
-    let key = img_str.replace(/:.*/, "");
-    let val = img_str.replace(/^[^:]*:/, "");
-    if(key && val) imgs[key] = val;
-  });
-  return imgs;
-}
-function sounds_parse(txt) {
-  let sounds = {};
-  let sounds_str = txt.match(/```聲音[^`]*```/)?.[0] || "";
-  line_split(sounds_str).slice(1, -1).forEach(sound_str => {
-    let key = sound_str.replace(/:.*/, "");
-    let val = sound_str.replace(/^[^:]*:/, "");
-    if(key && val) sounds[key] = val;
-  });
-  return sounds;
-}
-
-/* ================================ */
 /*  取得 text                       */
 /* ================================ */
 let cur_word_id = null;

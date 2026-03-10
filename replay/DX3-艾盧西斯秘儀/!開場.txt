@@ -5,7 +5,7 @@
 標題畫面:./bgm/Nebula - The Grey Room _ Density & Time.mp3
 ```
 @[背景]標題畫面
-@[BGM_A]標題畫面
+@[BGM:A]標題畫面
 @[CVSA:雨]雨
 @[CVSA:霧]霧
 @[文字:GM]全球各處頻傳背教者災害，在災害的影響下無數的人們化為超越者、化為原菌。
