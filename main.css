@@ -211,6 +211,52 @@ body {
 .tachie[state="黑"] { filter: brightness(0); }
 
 /* ================================ */
+/*  選項區                          */
+/* ================================ */
+#opts_holder {
+  position: relative;
+  z-index: 100;
+  margin-left: auto;
+  width: max-content;
+  height: 0;
+  display: grid;
+  align-content: end;
+}
+#opts_holder button {
+  all: unset;
+  max-width: 280px;
+  min-width: 90px;
+  text-align: center;
+  background: #000c;
+  backdrop-filter: blur(2px);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 24px;
+  height: 24px;
+}
+@media (max-width: 768px) {
+  #opts_holder button {
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    max-width: 200px;
+  }
+}
+@media (max-width: 560px) {
+  #opts_holder button {
+    font-size: 12px;
+    line-height: 16px;
+    height: 16px;
+    max-width: 120px;
+  }
+}
+
+/* ================================ */
 /*  文字方框                        */
 /* ================================ */
 #text_holder {

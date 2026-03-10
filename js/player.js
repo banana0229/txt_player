@@ -4,6 +4,7 @@ const Player = (() => {
   /* ================================ */
   let obj = {};
   let playlist = null;
+  let playlist_cur_i = 0;
   let cur_section_file_name = null;
 
   /* ================================ */
@@ -23,10 +24,17 @@ const Player = (() => {
   Object.defineProperty(obj, "init", {
     writable: false, value: () => {
       playlist = null;
+      playlist_cur_i = 0;
       cur_section_file_name = null;
+      Player.reset_show();
+    },
+  });
+  Object.defineProperty(obj, "reset_show", {
+    writable: false, value: () => {
       find("#bg_effect_holder").innerHTML = "";
       find("#tachie_holder").innerHTML = "";
       find("#text").innerHTML = "";
+      find("#opts_holder").innerHTML = "";
       Player.set_bg(null);
       CanvasEffect.clear();
       Sound.BGM_clear();
@@ -69,9 +77,9 @@ const Player = (() => {
   });
   Object.defineProperty(obj, "auto_next_play", {writable: false, value: auto_next_play});
   async function auto_next_play() {
-    if(playing) return;
+    if(playing || find("#opts_holder").matches(":not(:empty)")) return;
     playing = true;
-    if(!playlist?.length) {
+    if(!playlist?.length || !playlist[playlist_cur_i]) {
       let next_name = Articles.next_section_name(cur_section_file_name);
       try {
         if(next_name) await Player.read_section(next_name);
@@ -81,9 +89,55 @@ const Player = (() => {
       catch (err) { alert(err); }
       return;
     }
-    let target_play = playlist.shift();
-    await Promise.all(target_play.map(play));
+    await one_play_cmd_arr();
     playing = false;
+  }
+  async function one_play_cmd_arr() {
+    let cmd_arr = playlist[playlist_cur_i];
+    let mark = cmd_arr.find(cmd => cmd.type == "#");
+    let to_mark = cmd_arr.find(cmd => cmd.type == "跳到");
+    if(!mark && !to_mark) {
+      await Promise.all(cmd_arr.map(play));
+      playlist_cur_i++;
+    }
+    else if(mark) {
+      playlist_cur_i++;
+      playing = false;
+      await auto_next_play();
+    }
+    else if(to_mark) {
+      playing = false;
+      if(to_mark.file_name) await Player.read_section(to_mark.file_name);
+      if(to_mark.name) await jump_to_mark(to_mark.name);
+      else await auto_next_play();
+    }
+  }
+
+  /* ================================ */
+  /*  跳段                            */
+  /* ================================ */
+  Object.defineProperty(obj, "jump_to_mark", {writable: false, value: jump_to_mark});
+  async function jump_to_mark(target_mark_name) {
+    if(!playlist) throw new Error("無撥放列表");
+    let get_mark_i = playlist.findIndex(cmd_arr => {
+      let to_mark = cmd_arr.find(cmd => cmd.type == "#");
+      return to_mark?.name == target_mark_name;
+    });
+    if(get_mark_i == -1) throw new Error("找不到標記");
+    Player.reset_show();
+    let cmd_arr = playlist[get_mark_i];
+    await Promise.all(cmd_arr.map(play));
+    playlist_cur_i = get_mark_i;
+    await auto_next_play();
+  }
+  Object.defineProperty(obj, "jump_to_section_mark", {writable: false, value: jump_to_section_mark});
+  async function jump_to_section_mark(file_name, target_mark_name) {
+    try {
+      if(cur_section_file_name != file_name) await Player.read_section(file_name);
+    }
+    catch (err) { throw new Error("讀取段落檔案失敗"); }
+    if(target_mark_name) await Player.jump_to_mark(target_mark_name);
+    else await auto_next_play();
   }
 
   /* ================================ */
@@ -151,6 +205,8 @@ const Player = (() => {
         if(play_cnt.i) Fight.item_set(play_cnt.name, play_cnt);
         break;
       }
+
+      case "選項": return create_option_btn(play_cnt.opts);
     }
   }
   /* 立繪 */
@@ -182,5 +238,22 @@ const Player = (() => {
     find("#name").innerText = name || "";
     find("#text").innerText = cnt || "";
     find("#text").scrollTop = 0;
+  }
+  /* 選項 */
+  function create_option_btn(opts) {
+    let opts_el = find("#opts_holder");
+    opts.forEach(opt_data => {
+      let btn = new_el_to_el(opts_el, "button", opt_data.show);
+      btn.addEventListener("click", async () => {
+        opts_el.innerHTML = "";
+        try {
+          if(opt_data.file_name) await jump_to_section_mark(opt_data.file_name, opt_data.mark);
+          else await jump_to_mark(opt_data.mark);
+        }
+        catch (err) {
+          new_el_to_el(opts_el, "button", {disabled: ""}, err.message);
+        }
+      });
+    });
   }
 })();

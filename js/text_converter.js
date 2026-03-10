@@ -94,7 +94,8 @@ const TextConverter = (() => {
         return get_command_arr(raw_text) /* 轉換成指令 */
         .map(cmd => to_play_cmd(cmd, asset)) /* 解析成撥放指令 */
         .filter(v => v); /* 空指令去除 */
-      });
+      })
+      .filter(play_cmd_arr => play_cmd_arr.length);
   }
 
   /* ================================ */
@@ -181,6 +182,9 @@ const TextConverter = (() => {
   /* ================================ */
   function to_play_cmd(cmd, asset) {
     switch(cmd.head) {
+      case "#": return pcmd_mark(cmd);
+      case "跳到": return pcmd_mark(cmd);
+
       case "背景": return pcmd_bg(cmd, asset.imgs);
       case "背景效果": return pcmd_bg_effect(cmd, asset.imgs);
       case "背景效果清空": return {type: "背景效果清空"};
@@ -201,8 +205,19 @@ const TextConverter = (() => {
       case "戰鬥結束": return {type: "戰鬥結束"};
       case "戰鬥": return pcmd_fight_ctrl(cmd, asset.imgs);
 
+      case "選項": return pcmd_select(cmd);
+
       default: return null;
     }
+  }
+  /* 標記 */
+  function pcmd_mark(cmd) {
+    if(!cmd.sub) return;
+    if(cmd.head == "#") return {type: "#", name: cmd.sub};
+    let file_name = cmd.sub.split("#")[0].trim() || null;
+    let name = (cmd.sub.match(/#[^#]*$/)?.[0] || "").replace(/^#/, "");
+    if(!file_name && !name) return;
+    return {type: "跳到", name, file_name};
   }
   /* 背景 */
   function pcmd_bg(cmd, imgs) {
@@ -273,6 +288,22 @@ const TextConverter = (() => {
     delete args.id;
     args_url_fill(args, imgs);
     Object.assign(data, args);
+    return data;
+  }
+  /* 選項 */
+  function pcmd_select(cmd) {
+    let data = {type: "選項"};
+    let opts = get_lines(cmd)
+      .map(line => {
+        if(!line) return;
+        let show = (line.match(/^\[[^\]]*\]/)?.[0] || "").replace(/^\[|\]$/g, "").trim();
+        let mark = (line.match(/#[^#]*$/)?.[0] || "").replace(/^#/, "").trim();
+        let file_name = line.replace(/^\[[^\]]*\]|#[^#]*$/g, "").trim();
+        if(!show || (!mark && !file_name)) return;
+        return {show, mark, file_name};
+      }).filter(v => v).slice(0, 4);
+    if(!opts.length) return;
+    data.opts = opts;
     return data;
   }
 
