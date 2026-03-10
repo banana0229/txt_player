@@ -1,173 +1,16 @@
-window.addEventListener("load", async () => {
-  Fight.cvs.id = "fight_canvas";
-  find("#fight_canvas_holder").after(Fight.cvs);
-  find("#fight_canvas_holder").remove();
-  Articles.init();
-  auto_read_articles();
-});
-async function auto_read_articles() {
-  let hash = decodeURIComponent(location.hash).replace(/^#/, "").split(/\r|\n/)[0].trim();
-  let target_url = "";
-  if(/^@/.test(hash)) {
-    target_url = "google_word/" + hash.replace(/^@/, "");
-  }
-  else if(hash) {
-    target_url = "./replay/" + hash;
-  }
-  if(target_url) {
-    let result = await read_go(target_url);
-    if(result) return;
-  }
-  let url_el = find("#folder_url");
-  if(url_el) url_el.addEventListener("keydown", async e => {
-    if(e.keyCode != 13) return;
-    await read_go(url_el.value);
-  });
-  async function read_go(target_url) {
-    if(!target_url) return;
-    let folder_url_input = find("#folder_url");
-    folder_url_input.setAttribute("disabled", "");
-    folder_url_input.value = "讀取中...";
-    try {
-      await Articles.read(target_url);
-      folder_url_input.remove();
-      return true;
-    }
-    catch (err) {
-      folder_url_input.removeAttribute("disabled");
-      folder_url_input.value = "";
-      alert(err);
-      return false;
-    }
-  }
-}
-
-/* ================================ */
-/*  目錄讀取                        */
-/* ================================ */
-const Articles = (() => {
-  let obj = {};
-  let articles = articles_parse("");
-  let cur_folder_url = "";
-
-  Object.defineProperty(obj, "data", { get: () => articles });
-  Object.defineProperty(obj, "folder_url", { get: () => cur_folder_url });
-  Object.defineProperty(obj, "next_section_name", {
-    writable: false, value: (cur_section_file_name) => {
-      if(!cur_section_file_name) {
-        return articles.section_list[0]?.file_name || null;
-      }
-      let i = articles.section_list.findIndex(section => {
-        return section.file_name == cur_section_file_name;
-      });
-      let next_section = articles.section_list[i + 1];
-      return next_section?.file_name || null;
-    },
-  });
-
-  Object.defineProperty(obj, "init", {
-    writable: false, value: () => {
-      Player.init();
-      find("#section_list").innerHTML = "";
-      articles = articles_parse("");
-      cur_folder_url = "";
-    },
-  });
-  Object.defineProperty(obj, "read", {
-    writable: false, value: async (target_folder_url) => {
-      /* 重置 */
-      Articles.init();
-      /* 讀取 */
-      let articles_txt = await get_file_cnt_text(target_folder_url, "!目錄");
-      if(!articles_txt) throw new Error("無內容");
-      articles = articles_parse(articles_txt);
-      cur_folder_url = target_folder_url;
-      /* 封面按紐 */
-      let list_el = find("#section_list");
-      let btn = new_el_to_el(list_el, "button.section", "封面");
-      btn.addEventListener("click", Player.to_cover);
-      btn.addEventListener("keydown", e => e.preventDefault());
-      /* 列表生成 */
-      articles.section_list.forEach(section => {
-        let btn = new_el_to_el(list_el, "button.section", section.name);
-        btn.addEventListener("click", async () => {
-          let result_to_cover = await Player.read_section(section.file_name);
-          if(!result_to_cover) Player.auto_next_play();
-        });
-        btn.addEventListener("keydown", e => e.preventDefault());
-      });
-      Player.to_cover();
-    },
-  });
-  return obj;
-
-  function articles_parse(txt) {
-    /* 列表 */
-    let imgs = imgs_parse(txt);
-    /* 背景圖 */
-    let bg_key = txt.match(/@\[背景\].*/)?.[0] || "";
-    if(bg_key) {
-      bg_key = bg_key.replace(/^@\[背景\]/, "").trim();
-    }
-    /* 背景效果列 */
-    let bg_effect_list = [];
-    let bg_effect_list_str = txt.match(/@\[背景效果\][^@\r\n]*/g) || [];
-    bg_effect_list_str.forEach(bg_effect_str => {
-      bg_effect_str = bg_effect_str.replace(/^@\[背景效果\]/, "").trim();
-      bg_effect_list.push(bg_effect_str);
-    });
-    /* 動態效果列 */
-    let cvsa_list = [];
-    let cvsa_list_str = txt.match(/@\[CVSA\][^@\r\n]*/g) || [];
-    cvsa_list_str.forEach((cvsa_str, i) => {
-      let ef_name = cvsa_str.replace(/^@\[CVSA\]/, "").trim();
-      cvsa_list.push(ef_name);
-    });
-    /* 劇本名 */
-    let scenario_name = txt.match(/@\[劇本名\].*/)?.[0] || "";
-    if(scenario_name) {
-      scenario_name = scenario_name.replace(/^@\[劇本名\]/, "").trim();
-    }
-    /* 說明 */
-    let describe = txt.match(/@\[說明\][^@]*/)?.[0] || "";
-    if(describe) {
-      describe = describe.replace(/^@\[說明\]/, "").trim();
-    }
-    /* 段落列表 */
-    let section_list = [];
-    let section_list_str = txt.match(/@\[段落\][^@]*/g) || [];
-    if(section_list_str) {
-      section_list_str.forEach(section_str => {
-        section_str = section_str.replace(/^@\[段落\]/, "").trim();
-        let [name = "--", file_name] = line_split(section_str);
-        if(!file_name) file_name = name.replace(/\<br\>/g, "");
-        name = name.replace(/\<br\>/g, "\n");
-        section_list.push({name, file_name});
-      });
-    }
-    /* 資料 */
-    let data = {
-      imgs,
-      bg: bg_key || null,
-      bg_effect_list,
-      cvsa_list,
-      scenario_name,
-      describe,
-      section_list,
-    };
-    return data;
-  }
-})();
-
-/* ================================ */
-/*  撥放器                          */
-/* ================================ */
 const Player = (() => {
+  /* ================================ */
+  /*  資料                            */
+  /* ================================ */
   let obj = {};
   let imgs = {};
   let sounds = {};
   let playlist = null;
   let cur_section_file_name = null;
+
+  /* ================================ */
+  /*  操作                            */
+  /* ================================ */
   window.addEventListener("load", () => {
     find("#next_btn").addEventListener("click", Player.next_play);
     find("#next_btn").addEventListener("keydown", e => e.preventDefault());
@@ -176,6 +19,9 @@ const Player = (() => {
     if(e.keyCode == 32) Player.next_play();
   });
 
+  /* ================================ */
+  /*  初始                            */
+  /* ================================ */
   Object.defineProperty(obj, "init", {
     writable: false, value: () => {
       imgs = {};
@@ -192,6 +38,10 @@ const Player = (() => {
       Fight.stop();
     },
   });
+
+  /* ================================ */
+  /*  封面                            */
+  /* ================================ */
   Object.defineProperty(obj, "to_cover", {
     writable: false, value: () => {
       Player.init();
@@ -209,6 +59,10 @@ const Player = (() => {
       find("#text").innerText = data.describe || "";
     },
   });
+
+  /* ================================ */
+  /*  讀取                            */
+  /* ================================ */
   Object.defineProperty(obj, "read_section", {
     writable: false, value: async (file_name) => {
       Player.init();
@@ -227,6 +81,10 @@ const Player = (() => {
       cur_section_file_name = file_name;
     },
   });
+
+  /* ================================ */
+  /*  下一頁                          */
+  /* ================================ */
   let playing = false;
   let next_play_cd = false;
   Object.defineProperty(obj, "next_play", {
@@ -255,7 +113,7 @@ const Player = (() => {
   return obj;
 
   /* ================================ */
-  /*  快速方法                        */
+  /*  背景                            */
   /* ================================ */
   function set_bg(url) {
     let val = url ? `url(${url})` : "";
@@ -549,165 +407,3 @@ const Player = (() => {
     return data;
   }
 })();
-
-/* ================================ */
-/*  音樂音效                        */
-/* ================================ */
-const Sound = (() => {
-  let obj = {};
-  let cur_bgm = [null, null];
-  let main_volume = 0.5;
-
-  window.addEventListener("load", () => {
-    let el = find("#main_volume");
-    el.addEventListener("input", () => {
-      let new_volume = el.value / 100;
-      cur_bgm.forEach(bgm => {
-        if(bgm) bgm.volume = new_volume;
-      });
-      main_volume = new_volume;
-    });
-    main_volume = el.value / 100;
-  });
-
-  Object.defineProperty(obj, "SE", {
-    writable: false, value: (url, args = {}) => {
-      if(args.delay > 0) setTimeout(() => play_se(url), 1e3 * args.delay);
-      else play_se(url);
-    },
-  });
-  function play_se(url) {
-    let se = new Audio();
-    se.addEventListener("loadedmetadata", () => {
-      se.volume = main_volume;
-      se.play();
-    });
-    se.src = url;
-  }
-
-  Object.defineProperty(obj, "BGM", {
-    writable: false, value: (index, url, volume) => {
-      if(!volume) volume = 1;
-      stop_bgm(index);
-      if(url) start_bgm(index, url, volume);
-    },
-  });
-  function start_bgm(index, url, volume) {
-    let target_volume = volume * main_volume;
-    let this_bgm = cur_bgm[index] = new Audio();
-    this_bgm.loop = true;
-    this_bgm.addEventListener("loadedmetadata", async () => {
-      this_bgm.volume = 0.02;
-      this_bgm.play();
-      while(this_bgm.volume < target_volume) {
-        if(cur_bgm[index] != this_bgm) return;
-        await wait(0.1);
-        this_bgm.volume = Math.min(this_bgm.volume / 0.7, target_volume);
-      }
-    });
-    this_bgm.src = url;
-  }
-  async function stop_bgm(index) {
-    if(!cur_bgm[index]) return;
-    let target_bgm = cur_bgm[index];
-    cur_bgm[index] = null;
-    while(target_bgm.volume >= 0.01) {
-      await wait(0.1);
-      target_bgm.volume *= 0.7;
-    }
-    target_bgm.pause();
-  }
-
-  return obj;
-})();
-function wait(sec) {
-  return new Promise(resolve => {
-    setTimeout(resolve, 1e3 * sec || 10);
-  });
-}
-
-/* ================================ */
-/*  其他                            */
-/* ================================ */
-function line_split(str) {
-  return str.split(/\r|\n/).filter(v => v);
-}
-function imgs_parse(txt) {
-  let imgs = {};
-  let imgs_str = txt.match(/```圖片[^`]*```/)?.[0] || "";
-  line_split(imgs_str).slice(1, -1).forEach(img_str => {
-    let key = img_str.replace(/:.*/, "");
-    let val = img_str.replace(/^[^:]*:/, "");
-    if(key && val) imgs[key] = val;
-  });
-  return imgs;
-}
-function sounds_parse(txt) {
-  let sounds = {};
-  let sounds_str = txt.match(/```聲音[^`]*```/)?.[0] || "";
-  line_split(sounds_str).slice(1, -1).forEach(sound_str => {
-    let key = sound_str.replace(/:.*/, "");
-    let val = sound_str.replace(/^[^:]*:/, "");
-    if(key && val) sounds[key] = val;
-  });
-  return sounds;
-}
-
-/* ================================ */
-/*  取得 text                       */
-/* ================================ */
-function get_txt_url(folder_url, file) {
-}
-let cur_word_id = null;
-let cur_word_file = {};
-function get_word_url(file_id, tab_name) {
-  file_id = file_id.replace(/^google_word\//, "").trim();
-  if(!file_id) return null;
-  let get_url = "https://script.google.com/macros/s/AKfycbwvYFK-HeY8uVvp4k6OHUQxt3qAn5RjpU-HTPvhwzS6fLufYp3tW-OyhJ-7xU-TdxaM/exec";
-  let url = `${get_url}?id=${file_id}`;
-  if(tab_name) url += `&tab=${tab_name}`;
-  return url;
-}
-async function get_file_cnt_text(url, tab_name) {
-  if(!window.XMLHttpRequest) {
-    alert('無法連線，請更換瀏覽器');
-    return;
-  }
-  if(/^google_word\//.test(url)) {
-    let word_id = url.replace(/^google_word\//, "").trim();
-    if(!word_id) return null;
-    if(cur_word_id == word_id) return cur_word_file[tab_name] || null;
-    cur_word_id = word_id;
-    let get_url = "https://script.google.com/macros/s/AKfycbwvYFK-HeY8uVvp4k6OHUQxt3qAn5RjpU-HTPvhwzS6fLufYp3tW-OyhJ-7xU-TdxaM/exec";
-    let result_url = `${get_url}?id=${word_id}`;
-    cur_word_file = await get_text(result_url, "json");
-    return cur_word_file[tab_name] || null;
-  }
-  else {
-    if(!url || !tab_name) return null;
-    let result_url = `${url}/${tab_name}.txt`;
-    return await get_text(result_url, "text");
-  }
-}
-function get_text(url, type) {
-  return new Promise((resolve, reject) => {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    if(type == "json") xhr.responseType = "json";
-    else xhr.responseType = "text";
-    xhr.addEventListener('load', () => {
-      if(xhr.status == 200){
-        if(type == "json") {
-          if(xhr.response?.err) reject(xhr.response?.err);
-          else resolve(xhr.response);
-        }
-        else resolve(xhr.response);
-      }
-      else {
-        reject(xhr.status);
-      }
-    });
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send();
-  });
-}
