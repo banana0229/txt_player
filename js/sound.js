@@ -45,7 +45,6 @@ const Sound = (() => {
   /* ================================ */
   Object.defineProperty(obj, "BGM_clear", {
     writable: false, value: () => {
-      console.log("A");
       Object.keys(cur_bgm).forEach(id => stop_bgm(id));
     },
   });
