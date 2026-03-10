@@ -22,16 +22,22 @@ const CanvasEffect = (() => {
   /*  操作                            */
   /* ================================ */
   function add(key, ef_name, args) {
-    switch(ef_name) {
-      case "雨": cur_efs[key] = add_rain(); break;
-      case "霧": cur_efs[key] = add_mist(); break;
-      case "橫向速度線": cur_efs[key] = add_speed_h(); break;
-      case "血": cur_efs[key] = add_blood(); break;
-      case "警告": cur_efs[key] = add_warning(); break;
-      case "HUD框": cur_efs[key] = add_hud_frame(args); break;
-      case "水波紋": cur_efs[key] = add_ripples(args); break;
-      case "衝過_關": cur_efs[key] = add_dash_over({type: "close"}); break;
-      case "衝過_開": cur_efs[key] = add_dash_over({type: "open"}); break;
+    if(typeof key == "object") {
+      switch(ef_name) {
+        case "血": cur_efs[key] = add_blood(); break;
+        case "水波紋": cur_efs[key] = add_ripples(args); break;
+        case "衝過_關": cur_efs[key] = add_dash_over({type: "close"}); break;
+        case "衝過_開": cur_efs[key] = add_dash_over({type: "open"}); break;
+      }
+    }
+    else {
+      switch(ef_name) {
+        case "雨": cur_efs[key] = add_rain(); break;
+        case "霧": cur_efs[key] = add_mist(); break;
+        case "橫向速度線": cur_efs[key] = add_speed_h(); break;
+        case "警告": cur_efs[key] = add_warning(); break;
+        case "HUD框": cur_efs[key] = add_hud_frame(args); break;
+      }
     }
     cur_efs[key].interval = start_run(key, cur_efs[key]);
   }

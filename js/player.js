@@ -29,8 +29,7 @@ const Player = (() => {
       find("#text").innerHTML = "";
       Player.set_bg(null);
       CanvasEffect.clear();
-      Sound.BGM(0, null);
-      Sound.BGM(1, null);
+      Sound.BGM_clear();
       Fight.stop();
     },
   });
