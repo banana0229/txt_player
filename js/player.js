@@ -159,6 +159,18 @@ const Player = (() => {
     let el = find(`.bg_effect[eid="${eid}"]`);
     if(el) el.remove();
   }
+  Object.defineProperty(obj, "set_bg_show_img", { writable: false, value: set_bg_show_img });
+  function set_bg_show_img(siid, url) {
+    if(!url) return;
+    let el = find(`.bg_show_img[siid="${siid}"]`);
+    if(!el) el = new_el_to_el("#bg_effect_holder", "img.bg_show_img", {siid});
+    el.src = url;
+  }
+  function delete_bg_show_img(siid) {
+    if(!siid) return;
+    let el = find(`.bg_show_img[siid="${siid}"]`);
+    if(el) el.remove();
+  }
 
   return obj;
 
@@ -169,9 +181,13 @@ const Player = (() => {
   function play(play_cnt) {
     switch(play_cnt.type) {
       case "背景": return Player.set_bg(play_cnt.url);
+      case "背景效果": return set_bg_effect(play_cnt.id, play_cnt.url);
       case "背景效果刪除": return delete_bg_effect(play_cnt.id);
-      case "背景效果": return Player.set_bg_effect(play_cnt.id, play_cnt.url);
-      case "背景效果清空": return find("#bg_effect_holder").innerHTML = "";
+      case "背景效果清空": return find_all(".bg_effect").forEach(el => el.remove());
+
+      case "圖片": return set_bg_show_img(play_cnt.id, play_cnt.url);
+      case "圖片刪除": return delete_bg_show_img(play_cnt.id);
+      case "圖片清空": return find_all(".bg_show_img").forEach(el => el.remove());
 
       case "CVS_effect": return CanvasEffect.add(play_cnt.id, play_cnt.ef_name, play_cnt);
       case "CVS_effect_del": return CanvasEffect.del(play_cnt.id);

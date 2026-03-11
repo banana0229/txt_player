@@ -188,6 +188,8 @@ const TextConverter = (() => {
       case "背景": return pcmd_bg(cmd, asset.imgs);
       case "背景效果": return pcmd_bg_effect(cmd, asset.imgs);
       case "背景效果清空": return {type: "背景效果清空"};
+      case "圖片": return pcmd_bg_show_img(cmd, asset.imgs);
+      case "圖片清空": return {type: "圖片清空"};
 
       case "CVSA": return pcmd_cvsa(cmd, asset.imgs);
       case "CVSA清空": return {type: "CVSA清空"};
@@ -232,6 +234,17 @@ const TextConverter = (() => {
     if(!img_key) return {type: "背景效果刪除", id: cmd.sub};
     else return {
       type: "背景效果",
+      id: cmd.sub,
+      url: imgs[img_key] || null,
+    };
+  }
+  /* 圖片 */
+  function pcmd_bg_show_img(cmd, imgs) {
+    if(!cmd.sub) return;
+    let img_key = get_first_line(cmd);
+    if(!img_key) return {type: "圖片刪除", id: cmd.sub};
+    else return {
+      type: "圖片",
       id: cmd.sub,
       url: imgs[img_key] || null,
     };

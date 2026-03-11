@@ -163,6 +163,8 @@ body {
   overflow: hidden;
 }
 #bg_effect_holder, #fight_canvas, #canvas_effect_holder canvas {
+  pointer-events: none;
+  user-select: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -174,6 +176,7 @@ body {
   object-fit: contain;
 }
 #bg_effect_holder .bg_effect {
+  user-select: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -181,12 +184,20 @@ body {
   height: 100%;
   background: var(--img, none) no-repeat center / cover;
 }
+#bg_effect_holder .bg_show_img {
+  user-select: none;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 60%;
+  object-fit: scale-down;
+}
 
 /* ================================ */
 /*  立繪區                          */
 /* ================================ */
 #tachie_holder {
-  user-select: none;
   pointer-events: none;
   height: 0;
   position: relative;
@@ -194,6 +205,7 @@ body {
   --one_p: calc(var(--one_w) * 0.9);
 }
 .tachie {
+  user-select: none;
   position: absolute;
   bottom: 0;
   --w: calc(var(--one_w) * var(--z, 1));
