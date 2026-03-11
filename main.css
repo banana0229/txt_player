@@ -283,7 +283,7 @@ body {
   overflow: hidden;
   margin-bottom: 6px;
 }
-#name:empty { display: none; }
+#name:empty { height: 0; }
 #text {
   padding: 0 8px;
   font-size: 16px;
