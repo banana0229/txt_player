@@ -21,7 +21,7 @@
 殲滅:./se/rzOKh9C3GxbW0eWAdsbK.mp3
 通知:./se/drbE4EuuAnDE4Gvz2trN.mp3
 ```
-@[CVSA:衝過]衝過_開
+@[CVSFX]衝過_開
 @[背景]列車
 @[BGM:A]突入列車,volume:0.4
 @[BGM:B]列車

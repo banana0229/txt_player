@@ -28,6 +28,7 @@ const CanvasEffect = (() => {
         case "水波紋": cur_efs[key] = add_ripples(args); break;
         case "衝過_關": cur_efs[key] = add_dash_over({type: "close"}); break;
         case "衝過_開": cur_efs[key] = add_dash_over({type: "open"}); break;
+        default: return;
       }
     }
     else {
@@ -37,6 +38,7 @@ const CanvasEffect = (() => {
         case "橫向速度線": cur_efs[key] = add_speed_h(); break;
         case "警告": cur_efs[key] = add_warning(); break;
         case "HUD框": cur_efs[key] = add_hud_frame(args); break;
+        default: return;
       }
     }
     cur_efs[key].interval = start_run(key, cur_efs[key]);
