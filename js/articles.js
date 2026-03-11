@@ -44,6 +44,7 @@ const Articles = (() => {
       articles = TextConverter.to_cover(articles_txt);
       cur_folder_url = target_folder_url;
       create_section_btns(articles.section_list);
+      find("title").innerHTML = articles.scenario_name || "團錄撥放器";
       Articles.show_cover();
     },
   });
