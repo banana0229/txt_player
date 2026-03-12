@@ -142,6 +142,23 @@ const TextConverter = (() => {
     });
     return args;
   }
+  function str_to_mark(str) {
+    str = String(str || "").trim();
+    if(!str) return null;
+    let name = (str.match(/#[^#]*$/)?.[0] || "").replace(/^#/, "").trim();
+    let file_name = str.split("#")[0].trim();
+    if(file_name == "!目錄") file_name = "";
+    if(!name && !file_name) return null;
+    return {name, file_name};
+  }
+  function str_to_show_and_cnt(str) {
+    str = String(str || "").trim();
+    if(!/^\[[^\]]*\]/.test(str)) return null;
+    let show = (str.match(/^\[[^\]]*\]/)?.[0] || "").replace(/^\[|\]$/g, "").trim();
+    let cnt = str.replace(/^\[[^\]]*\]/, "").trim();
+    if(!show && !cnt) return null;
+    return {show, cnt};
+  }
   function args_url_fill(args, asset_item) {
     Object.keys(args).forEach(arg_key => {
       if(/^img/.test(arg_key)) {
@@ -208,6 +225,8 @@ const TextConverter = (() => {
       case "戰鬥": return pcmd_fight_ctrl(cmd, asset.imgs);
 
       case "選項": return pcmd_select(cmd);
+      case "數值": return pcmd_var(cmd);
+      case "判斷跳到": return pcmd_cond_to_mark(cmd);
 
       default: return null;
     }
@@ -216,10 +235,9 @@ const TextConverter = (() => {
   function pcmd_mark(cmd) {
     if(!cmd.sub) return;
     if(cmd.head == "#") return {type: "#", name: cmd.sub};
-    let file_name = cmd.sub.split("#")[0].trim() || null;
-    let name = (cmd.sub.match(/#[^#]*$/)?.[0] || "").replace(/^#/, "");
-    if(!file_name && !name) return;
-    return {type: "跳到", name, file_name};
+    let mark = str_to_mark(cmd.sub);
+    if(!mark) return;
+    return {type: "跳到", ...mark};
   }
   /* 背景 */
   function pcmd_bg(cmd, imgs) {
@@ -305,19 +323,47 @@ const TextConverter = (() => {
   }
   /* 選項 */
   function pcmd_select(cmd) {
-    let data = {type: "選項"};
     let opts = get_lines(cmd)
       .map(line => {
         if(!line) return;
-        let show = (line.match(/^\[[^\]]*\]/)?.[0] || "").replace(/^\[|\]$/g, "").trim();
-        let mark = (line.match(/#[^#]*$/)?.[0] || "").replace(/^#/, "").trim();
-        let file_name = line.replace(/^\[[^\]]*\]|#[^#]*$/g, "").trim();
-        if(!show || (!mark && !file_name)) return;
-        return {show, mark, file_name};
+        let opt = str_to_show_and_cnt(line);
+        if(!opt) return;
+        let mark = str_to_mark(opt.cnt);
+        if(!mark) return;
+        return {show: opt.show, mark: mark.name, file_name: mark.file_name};
       }).filter(v => v).slice(0, 4);
     if(!opts.length) return;
-    data.opts = opts;
-    return data;
+    return {type: "選項", opts};
+  }
+  /* 數值 */
+  function pcmd_var(cmd) {
+    if(!cmd.sub) return;
+    if(!get_first_line(cmd)) return { type: "數值歸零", id: cmd.sub };
+    let args = get_args(cmd);
+    if(args.set) {
+      args.set = MathEx.clamp(Math.round(+args.set || 0), -9999, 9999);
+      return { type: "數值設定", id: cmd.sub, val: args.set };
+    }
+    else if(args.add) {
+      args.add = MathEx.clamp(Math.round(+args.add || 0), -9999, 9999);
+      return { type: "數值變更", id: cmd.sub, val: args.add };
+    }
+  }
+  /* 判斷跳到 */
+  function pcmd_cond_to_mark(cmd) {
+    let opts = get_lines(cmd)
+      .map(line => {
+        if(!line) return;
+        let opt = str_to_show_and_cnt(line);
+        if(!opt || !opt.show) return;
+        let mark = str_to_mark(opt.cnt);
+        if(!mark) return;
+        let conds = opt.show.split(",").map(v => v.trim()).filter(v => v);
+        if(!conds.length) return;
+        return {conds, mark: mark.name, file_name: mark.file_name};
+      }).filter(v => v);
+    if(!opts.length) return;
+    return {type: "判斷跳到", opts};
   }
 
   /* ================================ */

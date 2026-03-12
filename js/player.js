@@ -96,20 +96,42 @@ const Player = (() => {
     let cmd_arr = playlist[playlist_cur_i];
     let mark = cmd_arr.find(cmd => cmd.type == "#");
     let to_mark = cmd_arr.find(cmd => cmd.type == "跳到");
-    if(!mark && !to_mark) {
+    let cond_to_mark = cmd_arr.find(cmd => cmd.type == "判斷跳到");
+    if(mark) await one_play_mark();
+    else if(to_mark) await one_play_to_mark(to_mark);
+    else if(cond_to_mark) await one_play_cond_to_mark(cond_to_mark);
+    else {
       await Promise.all(cmd_arr.map(play));
       playlist_cur_i++;
     }
-    else if(mark) {
+  }
+  async function one_play_mark() {
+    playlist_cur_i++;
+    playing = false;
+    await auto_next_play();
+  }
+  async function one_play_to_mark(to_mark) {
+    playing = false;
+    if(to_mark.file_name) await Player.read_section(to_mark.file_name);
+    if(to_mark.name) await jump_to_mark(to_mark.name);
+    else await auto_next_play();
+  }
+  async function one_play_cond_to_mark(cond_to_mark) {
+    let target = cond_to_mark.opts.find(opt => {
+      let count = 0;
+      opt.conds.forEach(cond => count += VarMgr.if(cond));
+      return count == opt.conds.length;
+    });
+    if(target) {
+      playing = false;
+      if(target.file_name) await Player.read_section(target.file_name);
+      if(target.mark) await jump_to_mark(target.mark);
+      else await auto_next_play();
+    }
+    else {
       playlist_cur_i++;
       playing = false;
       await auto_next_play();
-    }
-    else if(to_mark) {
-      playing = false;
-      if(to_mark.file_name) await Player.read_section(to_mark.file_name);
-      if(to_mark.name) await jump_to_mark(to_mark.name);
-      else await auto_next_play();
     }
   }
 
@@ -172,8 +194,6 @@ const Player = (() => {
     if(el) el.remove();
   }
 
-  return obj;
-
   /* ================================ */
   /*  執行播放                        */
   /* ================================ */
@@ -223,6 +243,9 @@ const Player = (() => {
       }
 
       case "選項": return create_option_btn(play_cnt.opts);
+      case "數值歸零": return VarMgr.del(play_cnt.id);
+      case "數值設定": return VarMgr.set(play_cnt.id, play_cnt.val);
+      case "數值變更": return VarMgr.add(play_cnt.id, play_cnt.val);
     }
   }
   /* 立繪 */
@@ -272,4 +295,59 @@ const Player = (() => {
       });
     });
   }
+
+  /* ================================ */
+  /*  數值控制                        */
+  /* ================================ */
+  const VarMgr = (() => {
+    const vm_obj = {};
+    let var_list = {};
+
+    Object.defineProperty(vm_obj, "init", {
+      writable: false, value: () => {
+        var_list = {};
+      },
+    });
+    Object.defineProperty(vm_obj, "del", {
+      writable: false, value: (id) => {
+        delete var_list[id];
+      },
+    });
+    Object.defineProperty(vm_obj, "set", {
+      writable: false, value: (id, val) => {
+        var_list[id] = val;
+      },
+    });
+    Object.defineProperty(vm_obj, "add", {
+      writable: false, value: (id, val) => {
+        var_list[id] = MathEx.clamp((var_list[id] || 0) + val, -9999, 9999);
+      },
+    });
+    Object.defineProperty(vm_obj, "if", {
+      writable: false, value: (cond) => {
+        if(["以上皆非", "else", "以外", "其他"].includes(cond)) return true;
+        if(!/^[^=<>]+(=|<|>|<=|>=)-?\d{1,4}$/.test(cond)) return false;
+        let operator = cond.match(/<=|>=|=|<|>/)?.[0] || null;
+        let id = cond.match(/^[^=<>]+/)?.[0] || null;
+        let val = var_list[id] || 0;
+        let target_val = cond.match(/-?\d+$/)?.[0] || 0;
+        switch(operator) {
+          case "=": return val == target_val;
+          case "<": return val < target_val;
+          case ">": return val > target_val;
+          case "<=": return val <= target_val;
+          case ">=": return val >= target_val;
+          default: return false;
+        }
+      },
+    });
+
+    /* VarMgr */
+    Object.defineProperty(obj, "test", { get: () => var_list });
+    return vm_obj;
+  })();
+  Object.defineProperty(obj, "var_init", { writable: false, value: VarMgr.init });
+
+  /* Player */
+  return obj;
 })();

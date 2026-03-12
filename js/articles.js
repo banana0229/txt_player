@@ -27,6 +27,7 @@ const Articles = (() => {
   Object.defineProperty(obj, "init", {
     writable: false, value: () => {
       Player.init();
+      Player.var_init();
       find("#section_list").innerHTML = "";
       articles = TextConverter.to_cover("");
       cur_folder_url = "";
