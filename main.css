@@ -195,6 +195,49 @@ body {
 }
 
 /* ================================ */
+/*  文字特效                        */
+/* ================================ */
+@font-face {
+  font-family: 'ThePeak'; /* 你自定義的字體名稱 */
+  src: url('./ThePeakFontBeta_V0_102.ttf') format('truetype'); /* 檔案路徑與格式 */
+  font-weight: normal;
+  font-style: normal;
+}
+.text_animation {
+  position: absolute;
+  bottom: 28%;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  font-family: ThePeak;
+  font-weight: bold;
+  color: #fff;
+  font-size: 32px;
+  --lh: 42px;
+  --ts: #000;
+  text-shadow:
+    0 0 1px var(--ts), 0 0 1px var(--ts), 0 0 1px var(--ts),
+    0 0 1px var(--ts), 0 0 1px var(--ts), 0 0 1px var(--ts),
+    0 0 1px var(--ts), 0 0 1px var(--ts), 0 0 1px var(--ts);
+}
+.text_animation[line="2"] { margin-bottom: var(--lh); }
+.text_animation[line="3"] { margin-bottom: calc(var(--lh) * 2); }
+.text_animation span {
+  opacity: 1;
+  transform: translateY(0);
+  display: inline-block;
+  transition: transform .6s, opacity .6s;
+  line-height: var(--lh);
+}
+.text_animation span.hide {
+  opacity: 0;
+  transform: translateY(-1em);
+}
+
+
+/* ================================ */
 /*  立繪區                          */
 /* ================================ */
 #tachie_holder {

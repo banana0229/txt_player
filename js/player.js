@@ -205,10 +205,6 @@ const Player = (() => {
       case "背景效果刪除": return delete_bg_effect(play_cnt.id);
       case "背景效果清空": return find_all(".bg_effect").forEach(el => el.remove());
 
-      case "圖片": return set_bg_show_img(play_cnt.id, play_cnt.url);
-      case "圖片刪除": return delete_bg_show_img(play_cnt.id);
-      case "圖片清空": return find_all(".bg_show_img").forEach(el => el.remove());
-
       case "CVSIMG": return CanvasEffect.add_cvs_img(play_cnt.id, play_cnt);
       case "CVSA": return CanvasEffect.add_animation(play_cnt.id, play_cnt.ef_name, play_cnt);
       case "CVSFX": return CanvasEffect.add_one_shot(play_cnt.ef_name, play_cnt);
@@ -216,6 +212,14 @@ const Player = (() => {
       case "CVSSW_del": case "CVSA_del": case "CVSIMG_del":
         return CanvasEffect.del(play_cnt.id);
       case "CVS清空": return CanvasEffect.clear();
+
+      case "圖片": return set_bg_show_img(play_cnt.id, play_cnt.url);
+      case "圖片刪除": return delete_bg_show_img(play_cnt.id);
+      case "圖片清空": return find_all(".bg_show_img").forEach(el => el.remove());
+
+      case "TXTA": return TextAnimation.create(play_cnt.index, play_cnt.str, play_cnt);
+      case "TXTA_del": return TextAnimation.remove(play_cnt.index);
+      case "TXTA清空": return TextAnimation.clear();
 
       case "BGM": return Sound.BGM(play_cnt.id, play_cnt.url, play_cnt.volume);
       case "BGM停止": return Sound.BGM_stop(play_cnt.id);

@@ -209,14 +209,17 @@ const TextConverter = (() => {
       case "背景效果": return pcmd_bg_effect(cmd, asset.imgs);
       case "背景效果清空": return {type: "背景效果清空"};
 
-      case "可動圖片": return pcmd_bg_show_cvs_img(cmd, asset.imgs);
-      case "圖片": return pcmd_bg_show_img(cmd, asset.imgs);
-      case "圖片清空": return {type: "圖片清空"};
-
       case "CVSA": return pcmd_cvsa(cmd, asset.imgs);
       case "CVSFX": return pcmd_cvsfx(cmd, asset.imgs);
       case "CVSSW": return pcmd_cvssw(cmd, asset.imgs);
       case "CVS清空": return {type: "CVS清空"};
+
+      case "動態文字": return pcmd_text_animation(cmd);
+      case "動態文字清空": return {type: "TXTA清空"};
+
+      case "可動圖片": return pcmd_bg_show_cvs_img(cmd, asset.imgs);
+      case "圖片": return pcmd_bg_show_img(cmd, asset.imgs);
+      case "圖片清空": return {type: "圖片清空"};
 
       case "BGM": return pcmd_bgm(cmd, asset.sounds);
       case "BGM清空": return {type: "BGM清空"};
@@ -288,6 +291,24 @@ const TextConverter = (() => {
     delete args.id;
     delete args.img_url;
     Object.assign(data, args);
+    return data;
+  }
+  /* 動態文字 */
+  function pcmd_text_animation(cmd) {
+    if(!cmd.sub) return;
+    index = MathEx.clamp(Math.round(+cmd.sub || 1), 1, 3);
+    let data = {type: "TXTA", index};
+    let first_line = get_first_line(cmd);
+    if(!first_line) {
+      data.type = "TXTA_del";
+      return data;
+    }
+    let args = get_args({body: first_line}, "ef_name");
+    delete args.type;
+    delete args.id;
+    Object.assign(data, args);
+    data.str = get_lines(cmd).filter(v => v).slice(1, 2)[0];
+    if(!data.str) return;
     return data;
   }
   /* CVSA */
