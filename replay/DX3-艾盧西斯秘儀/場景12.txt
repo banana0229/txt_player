@@ -12,7 +12,7 @@
 ```聲音
 破碎:./bgm/堕天の底に白い雨.mp3
 覺醒:./bgm/9mVxPW50F6ZGEMGwWPiI.ogg
-道別:./bgm/owFXVRWGXOLKNAmDcpc5.ogg
+道別:./bgm/owFXVRWGXOLKNAmDcpc5.mp3
 水滴:./se/azuEU6ob8WuqL1c7esgV.mp3
 深海吼叫:./se/dragon-studio-deep-sea-monster-roar-329857.mp3
 吃掉:./se/重いキック1.mp3
