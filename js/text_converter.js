@@ -15,7 +15,7 @@ const TextConverter = (() => {
       section_list: [], /* {name, file_name} */
     };
     if(!text) return data;
-    text = text.replace(/\r/g, "\n");
+    text = rn(text);
 
     /* 素材註冊區 */
     let imgs = get_imgs(text);
@@ -78,7 +78,7 @@ const TextConverter = (() => {
   /* ================================ */
   Object.defineProperty(obj, "to_section", { writable: false, value: to_section });
   function to_section(text) {
-    text = text.replace(/\r/g, "\n");
+    text = rn(text);
 
     /* 素材註冊區 */
     let asset = {
@@ -101,6 +101,9 @@ const TextConverter = (() => {
   /* ================================ */
   /*  指令分解                        */
   /* ================================ */
+  function rn(text) {
+    return text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  }
   function get_no_asset_text(text) {
     return text
       .replace(/```[^`]*```/g, "") /* 素材註冊區除外 */
