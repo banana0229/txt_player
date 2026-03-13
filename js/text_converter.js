@@ -205,6 +205,8 @@ const TextConverter = (() => {
       case "#": return pcmd_mark(cmd);
       case "跳到": return pcmd_mark(cmd);
 
+      case "禁止跳過": return pcmd_lock(cmd);
+
       case "背景": return pcmd_bg(cmd, asset.imgs);
       case "背景效果": return pcmd_bg_effect(cmd, asset.imgs);
       case "背景效果清空": return {type: "背景效果清空"};
@@ -248,6 +250,12 @@ const TextConverter = (() => {
     let mark = str_to_mark(cmd.sub);
     if(!mark) return;
     return {type: "跳到", ...mark};
+  }
+  /* 禁止跳過 */
+  function pcmd_lock(cmd) {
+    if(!+cmd.sub) return;
+    let sec = MathEx.clamp(MathEx.round(+cmd.sub, 2), 0.01, 15);
+    return {type: "禁止跳過", sec};
   }
   /* 背景 */
   function pcmd_bg(cmd, imgs) {

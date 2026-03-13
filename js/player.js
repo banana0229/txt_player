@@ -200,6 +200,8 @@ const Player = (() => {
   /* 全部 */
   function play(play_cnt) {
     switch(play_cnt.type) {
+      case "禁止跳過": return wait(play_cnt.sec);
+
       case "背景": return Player.set_bg(play_cnt.url);
       case "背景效果": return set_bg_effect(play_cnt.id, play_cnt.url);
       case "背景效果刪除": return delete_bg_effect(play_cnt.id);
