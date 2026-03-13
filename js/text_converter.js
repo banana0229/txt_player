@@ -15,7 +15,7 @@ const TextConverter = (() => {
       section_list: [], /* {name, file_name} */
     };
     if(!text) return data;
-    text = text.replace(/\r/g, "");
+    text = text.replace(/\r/g, "\n");
 
     /* 素材註冊區 */
     let imgs = get_imgs(text);
@@ -61,7 +61,7 @@ const TextConverter = (() => {
     data.section_list = command_arr
       .filter(cmd => cmd.head == "段落")
       .map(cmd => {
-        let [name, file_name] = get_lines(cmd);
+        let [name, file_name] = get_lines(cmd).filter(v => v);
         if(!name && !file_name) return;
         if(!name) name = "未命名段落";
         if(!file_name) file_name = name.replace(/\<br\>/g, "");
@@ -78,7 +78,7 @@ const TextConverter = (() => {
   /* ================================ */
   Object.defineProperty(obj, "to_section", { writable: false, value: to_section });
   function to_section(text) {
-    text = text.replace(/\r/g, "");
+    text = text.replace(/\r/g, "\n");
 
     /* 素材註冊區 */
     let asset = {
