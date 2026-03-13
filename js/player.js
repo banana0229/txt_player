@@ -209,9 +209,11 @@ const Player = (() => {
       case "圖片刪除": return delete_bg_show_img(play_cnt.id);
       case "圖片清空": return find_all(".bg_show_img").forEach(el => el.remove());
 
-      case "CVS_effect": return CanvasEffect.add(play_cnt.id, play_cnt.ef_name, play_cnt);
-      case "CVS_effect_del": return CanvasEffect.del(play_cnt.id);
-      case "CVSA清空": return CanvasEffect.clear();
+      case "CVSA": return CanvasEffect.add_animation(play_cnt.id, play_cnt.ef_name, play_cnt);
+      case "CVSFX": return CanvasEffect.add_one_shot(play_cnt.ef_name, play_cnt);
+      case "CVSSW": return CanvasEffect.add_switch(play_cnt.id, play_cnt.ef_name, play_cnt);
+      case "CVSSW_del": case "CVSA_del": return CanvasEffect.del(play_cnt.id);
+      case "CVS清空": return CanvasEffect.clear();
 
       case "BGM": return Sound.BGM(play_cnt.id, play_cnt.url, play_cnt.volume);
       case "BGM停止": return Sound.BGM_stop(play_cnt.id);
@@ -225,6 +227,7 @@ const Player = (() => {
 
       case "戰鬥開始": return Fight.play();
       case "戰鬥結束": return Fight.stop();
+      case "戰鬥暫停": return Fight.pause();
       case "戰鬥設定": return Fight.set_area_color(play_cnt.area_color);
       case "戰鬥_新增接戰區": return Fight.area_create(
         play_cnt.origin, play_cnt.area_key, play_cnt.size, play_cnt.deg, play_cnt.dist

@@ -209,8 +209,9 @@ const TextConverter = (() => {
       case "圖片清空": return {type: "圖片清空"};
 
       case "CVSA": return pcmd_cvsa(cmd, asset.imgs);
-      case "CVSA清空": return {type: "CVSA清空"};
       case "CVSFX": return pcmd_cvsfx(cmd, asset.imgs);
+      case "CVSSW": return pcmd_cvssw(cmd, asset.imgs);
+      case "CVS清空": return {type: "CVS清空"};
 
       case "BGM": return pcmd_bgm(cmd, asset.sounds);
       case "BGM清空": return {type: "BGM清空"};
@@ -222,6 +223,7 @@ const TextConverter = (() => {
 
       case "戰鬥開始": return {type: "戰鬥開始"};
       case "戰鬥結束": return {type: "戰鬥結束"};
+      case "戰鬥暫停": return {type: "戰鬥暫停"};
       case "戰鬥": return pcmd_fight_ctrl(cmd, asset.imgs);
 
       case "選項": return pcmd_select(cmd);
@@ -270,22 +272,38 @@ const TextConverter = (() => {
   /* CVSA */
   function pcmd_cvsa(cmd, imgs) {
     if(!cmd.sub) return;
-    let data = {type: "CVS_effect", id: cmd.sub};
-    let args = get_args(cmd, "ef_name");
-    if(!args.ef_name) data.type = "CVS_effect_del";
-    else {
-      delete args.type;
-      delete args.id;
-      args_url_fill(args, imgs);
-      Object.assign(data, args);
+    let data = {type: "CVSA", id: cmd.sub};
+    if(!get_first_line(cmd)) {
+      data.type = "CVSA_del";
+      return data;
     }
+    let args = get_args(cmd, "ef_name");
+    delete args.type;
+    delete args.id;
+    args_url_fill(args, imgs);
+    Object.assign(data, args);
     return data;
   }
   /* CVSFX (one shot) */
   function pcmd_cvsfx(cmd, imgs) {
-    let data = {type: "CVS_effect", id: []};
+    let data = {type: "CVSFX"};
     let args = get_args(cmd, "ef_name");
     delete args.type;
+    args_url_fill(args, imgs);
+    Object.assign(data, args);
+    return data;
+  }
+  /* CVSSW (switch) */
+  function pcmd_cvssw(cmd, imgs) {
+    if(!cmd.sub) return;
+    let data = {type: "CVSSW", id: cmd.sub};
+    if(!get_first_line(cmd)) {
+      data.type = "CVSSW_del";
+      return data;
+    }
+    let args = get_args(cmd, "ef_name");
+    delete args.type;
+    delete args.id;
     args_url_fill(args, imgs);
     Object.assign(data, args);
     return data;

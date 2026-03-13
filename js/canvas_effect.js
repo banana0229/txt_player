@@ -7,6 +7,7 @@ const CanvasEffect = (() => {
   function start_run(key, {cvs, cvsa_arr}) {
     return setInterval(() => {
       cvs.clear();
+      cvs.cvsa = cvsa_arr;
       let runing_count = cvsa_arr.filter(cvsa => {
         if(!cvsa.is_end) {
           cvsa.run();
@@ -21,27 +22,41 @@ const CanvasEffect = (() => {
   /* ================================ */
   /*  操作                            */
   /* ================================ */
-  function add(key, ef_name, args) {
-    if(typeof key == "object") {
-      switch(ef_name) {
-        case "血": cur_efs[key] = add_blood(); break;
-        case "水波紋": cur_efs[key] = add_ripples(args); break;
-        case "衝過_關": cur_efs[key] = add_dash_over({type: "close"}); break;
-        case "衝過_開": cur_efs[key] = add_dash_over({type: "open"}); break;
-        default: return;
-      }
-    }
-    else {
-      switch(ef_name) {
-        case "雨": cur_efs[key] = add_rain(); break;
-        case "霧": cur_efs[key] = add_mist(); break;
-        case "橫向速度線": cur_efs[key] = add_speed_h(); break;
-        case "警告": cur_efs[key] = add_warning(); break;
-        case "HUD框": cur_efs[key] = add_hud_frame(args); break;
-        default: return;
-      }
+  function add_animation(key, ef_name, args) {
+    if(cur_efs[key]) del(key);
+    switch(ef_name) {
+      case "雨": cur_efs[key] = add_rain(); break;
+      case "霧": cur_efs[key] = add_mist(); break;
+      case "橫向速度線": cur_efs[key] = add_speed_h(); break;
+      case "警告": cur_efs[key] = add_warning(); break;
+      case "HUD框": cur_efs[key] = add_hud_frame(args); break;
+      default: return;
     }
     cur_efs[key].interval = start_run(key, cur_efs[key]);
+  }
+  function add_one_shot(ef_name, args) {
+    let key = {};
+    switch(ef_name) {
+      case "血": cur_efs[key] = add_blood(); break;
+      case "水波紋": cur_efs[key] = add_ripples(args); break;
+      default: return;
+    }
+    cur_efs[key].interval = start_run(key, cur_efs[key]);
+  }
+  function add_switch(key, ef_name, args) {
+    if(!cur_efs[key]) {
+      switch(ef_name) {
+        case "衝過": cur_efs[key] = add_dash_over(args); break;
+        default: return;
+      }
+      cur_efs[key].ef_name = ef_name;
+      cur_efs[key].interval = start_run(key, cur_efs[key]);
+    }
+    else {
+      switch(cur_efs[key].ef_name) {
+        case "衝過": sw_dash_over(cur_efs[key], args); break;
+      }
+    }
   }
   function del(key) {
     cur_efs[key].cvs.remove();
@@ -51,7 +66,13 @@ const CanvasEffect = (() => {
   function clear() {
     for(let key in cur_efs) del(key);
   }
-  return {add, del, clear};
+  return {
+    add_one_shot,
+    add_switch,
+    add_animation,
+    del,
+    clear,
+  };
 
   /* ================================ */
   /*  新增畫布                        */
@@ -129,10 +150,15 @@ const CanvasEffect = (() => {
   }
   /* 衝過 */
   function add_dash_over(args) {
+    let type = args.s == "開" ? "open" : "close";
     let cvs = new_cvs();
-    let dash_over = new Cvsa_dash_over(cvs, {type: args.type});
+    let dash_over = new Cvsa_dash_over(cvs, {type});
     dash_over.init();
     return {cvs, cvsa_arr: [dash_over]};
+  }
+  function sw_dash_over({cvs, cvsa_arr}, args) {
+    if(args.s == "開") cvsa_arr[0].type = "open";
+    else if(args.s == "關") cvsa_arr[0].type = "close";
   }
   /* 水波紋 */
   function add_ripples(args) {

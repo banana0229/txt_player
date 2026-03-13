@@ -35,6 +35,10 @@ const Cvsa_dash_over = (() => {
       ctx.style = {bg: this.color};
       ctx.fill();
     }
+    get is_end() {
+      if(this.type == "open") return this.is_stop;
+      return false;
+    }
   }
   return DashOver;
 })();

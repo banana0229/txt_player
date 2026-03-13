@@ -45,6 +45,13 @@ const Fight = (() => {
       interval = null;
     },
   });
+  Object.defineProperty(obj, "pause", {
+    writable: false, value: () => {
+      clearInterval(interval);
+      cvs.clear();
+      interval = null;
+    },
+  });
 
   /* ================================ */
   /*  每幀                            */

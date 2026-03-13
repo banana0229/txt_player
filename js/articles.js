@@ -80,7 +80,7 @@ const Articles = (() => {
       let data = Articles.data;
       Player.set_bg(data.bg_url);
       data.bg_effect_list.forEach((img_url, i) => Player.set_bg_effect(i, img_url));
-      data.cvsa_list.forEach((args, i) => CanvasEffect.add(i, args.cvsa_name, args));
+      data.cvsa_list.forEach((args, i) => CanvasEffect.add_animation(i, args.cvsa_name, args));
       find("#name").innerText = data.scenario_name || "";
       find("#text").innerText = data.describe || "";
     },
