@@ -329,6 +329,7 @@ body {
   border-radius: 4px;
   display: grid;
   grid-template-rows: auto 1fr;
+  box-shadow: 0 -2px 4px #fff1;
 }
 #text_holder:has(#text:empty) {
   opacity: 0;
