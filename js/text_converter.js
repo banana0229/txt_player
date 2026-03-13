@@ -205,6 +205,8 @@ const TextConverter = (() => {
       case "背景": return pcmd_bg(cmd, asset.imgs);
       case "背景效果": return pcmd_bg_effect(cmd, asset.imgs);
       case "背景效果清空": return {type: "背景效果清空"};
+
+      case "可動圖片": return pcmd_bg_show_cvs_img(cmd, asset.imgs);
       case "圖片": return pcmd_bg_show_img(cmd, asset.imgs);
       case "圖片清空": return {type: "圖片清空"};
 
@@ -268,6 +270,22 @@ const TextConverter = (() => {
       id: cmd.sub,
       url: imgs[img_key] || null,
     };
+  }
+  /* 可動圖片 */
+  function pcmd_bg_show_cvs_img(cmd, imgs) {
+    if(!cmd.sub) return;
+    let data = {type: "CVSIMG", id: cmd.sub};
+    if(!get_first_line(cmd)) {
+      data.type = "CVSIMG_del";
+      return data;
+    }
+    let args = get_args(cmd, "img");
+    data.img_url = imgs[args.img] || null;
+    delete args.type;
+    delete args.id;
+    delete args.img_url;
+    Object.assign(data, args);
+    return data;
   }
   /* CVSA */
   function pcmd_cvsa(cmd, imgs) {

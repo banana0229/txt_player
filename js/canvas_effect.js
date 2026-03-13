@@ -21,6 +21,15 @@ const CanvasEffect = (() => {
   /* ================================ */
   /*  操作                            */
   /* ================================ */
+  function add_cvs_img(key, args) {
+    if(!cur_efs[key]) {
+      cur_efs[key] = add_cvs_img_cur_ef(args);
+      cur_efs[key].interval = start_run(key, cur_efs[key]);
+    }
+    else {
+      change_cvs_img(cur_efs[key], args);
+    }
+  }
   function add_animation(key, ef_name, args) {
     if(cur_efs[key]) del(key);
     switch(ef_name) {
@@ -70,6 +79,7 @@ const CanvasEffect = (() => {
     for(let key in cur_efs) del(key);
   }
   return {
+    add_cvs_img,
     add_one_shot,
     add_switch,
     add_animation,
@@ -150,6 +160,25 @@ const CanvasEffect = (() => {
     });
     hud_frame.init();
     return {cvs, cvsa_arr: [hud_frame]};
+  }
+
+  /* ================================ */
+  /*  可用效果 - 特殊圖片             */
+  /* ================================ */
+  function add_cvs_img_cur_ef(args) {
+    let cvs = new_cvs();
+    let img_transform = new Cvsa_img_transform(cvs, args);
+    img_transform.init();
+    return {cvs, cvsa_arr: [img_transform]};
+  }
+  function change_cvs_img({cvs, cvsa_arr}, args) {
+    let cvsa = cvsa_arr[0];
+    if(args.w) cvsa.w = MathEx.clamp(+args.w || 0, 0, 2);
+    if(args.h) cvsa.h = MathEx.clamp(+args.h || 0, 0, 2);
+    if(args.x) cvsa.x = MathEx.clamp(+args.x || 0, -3, 3);
+    if(args.y) cvsa.y = MathEx.clamp(+args.y || 0, -3, 3);
+    if(args.cx) cvsa.cx = MathEx.clamp(+args.cx || 0, -3, 3);
+    if(args.cy) cvsa.cy = MathEx.clamp(+args.cy || 0, -3, 3);
   }
 
   /* ================================ */
