@@ -298,17 +298,16 @@ const TextConverter = (() => {
     if(!cmd.sub) return;
     index = MathEx.clamp(Math.round(+cmd.sub || 1), 1, 3);
     let data = {type: "TXTA", index};
-    let first_line = get_first_line(cmd);
-    if(!first_line) {
+    data.str = get_lines(cmd).filter(v => v).slice(1, 2)[0];
+    if(!data.str) {
       data.type = "TXTA_del";
       return data;
     }
-    let args = get_args({body: first_line}, "ef_name");
+    let args = get_args({body: get_first_line(cmd)}, "key");
     delete args.type;
     delete args.id;
+    delete args.str;
     Object.assign(data, args);
-    data.str = get_lines(cmd).filter(v => v).slice(1, 2)[0];
-    if(!data.str) return;
     return data;
   }
   /* CVSA */
