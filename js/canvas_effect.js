@@ -58,6 +58,7 @@ const CanvasEffect = (() => {
         case "雪花雜訊": cur_efs[key] = add_noise(args); break;
         case "電視螢幕": cur_efs[key] = add_tv_screen(args); break;
         case "溶解": cur_efs[key] = add_dissolve(args); break;
+        case "眨眼": cur_efs[key] = add_eyes(args); break;
         default: return;
       }
       cur_efs[key].ef_name = ef_name;
@@ -65,7 +66,8 @@ const CanvasEffect = (() => {
     }
     else {
       switch(cur_efs[key].ef_name) {
-        case "衝過": case "雪花雜訊": case "電視螢幕": case "溶解":
+        case "衝過": case "雪花雜訊": case "電視螢幕":
+        case "溶解": case "眨眼":
           sw_change_normal(cur_efs[key], args); break;
       }
     }
@@ -227,6 +229,14 @@ const CanvasEffect = (() => {
     let dissolve = new CvsSw_dissolve(cvs, {type, color});
     dissolve.init();
     return {cvs, cvsa_arr: [dissolve]};
+  }
+  /* 眨眼 */
+  function add_eyes(args) {
+    let type = args.s == "開" ? "open" : "close";
+    let cvs = new_cvs();
+    let eyes = new CvsSw_eyes(cvs, {type});
+    eyes.init();
+    return {cvs, cvsa_arr: [eyes]};
   }
 
   /* ================================ */
