@@ -179,6 +179,7 @@ const CanvasEffect = (() => {
     if(args.y) cvsa.y = MathEx.clamp(+args.y || 0, -3, 3);
     if(args.cx) cvsa.cx = MathEx.clamp(+args.cx || 0, -3, 3);
     if(args.cy) cvsa.cy = MathEx.clamp(+args.cy || 0, -3, 3);
+    if(args.a) cvsa.a = MathEx.clamp(+args.a || 0, 0, 1);
   }
 
   /* ================================ */

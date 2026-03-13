@@ -9,6 +9,7 @@ const Cvsa_img_transform = (() => {
       this.y = MathEx.clamp(+opt.y || 0, -3, 3);
       this.cx = MathEx.clamp(+opt.cx || 0, -3, 3);
       this.cy = MathEx.clamp(+opt.cy || 0, -3, 3);
+      this.a = opt.a == undefined ? 1 : MathEx.clamp(+opt.a || 0, 0, 1);
 
       this.img_url = opt.img_url || null;
     }
@@ -19,6 +20,7 @@ const Cvsa_img_transform = (() => {
       this.cur_y = this.y;
       this.cur_cx = this.cx;
       this.cur_cy = this.cy;
+      this.cur_a = this.a;
       if(this.img_url) {
         this.img_loading = true;
         this.img = new Image();
@@ -34,7 +36,7 @@ const Cvsa_img_transform = (() => {
     }
     run() {
       if(this.is_stop) return;
-      ["x", "y", "w", "h", "cx", "cy"].forEach(key => {
+      ["x", "y", "w", "h", "cx", "cy", "a"].forEach(key => {
         let cur_key = "cur_" + key;
         if(Math.abs(this[cur_key] - this[key]) > 0.01) {
           this[cur_key] += (this[key] - this[cur_key]) * 0.4;
@@ -49,7 +51,8 @@ const Cvsa_img_transform = (() => {
         this.cur_x == this.x &&
         this.cur_y == this.y &&
         this.cur_cx == this.cx &&
-        this.cur_cy == this.cy
+        this.cur_cy == this.cy &&
+        this.cur_a == this.a
       );
     }
     draw() {
@@ -61,6 +64,7 @@ const Cvsa_img_transform = (() => {
       x += w * (-0.5 - this.cur_cx * 0.5);
       y += h * (-0.5 - this.cur_cy * 0.5);
       this.cvs.ctx.reset();
+      this.cvs.ctx.style = {alpha: this.cur_a};
       this.cvs.ctx.drawImage(this.img, x, y, w, h);
     }
   }
