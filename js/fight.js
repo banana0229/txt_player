@@ -149,6 +149,12 @@ const Fight = (() => {
     area.x = new_dot.x;
     area.y = new_dot.y;
   }
+  Object.defineProperty(obj, "area_set", {writable: false, value: area_set});
+  function area_set(area_key, args) {
+    let area = areas[area_key];
+    if(!area) return;
+    if(args.sort_style) area.sort_style = args.sort_style;
+  }
 
   /* ================================ */
   /*  線段                            */
@@ -240,8 +246,14 @@ const Fight = (() => {
   function draw_char_2(area, items) {
     ctx.reset();
     let r = area.r * 0.36;
-    items[0].draw_to_fight(area.x - r, area.y + r, pin_size);
-    items[1].draw_to_fight(area.x + r, area.y - r, pin_size);
+    if(!area.sort_style) {
+      items[0].draw_to_fight(area.x - r, area.y + r, pin_size);
+      items[1].draw_to_fight(area.x + r, area.y - r, pin_size);
+    }
+    else {
+      items[0].draw_to_fight(area.x - r, area.y - r, pin_size);
+      items[1].draw_to_fight(area.x + r, area.y + r, pin_size);
+    }
   }
   function draw_char_3(area, items) {
     ctx.reset();

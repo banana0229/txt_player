@@ -7,7 +7,6 @@ const CanvasEffect = (() => {
   function start_run(key, {cvs, cvsa_arr}) {
     return setInterval(() => {
       cvs.clear();
-      cvs.cvsa = cvsa_arr;
       let runing_count = cvsa_arr.filter(cvsa => {
         if(!cvsa.is_end) {
           cvsa.run();
@@ -47,6 +46,9 @@ const CanvasEffect = (() => {
     if(!cur_efs[key]) {
       switch(ef_name) {
         case "衝過": cur_efs[key] = add_dash_over(args); break;
+        case "雪花雜訊": cur_efs[key] = add_noise(args); break;
+        case "電視螢幕": cur_efs[key] = add_tv_screen(args); break;
+        case "溶解": cur_efs[key] = add_dissolve(args); break;
         default: return;
       }
       cur_efs[key].ef_name = ef_name;
@@ -54,7 +56,8 @@ const CanvasEffect = (() => {
     }
     else {
       switch(cur_efs[key].ef_name) {
-        case "衝過": sw_dash_over(cur_efs[key], args); break;
+        case "衝過": case "雪花雜訊": case "電視螢幕": case "溶解":
+          sw_change_normal(cur_efs[key], args); break;
       }
     }
   }
@@ -84,7 +87,7 @@ const CanvasEffect = (() => {
   }
 
   /* ================================ */
-  /*  可用效果                        */
+  /*  可用效果 - 循環                 */
   /* ================================ */
   /* 雨 */
   function add_rain() {
@@ -148,18 +151,57 @@ const CanvasEffect = (() => {
     hud_frame.init();
     return {cvs, cvsa_arr: [hud_frame]};
   }
+
+  /* ================================ */
+  /*  可用效果 - 開關                 */
+  /* ================================ */
+  /* 開關通用 */
+  function sw_change_normal({cvs, cvsa_arr}, args) {
+    if(args.s == "開") cvsa_arr[0].type = "open";
+    else if(args.s == "關") cvsa_arr[0].type = "close";
+  }
   /* 衝過 */
   function add_dash_over(args) {
     let type = args.s == "開" ? "open" : "close";
     let cvs = new_cvs();
-    let dash_over = new Cvsa_dash_over(cvs, {type});
+    let dash_over = new CvsSw_dash_over(cvs, {type});
     dash_over.init();
     return {cvs, cvsa_arr: [dash_over]};
   }
-  function sw_dash_over({cvs, cvsa_arr}, args) {
-    if(args.s == "開") cvsa_arr[0].type = "open";
-    else if(args.s == "關") cvsa_arr[0].type = "close";
+  /* 雪花雜訊 */
+  function add_noise(args) {
+    let type = args.s == "開" ? "open" : "close";
+    let mask_color = args.color || "#fff";
+    if(mask_color == "黑") mask_color = "#000";
+    if(mask_color == "白") mask_color = "#fff";
+    let cvs = new_cvs();
+    let noise = new CvsSw_noise(cvs, {type, mask_color});
+    noise.init();
+    return {cvs, cvsa_arr: [noise]};
   }
+  /* 電視螢幕 */
+  function add_tv_screen(args) {
+    let type = args.s == "開" ? "open" : "close";
+    let cvs = new_cvs();
+    let tv_screen = new CvsSw_tv_screen(cvs, {type});
+    tv_screen.init();
+    return {cvs, cvsa_arr: [tv_screen]};
+  }
+  /* 溶解 */
+  function add_dissolve(args) {
+    let type = args.s == "開" ? "open" : "close";
+    let color = args.color || "#000";
+    if(color == "黑") mask_color = "#000";
+    if(color == "白") mask_color = "#fff";
+    let cvs = new_cvs();
+    let dissolve = new CvsSw_dissolve(cvs, {type, color});
+    dissolve.init();
+    return {cvs, cvsa_arr: [dissolve]};
+  }
+
+  /* ================================ */
+  /*  可用效果 - 單次                 */
+  /* ================================ */
   /* 水波紋 */
   function add_ripples(args) {
     let cvs = new_cvs();

@@ -221,7 +221,7 @@ const TextConverter = (() => {
       case "立繪清空": return {type: "立繪清空"};
       case "文字": return {type: "文字", name: cmd.sub || "", cnt: cmd.body};
 
-      case "戰鬥開始": return {type: "戰鬥開始"};
+      case "戰鬥開始": case "戰鬥繼續": return {type: "戰鬥開始"};
       case "戰鬥結束": return {type: "戰鬥結束"};
       case "戰鬥暫停": return {type: "戰鬥暫停"};
       case "戰鬥": return pcmd_fight_ctrl(cmd, asset.imgs);
@@ -395,6 +395,7 @@ const TextConverter = (() => {
       case "接戰區": return pcmd_fc_create_area(args);
       case "接戰區刪除": return pcmd_fc_del_area(args);
       case "接戰區移動": return pcmd_fc_move_area(args);
+      case "接戰區設定": return pcmd_fc_set_area(args);
       case "連線": return pcmd_fc_create_line(args);
       case "刪除連線": return pcmd_fc_del_line(args);
       case "棋子": return pcmd_fc_item_enter(args, imgs);
@@ -425,6 +426,13 @@ const TextConverter = (() => {
     data.area_key = args.main_key;
     data.deg = MathEx.clamp(+args.deg || 0, 0, 360);
     data.dist = MathEx.clamp(+args.dist || 0, -500, 500);
+    return data;
+  }
+  function pcmd_fc_set_area(args) {
+    if(!args.main_key) return;
+    let data = {type: "戰鬥_設定接戰區"};
+    data.area_key = args.main_key;
+    data.sort_style = args.sort_style;
     return data;
   }
   function pcmd_fc_create_line(args) {

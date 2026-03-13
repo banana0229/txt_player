@@ -214,6 +214,10 @@ body {
   margin-left: 0;
   transition: .6s;
 }
+.tachie[style*="--c"] {
+  left: calc(50% - var(--w) / 2);
+  margin-left: calc(var(--one_p) * var(--c, 0));
+}
 .tachie[style*="--r"] {
   left: calc(100% - var(--w));
   margin-left: calc(var(--one_p) * var(--r, 0) * -1 - var(--one_p) / 2);

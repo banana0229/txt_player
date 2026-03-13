@@ -234,6 +234,7 @@ const Player = (() => {
       );
       case "戰鬥_刪除接戰區": return Fight.area_del(play_cnt.area_key);
       case "戰鬥_移動接戰區": return Fight.area_move(play_cnt.area_key, play_cnt.deg, play_cnt.dist);
+      case "戰鬥_設定接戰區": return Fight.area_set(play_cnt.area_key, play_cnt);
       case "戰鬥_接戰區連線": return Fight.line_create(play_cnt.area1, play_cnt.area2);
       case "戰鬥_刪除連線": return Fight.line_del(play_cnt.area1, play_cnt.area2);
 
@@ -261,11 +262,18 @@ const Player = (() => {
     if(play_cnt.s) tachie.setAttribute("state", play_cnt.s);
     if(play_cnt.l) {
       tachie.style.setProperty("--l", play_cnt.l);
+      tachie.style.setProperty("--c", "");
       tachie.style.setProperty("--r", "");
     }
-    if(play_cnt.r) {
-      tachie.style.setProperty("--r", play_cnt.r);
+    else if(play_cnt.r) {
       tachie.style.setProperty("--l", "");
+      tachie.style.setProperty("--c", "");
+      tachie.style.setProperty("--r", play_cnt.r);
+    }
+    else if(play_cnt.c) {
+      tachie.style.setProperty("--l", "");
+      tachie.style.setProperty("--c", play_cnt.c);
+      tachie.style.setProperty("--r", "");
     }
     if(play_cnt.i == "bottom") find("#tachie_holder").prepend(tachie);
     if(play_cnt.i == "top") find("#tachie_holder").append(tachie);
