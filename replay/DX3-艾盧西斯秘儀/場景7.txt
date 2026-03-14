@@ -3,6 +3,7 @@
 公園:https://images.plurk.com/5sXNYusDeyABBEMW0w1x5f.png
 粉蝶花:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
 蘭斯:https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png
+蘭斯微笑:https://images.plurk.com/5H7yQL3ovIfMJokM3obIt5.png
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 大賀-通訊:https://images.plurk.com/5cZVAfi0028jCl5igP2svr.png
 超大牧羊犬:https://images.plurk.com/4PPN5I5Fb7BjtwOdsakNll.png
@@ -98,7 +99,7 @@
 @[文字:GM]看著大賀推放的各種玩具，少女有些興奮地說著。看來不管哪個她都很喜歡的樣子。
 `
 @[立繪:少女]s:暗
-@[立繪:PC1]s:一般
+@[立繪:PC1]蘭斯微笑,s:一般
 @[文字:蘭斯洛特]「這是在公園拿起來揮舞能變得開心的道具，跟在公園投擲就會變得開心的道具。」蘭斯拿起球棒跟球這麼說到。
 `
 @[文字:蘭斯洛特]「還有飛盤、跟…這什麼？竹蜻蜓。」
@@ -170,7 +171,7 @@
 `
 @[背景]粉蝶花
 @[立繪:少女]少女,s:暗
-@[立繪:PC1]蘭斯,l:1,s:暗
+@[立繪:PC1]蘭斯微笑,l:1,s:暗
 @[文字:GM]就這樣，你與少女一同玩耍著大賀一段時間後，有些疲倦的少女坐到一旁的花壇邊上休息。
 `
 @[立繪:少女]s:一般

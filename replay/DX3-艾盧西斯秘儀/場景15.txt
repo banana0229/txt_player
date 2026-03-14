@@ -7,6 +7,7 @@
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 蘭斯:https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png
+蘭斯微笑:https://images.plurk.com/5H7yQL3ovIfMJokM3obIt5.png
 ```
 ```聲音
 夢:./bgm/霧の中の夢.mp3
@@ -231,6 +232,7 @@
 `
 @[文字:蘭斯洛特]「……」蘭斯洛特看著眼前的局勢，輕輕吐出一口氣。
 `
+@[立繪:PC1]蘭斯微笑
 @[文字:蘭斯洛特]「（……看來，不需要我出手了。）」緊繃的肩膀稍微放鬆了一點，但他的視線仍沒有離開遠方。
 `
 @[文字:蘭斯洛特]「(蝶舞。)」他在心裡低聲說道。

@@ -1,6 +1,8 @@
 ```圖片
 廢墟:https://images.plurk.com/4fM9VdGb10WNJNVUpupDJp.png
 蘭斯:https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png
+蘭斯睜眼:https://images.plurk.com/5kD6jzowd2G1RTvNKmRDnH.png
+蘭斯微笑:https://images.plurk.com/5H7yQL3ovIfMJokM3obIt5.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
 冰室:https://images.plurk.com/NeCQqXlT33YfxynMJKzNk.png
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
@@ -113,12 +115,12 @@
 @[文字:霧谷雄吾]「蝶舞翠——她就是遺產『艾盧西斯秘儀』。」
 `
 @[立繪:霧谷]s:暗
-@[立繪:PC1]s:一般
+@[立繪:PC1]蘭斯睜眼,s:一般
 @[文字:蘭斯洛特]「你說…什麼？」無法理解的話語傳入蘭斯洛特耳裡。
 `
 @[文字:蘭斯洛特]「蝶舞她就是『艾盧西斯秘儀』…怎麼會是這樣。」
 `
-@[立繪:PC1]s:暗
+@[立繪:PC1]蘭斯,s:暗
 @[立繪:PC4]有馬,l:3.2,z:0.7
 @[文字:有馬 颯人]安詳的躺在地上，醒了也只是睜眼看天空，雖然背後有阿里翁，脊椎附近有點痛，但是沒有想要起來的意思
 `
@@ -261,6 +263,7 @@
 @[立繪:PC1]s:一般
 @[文字:蘭斯洛特]「收到。」他微微點了點頭，語氣平靜。
 `
+@[立繪:PC1]蘭斯微笑
 @[文字:蘭斯洛特]「辛苦您了，霧谷支部長。」話音落下，他抬起視線，看向前方的戰場。短暫的沉默後，嘴角浮起一抹幾乎察覺不到的笑意。
 `
 @[文字:蘭斯洛特]「……既然如此。」他稍微握緊武器。
@@ -319,6 +322,7 @@
 `
 @[文字:GM]那是，過去你也曾在公園看過，蝶舞所隨身攜帶，唯一屬於她自己的個人財產。
 `
+@[立繪:PC1]蘭斯
 @[可動圖片:筆記本]a:0,y:0
 @[文字:蘭斯洛特]「喔…竟然掉在這。真是不省心。」趕緊把筆記本撿起來，拍掉落在上頭的灰塵後小心翼翼的收好。
 `

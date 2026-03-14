@@ -11,6 +11,7 @@
 軍團-騎兵:https://images.plurk.com/2mYlCqHdy9LBMrNZaV7b2n.png
 軍團-火槍:https://images.plurk.com/5TsrQGXXz89dtwBMa31mXF.png
 蘭斯:https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png
+蘭斯睜眼:https://images.plurk.com/5kD6jzowd2G1RTvNKmRDnH.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
 冰室:https://images.plurk.com/NeCQqXlT33YfxynMJKzNk.png
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
@@ -601,7 +602,7 @@
 `
 @[文字:GM]光芒隨著血液浸透大地，等你們注意到時，環顧四周，眼前所見一切，皆染上一片通紅的色彩。
 `
-@[立繪:左側]蘭斯
+@[立繪:左側]蘭斯睜眼
 @[文字:蘭斯洛特]「…這是？怎麼回事。這也是他的能力嗎？」
 `
 @[立繪:左側]杜洛斯
