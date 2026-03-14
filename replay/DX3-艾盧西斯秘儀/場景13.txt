@@ -16,6 +16,7 @@
 破壞請求:./bgm/Last_Lament.mp3
 來電:./se/vDG6iLzjEnci98GpIyCe.mp3
 接電話:./se/wffCEOOJM1gCKyqyLUyQ.mp3
+書:./se/qDNQwfnilhwd82unfwSX.mp3
 ```
 @[背景]廢墟
 @[BGM:A]醒來
@@ -317,6 +318,7 @@
 @[可動圖片:筆記本]筆記本,cy:1,y:-1,w:0.2,h:0.2
 @[文字:蘭斯洛特]「算我一個。」蘭斯洛特跟上有馬的步伐。
 `
+@[SE]書
 @[可動圖片:筆記本]筆記本,cy:0,y:-0.2
 @[文字:GM]正當你們準備動身去吃晚餐時，蘭斯洛特，你意外在腳下發現了一本筆記本。
 `
