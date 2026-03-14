@@ -9,7 +9,7 @@
 阿里翁瞇眼:https://images.plurk.com/2aHWdQpgHg61R5ug47bG1C.png
 阿里翁皺眉:https://images.plurk.com/R0fFzgnBv6zbDOqHGBYRz.png
 阿里翁驚訝:https://images.plurk.com/6TXuiHG3yjcnFt9e4Da45G.png
-蝶舞:https://images.plurk.com/47QOOom6C4qsoBriGsSzbp.png
+蝶舞:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
 ```
 ```聲音
 笑容:./bgm/Smiles_All_Around.mp3

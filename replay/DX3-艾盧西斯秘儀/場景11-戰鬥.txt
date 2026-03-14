@@ -1,7 +1,7 @@
 ```圖片
 血色:https://images.plurk.com/1ucpA4cgV4MaKPSg31MAub.png
 回憶:https://images.plurk.com/27J4C0ZzfBaS33jSorGGl1.png
-回憶_晃動:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/c0965ea824b9aead6b4329d0bc780f3bcceb379e1c758fbda6e428e420c035d8
+回憶_晃動:./imgs/c0965ea824b9aead6b4329d0bc780f3bcceb379e1c758fbda6e428e420c035d8.png
 大片血跡:https://images.plurk.com/KqjTmlK5Fusesu6H0ttNQ.png
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
 棋-大盾:https://images.plurk.com/pZlKXzgtny2wPRGvIGqmR.png

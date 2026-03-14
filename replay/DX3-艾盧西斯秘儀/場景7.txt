@@ -7,8 +7,8 @@
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 大賀-通訊:https://images.plurk.com/5cZVAfi0028jCl5igP2svr.png
 超大牧羊犬:https://images.plurk.com/4PPN5I5Fb7BjtwOdsakNll.png
-少女:https://images.plurk.com/47QOOom6C4qsoBriGsSzbp.png
-少女-繃帶:https://images.plurk.com/2IJcj457PJIsDmqYQOnK7o.png
+少女:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
+少女-繃帶:./imgs/2cbecfb34c7630aac54de4c299efe4dbfbf9fcec3c0a562e8ae3ed2d98b7054d.png
 ```
 ```聲音
 明亮:./bgm/New_Breath.mp3

@@ -10,7 +10,7 @@
 大地懶:https://images.plurk.com/7zJVyTVL84rwODjDPz4EOC.png
 艾潔:https://images.plurk.com/29xXI9Id1BKakOzmNWheBI.png
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
-蝶舞:https://images.plurk.com/47QOOom6C4qsoBriGsSzbp.png
+蝶舞:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
 棋-大盾:https://images.plurk.com/pZlKXzgtny2wPRGvIGqmR.png
 棋-騎兵:https://images.plurk.com/6c5RtjkZlUhkG6q3cseoH9.png
 棋-火槍:https://images.plurk.com/oWJmUMRl45KPCKcEzjcvP.png

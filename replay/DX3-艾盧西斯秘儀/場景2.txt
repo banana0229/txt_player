@@ -6,7 +6,7 @@
 蘭斯憤怒:https://images.plurk.com/7pLm04b4R5hAQB7yiJaFmG.png
 蘭斯狐狸:https://images.plurk.com/1PFJDwQG9EQQsnN6Fgf4fi.png
 軍團:https://images.plurk.com/1SdQpB2JGFo8OadVw0fgqw.png
-少女:https://images.plurk.com/4H4mzxHVyfSQ5J4MES9UV7.png
+少女:./imgs/ae1cfc8ee7b21a697e2392bd03b92ecd2eb8f9bfe5407ce204743a8af2b5659f.png
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
 ```
 ```聲音

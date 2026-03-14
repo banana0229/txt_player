@@ -3,7 +3,6 @@
 螢幕馬面鯨:https://images.plurk.com/5vuCsy0ZczOFxrTgIoHc4h.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
 艾潔:https://images.plurk.com/29xXI9Id1BKakOzmNWheBI.png
-轉場:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/744256c757b2f611cad23562405597d539753f4df85a0deb466d95e82324f3a8
 ```
 ```聲音
 裝甲列車:./bgm/PerituneMaterial_EpicBattle.mp3

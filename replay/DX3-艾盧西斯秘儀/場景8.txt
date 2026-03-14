@@ -1,7 +1,7 @@
 ```圖片
 樓內:https://images.plurk.com/2hzQs6nOhupOtmbrYK1fCp.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
-蝶舞:https://images.plurk.com/47QOOom6C4qsoBriGsSzbp.png
+蝶舞:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
 ```
 ```聲音
 溫柔的:./bgm/Mauve.mp3

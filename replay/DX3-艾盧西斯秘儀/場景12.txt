@@ -1,9 +1,9 @@
 ```圖片
 廢墟:https://images.plurk.com/4fM9VdGb10WNJNVUpupDJp.png
 粉蝶花:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
-蝶舞:https://images.plurk.com/47QOOom6C4qsoBriGsSzbp.png
+蝶舞:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
 蝶舞-黑化:https://images.plurk.com/7t9wD6AkAc5FnGOK4rKm9g.png
-蝶舞-黑化後:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/d4bed7c81152636f7c416eee3214983369186584b1382b68f4dcc128f63f3e93?t=1768386229583
+蝶舞-黑化後:./imgs/d4bed7c81152636f7c416eee3214983369186584b1382b68f4dcc128f63f3e93.png
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
 一堆馬面鯨:https://images.plurk.com/20II1Gnkycz2OMcrX6xyPn.png
 馬面鯨張嘴:https://images.plurk.com/4VvCr6N7yd7x1cETIor79H.png

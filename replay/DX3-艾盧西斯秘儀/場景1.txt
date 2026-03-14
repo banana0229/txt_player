@@ -1,6 +1,6 @@
 ```圖片
 列車:https://images.plurk.com/2gzZSuEo5aIEL0uOaupGBA.png
-速度線:https://storage.ccfolia-cdn.net/users/mythkUdyg0OMDHYplTPpbVBm89O2/files/9ebeab9459317d844cdadf4a31588446d72aa8bbdb3f08945ff6552851fa3c27
+速度線:./imgs/9ebeab9459317d844cdadf4a31588446d72aa8bbdb3f08945ff6552851fa3c27.png
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 阿里翁皺眉:https://images.plurk.com/R0fFzgnBv6zbDOqHGBYRz.png

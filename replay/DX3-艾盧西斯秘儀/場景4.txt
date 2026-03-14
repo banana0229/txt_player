@@ -9,7 +9,7 @@
 艾潔-通訊:https://images.plurk.com/1DFKO5uhs2c7MpzvvrVTMi.png
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
-少女:https://images.plurk.com/4H4mzxHVyfSQ5J4MES9UV7.png
+少女:./imgs/ae1cfc8ee7b21a697e2392bd03b92ecd2eb8f9bfe5407ce204743a8af2b5659f.png
 巴西爾:https://images.plurk.com/3CQ96JMt6xrujdEPhS3B9X.png
 ```
 ```聲音
