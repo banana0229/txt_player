@@ -6,8 +6,8 @@
 有馬:https://images.plurk.com/BjbW7gg003h7igVziMihc.png
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
-蘭斯:https://images.plurk.com/63KtagzioOwLsgM7t0BG4c.png
-蘭斯微笑:https://images.plurk.com/5H7yQL3ovIfMJokM3obIt5.png
+蘭斯:https://images.plurk.com/2ZT92Dfnf5bSO1MhzYskqn.png
+蘭斯微笑:https://images.plurk.com/4ARnpHAkw3msIqh3FUhx3e.png
 ```
 ```聲音
 夢:./bgm/霧の中の夢.mp3
