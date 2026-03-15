@@ -8,7 +8,7 @@
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 ```
 ```聲音
-喜劇:./bgm/Comical-Out.ogg.enc
+喜劇:./bgm/10-Comical-Out.ogg.enc
 繪本:./bgm/ふしぎな絵本.mp3
 調皮的:./bgm/後片付けをしよう_Part1.mp3
 探頭:./se/6Mi24ioQK0ypATaki1xJ.mp3
