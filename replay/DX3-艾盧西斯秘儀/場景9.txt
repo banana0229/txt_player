@@ -8,13 +8,14 @@
 大賀:https://images.plurk.com/kmrAnsE47bdpljxxIANuO.png
 ```
 ```聲音
+喜劇:./bgm/10-Comical-Out.ogg.enc
 繪本:./bgm/ふしぎな絵本.mp3
 調皮的:./bgm/後片付けをしよう_Part1.mp3
 探頭:./se/6Mi24ioQK0ypATaki1xJ.mp3
 縮回去:./se/KwXkWhRFnm8KhFKPuEPD.mp3
 ```
 @[背景]辦公室
-@[BGM:A]繪本
+@[BGM:A]喜劇
 @[文字:GM]場景9：少女的疑問「家」
 場景角色：PC3
 請進行登場侵蝕
