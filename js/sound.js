@@ -68,7 +68,7 @@ const Sound = (() => {
         this_bgm.volume = Math.min(this_bgm.volume / 0.7, target_volume);
       }
     });
-    if (!file_name.endsWith('.enc')) {
+    if (!url.endsWith('.enc')) {
       this_bgm.src = url;
     }
     else {
