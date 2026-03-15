@@ -68,7 +68,18 @@ const Sound = (() => {
         this_bgm.volume = Math.min(this_bgm.volume / 0.7, target_volume);
       }
     });
-    this_bgm.src = url;
+    if (!file_name.endsWith('.enc')) {
+      this_bgm.src = url;
+    }
+    else {
+      load_enc_audio(url)
+        .then((loaded_url) => {
+            this_bgm.src = loaded_url;
+        })
+        .catch(err => {
+            console.error("Audio load failed:", err);
+        });
+    }
   }
   Object.defineProperty(obj, "BGM_stop", { writable: false, value: stop_bgm });
   async function stop_bgm(id) {
