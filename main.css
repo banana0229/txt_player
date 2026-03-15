@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'ThePeak';
+  src: url('./ThePeakFontBeta_V0_102.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -197,15 +204,9 @@ body {
 /* ================================ */
 /*  文字特效                        */
 /* ================================ */
-@font-face {
-  font-family: 'ThePeak'; /* 你自定義的字體名稱 */
-  src: url('./ThePeakFontBeta_V0_102.ttf') format('truetype'); /* 檔案路徑與格式 */
-  font-weight: normal;
-  font-style: normal;
-}
 .text_animation {
   position: absolute;
-  bottom: 28%;
+  bottom: 24%;
   width: 100%;
   left: 0;
   text-align: center;
@@ -235,7 +236,26 @@ body {
   opacity: 0;
   transform: translateY(-1em);
 }
-
+@media (max-width: 860px) {
+  .text_animation {
+    bottom: 22%;
+    font-size: 28px;
+    --lh: 38px;
+  }
+}
+@media (max-width: 768px) {
+  .text_animation {
+    font-size: 24px;
+    --lh: 34px;
+  }
+}
+@media (max-width: 600px) {
+  .text_animation {
+    bottom: 20%;
+    font-size: 18px;
+    --lh: 26px;
+  }
+}
 
 /* ================================ */
 /*  立繪區                          */
