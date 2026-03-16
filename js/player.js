@@ -232,6 +232,7 @@ const Player = (() => {
       case "立繪刪除": return del_tachie(play_cnt.id);
       case "立繪清空": return find("#tachie_holder").innerHTML = "";
       case "文字": return set_text_content(play_cnt.name, play_cnt.cnt);
+      case "長文字": return set_long_text_content(play_cnt.cnt, play_cnt.size);
 
       case "戰鬥開始": return Fight.play();
       case "戰鬥結束": return Fight.stop();
@@ -296,6 +297,25 @@ const Player = (() => {
     find("#name").innerText = name || "";
     find("#text").innerText = cnt || "";
     find("#text").scrollTop = 0;
+  }
+  /* 長文字 */
+  function set_long_text_content(cnt, size) {
+    let el = find("#long_text");
+    el.innerText = cnt || "";
+    let html = el.innerHTML;
+    html = html.split("<br>").map(line => {
+      if(!line.trim()) return "<br>";
+      if(/^-# /.test(line)) return `<h6>${line.replace(/^-# /, "")}</h6>`;
+      if(/^# /.test(line)) return `<h1>${line.replace(/^# /, "")}</h1>`;
+      if(/^## /.test(line)) return `<h2>${line.replace(/^## /, "")}</h2>`;
+      if(/^### /.test(line)) return `<h3>${line.replace(/^### /, "")}</h3>`;
+      if(/^---$/.test(line)) return `<hr>`;
+      line = line.replace(/\[([^\<\>\r\n]+)\]\(([^\<\>\r\n]+)\)/g, `<a target="_blank" href="$2">$1</a>`);
+      return `<div>${line}</div>`;
+    }).join("");
+    el.innerHTML = html;
+    if(size) find("#long_text_holder").setAttribute("size", size);
+    el.scrollTop = 0;
   }
   /* 選項 */
   function create_option_btn(opts) {

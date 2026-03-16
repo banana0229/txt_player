@@ -233,6 +233,7 @@ const TextConverter = (() => {
       case "立繪": return pcmd_tachie(cmd, asset.imgs);
       case "立繪清空": return {type: "立繪清空"};
       case "文字": return {type: "文字", name: cmd.sub || "", cnt: cmd.body};
+      case "長文字": return {type: "長文字", size: cmd.sub, cnt: cmd.body};
 
       case "戰鬥開始": case "戰鬥繼續": return {type: "戰鬥開始"};
       case "戰鬥結束": return {type: "戰鬥結束"};

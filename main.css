@@ -336,6 +336,110 @@ body {
 }
 
 /* ================================ */
+/*  長文字                          */
+/* ================================ */
+#long_text_holder {
+  position: absolute;
+  margin: auto;
+  left: 5%;
+  width: 90%;
+  box-sizing: border-box;
+  z-index: 200;
+  background: #000c;
+  backdrop-filter: blur(2px);
+  color: #fff;
+  padding: 10px 8px;
+  border-radius: 4px;
+  box-shadow: 0 -2px 4px #fff1;
+  top: 8%;
+  height: 55%;
+  --open_top: 8%;
+  --open_height: 84%; 
+}
+#long_text_holder:has(#long_text:empty) {
+  opacity: 0;
+  pointer-events: none;
+}
+#text_holder:has(#text:empty) + #long_text_holder {
+  top: var(--open_top);
+  height: var(--open_height);
+}
+#long_text {
+  height: 100%;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  overflow: hidden auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #0000;
+  white-space: pre;
+}
+
+#long_text_holder[size="L"] {
+  left: 5%; width: 90%;
+  top: 8%; height: 55%;
+  --open_top: 8%; --open_height: 84%;
+}
+#long_text_holder[size="M"] {
+  left: 15%; width: 70%;
+  top: 10%; height: 48%;
+  --open_top: 20%; --open_height: 60%;
+}
+#long_text_holder[size="S"] {
+  left: 25%; width: 50%;
+  top: 16%; height: 40%;
+  --open_top: 24%; --open_height: 48%;
+}
+
+#long_text h1 {
+  all: unset;
+  display: block;
+  font-weight: bold;
+  line-height: 1.4em;
+  font-size: 1.9em;
+  margin: 4px 0;
+}
+#long_text h2 {
+  all: unset;
+  display: block;
+  font-weight: bold;
+  line-height: 1.4em;
+  font-size: 1.6em;
+  margin: 4px 0;
+}
+#long_text h3 {
+  all: unset;
+  display: block;
+  font-weight: bold;
+  line-height: 1.4em;
+  font-size: 1.3em;
+  margin: 4px 0;
+}
+#long_text h6 {
+  all: unset;
+  display: block;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  opacity: .5;
+}
+#long_text hr {
+  all: unset;
+  display: block;
+  height: 1px;
+  background: #fff6;
+  width: 100%;
+  margin: 1em 0;
+}
+#long_text a {
+  all: unset;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0 2px;
+}
+
+/* ================================ */
 /*  文字方框                        */
 /* ================================ */
 #text_holder {
@@ -373,23 +477,23 @@ body {
   scrollbar-color: #fff #0000;
 }
 @media (max-width: 768px) {
-  #name {
+  #name, #long_text_name {
     font-size: 16px;
     height: 22px;
     line-height: 22px;
   }
-  #text {
+  #text, #long_text {
     font-size: 14px;
     line-height: 22px;
   }
 }
 @media (max-width: 560px) {
-  #name {
+  #name, #long_text_name {
     font-size: 14px;
     height: 18px;
     line-height: 18px;
   }
-  #text {
+  #text, #long_text {
     font-size: 12px;
     line-height: 18px;
   }
