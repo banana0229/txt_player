@@ -35,6 +35,7 @@ const Player = (() => {
       find("#bg_effect_holder").innerHTML = "";
       find("#tachie_holder").innerHTML = "";
       find("#text").innerHTML = "";
+      find("#long_text").innerHTML = "";
       find("#opts_holder").innerHTML = "";
       Player.set_bg(null);
       CanvasEffect.clear();
@@ -303,6 +304,7 @@ const Player = (() => {
   function set_long_text_content(cnt, size) {
     let el = find("#long_text");
     el.innerText = cnt || "";
+    if(!cnt.trim()) return;
     let html = el.innerHTML;
     html = html.split("<br>").map(line => {
       if(!line.trim()) return "<br>";
@@ -315,7 +317,7 @@ const Player = (() => {
       return `<div>${line}</div>`;
     }).join("");
     el.innerHTML = html;
-    if(size) find("#long_text_holder").setAttribute("size", size);
+    find("#long_text_holder").setAttribute("size", size || "");
     el.scrollTop = 0;
   }
   /* 選項 */
