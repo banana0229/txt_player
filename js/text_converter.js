@@ -15,7 +15,7 @@ const TextConverter = (() => {
       section_list: [], /* {name, file_name} */
     };
     if(!text) return data;
-    text = rn(text);
+    text = del_note_and_rn(text);
 
     /* 素材註冊區 */
     let imgs = get_imgs(text);
@@ -78,7 +78,7 @@ const TextConverter = (() => {
   /* ================================ */
   Object.defineProperty(obj, "to_section", { writable: false, value: to_section });
   function to_section(text) {
-    text = rn(text);
+    text = del_note_and_rn(text);
 
     /* 素材註冊區 */
     let asset = {
@@ -101,12 +101,15 @@ const TextConverter = (() => {
   /* ================================ */
   /*  指令分解                        */
   /* ================================ */
-  function rn(text) {
-    return text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  function del_note_and_rn(text) {
+    return text
+      .replace(/\r\n/g, "\n").replace(/\r/g, "\n")
+      .replace(/@\[備註\][^@]*/g, "")
+      .replace(/```備註.*?```/gs, "");
   }
   function get_no_asset_text(text) {
     return text
-      .replace(/```[^`]*```/g, "") /* 素材註冊區除外 */
+      .replace(/```.*?```/gs, "") /* 素材註冊區除外 */
       .replace(/^`|`$/g, ""); /* 頭尾空白分隔點去除 */
   }
   function get_command_arr(str) {
