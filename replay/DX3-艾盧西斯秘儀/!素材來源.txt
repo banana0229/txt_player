@@ -1,0 +1,128 @@
+```圖片
+標題畫面:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
+```
+@[背景]標題畫面
+@[CVSA:雨]雨
+@[CVSA:霧]霧
+@[長文字]
+## 角色立繪
+PC1-蘭斯洛特: sh 繪
+PC2-杜洛斯·謝佛德: 銀羽 繪
+PC3-冰室 新隆: [紙娃娃](https://picrew.me/ja/image_maker/611021)
+PC4-有馬 颯人: sh 繪
+---
+## NPC立繪
+@[備註]少女/蝶舞翠: ???
+@[備註]艾潔: ???
+@[備註]大賀牧羊犬: ???
+@[備註]大賀輝生: ???
+@[備註]大賀大地懶: ???
+阿里翁: sh 繪
+@[備註]巴西爾: ???
+@[備註]霧谷: ???
+---
+## 其他立繪
+軍團-狼: Nano Banana 2 [原圖 sh 繪](https://images.plurk.com/2W5zdW16QZXMDVSHQgZk5u.png)
+@[備註]軍團-大刀: ???
+@[備註]軍團-火槍: ???
+@[備註]軍團-騎兵: ???
+軍團-大盾: sh 繪
+棋子圖: sh 繪
+---
+## 其他
+@[備註]標題文字: ???
+@[備註]馬面鯨: ???
+筆記本: [ツカッテ](https://tsukatte.com/schedule-book/)
+---
+## 背景圖
+粉蝶花: [国営ひたち海浜公園](https://www.hitachikaihin.jp/flower-plant/flower/nemophila.html)
+列車: [aipict](https://aipict.com/specialized/train/)
+直升機城市上空: [unsplash](https://unsplash.com/photos/aerial-view-of-city-buildings-during-night-time-9B6zreeED6c)
+裝甲列車: [ゲームまてりあるず](https://game-materials.com/control-room/)
+列車巨人: Nano Banana 2 [原圖 sh 繪](https://images.plurk.com/6zychmzZaW7TmeD9pgDwDm.png)
+月台: [みんちりえ](https://min-chi.material.jp/fm/bg_c/station_platform/)
+走廊: [みんちりえ](https://min-chi.material.jp/fm/bg_c/building_hallway/)
+會議室: [aipict](http://aipict.com/general/conference_room/)
+樓內: [みんちりえ](https://min-chi.material.jp/fm/bg_c/stairs_facility/)
+公園: [CreativeFreaks](https://creativefreaks.net/%e3%83%95%e3%83%aa%e3%83%bc%e7%b4%a0%e6%9d%90/)
+辦公室: [みんちりえ](https://min-chi.material.jp/fm/bg_c/medium_office/)
+@[備註]戰鬥血色: ???
+MM地區廢墟: Nano Banana 2
+---
+## 背景效果
+速度線: [ARCA - booth](https://shuarts-arca.booth.pm/items/4186217)
+@[備註]場景11回憶: ???
+@[備註]巴西爾自爆: ???
+`
+@[長文字]
+## BGM
+開場 Nebula: [YouTube Audio Library](https://youtu.be/DloYnk7C2_4?si=l8arVjo7HbnV5wu-)
+列車 Virus Entry: [dova](https://dova-s.jp/bgm/detail/4104)
+列車上騎腳踏車 Raid FolkMetal 2: [peritune](https://peritune.com/blog/2020/01/17/raid_folkmetal2/)
+搭乘直升機 甲虫機兵団突撃: [dova](https://dova-s.jp/bgm/detail/17812)
+少女登場 時計図書館: [dova](https://dova-s.jp/bgm/detail/6694)
+巴西爾登場 悪魔の行進: [dova](https://dova-s.jp/bgm/detail/2582)
+裝甲列車 Epic Battle: [peritune](https://peritune.com/blog/2020/08/28/epicbattle/)
+突入列車 Integral One: [ユーフルカ](https://youfulca.com/2022/08/14/boss_integral-one/)
+列車巨人 Havoc: [peritune](https://peritune.com/blog/2018/08/01/havoc/)
+列車失控 彗星のエクリプス: [EigHt - booth](https://booth.pm/ja/items/4755387)
+月台 Umwelt: [dova](https://dova-s.jp/bgm/detail/21360)
+月台 Funky Magic: [dova](https://dova-s.jp/bgm/detail/10397)
+
+走廊 TALK and WALK: [dova](https://dova-s.jp/bgm/detail/2196)
+會議室說明 球体: [甘茶の音楽工房](https://amachamusic.chagasi.com/music_kyuutai.html)
+少女前往公園 New Breath: [dova](https://dova-s.jp/bgm/detail/23084)
+杜洛斯和少女談話 Mauve: [dova](https://dova-s.jp/bgm/detail/23059)
+@[備註]少女的疑問 Comical Out: ???(付費)
+大賀滾走 後片付けをしよう: [dova](https://dova-s.jp/bgm/detail/22994)
+對杜洛斯惡作劇 Smiles All Around: [dova](https://dova-s.jp/bgm/detail/21699)
+
+軍團襲來 悪の軍団襲来: [dova](https://dova-s.jp/bgm/detail/14704)
+和巴西爾決戰 Kurba: [dova](https://dova-s.jp/bgm/detail/23134)
+場景11回憶 悲しみに暮れながら: [dova](https://dova-s.jp/bgm/detail/23137)
+巴西爾憤怒 終焉を奏でる者: [youtube](https://www.youtube.com/watch?v=glqxJGwX1NA)
+戰鬥後廢墟 堕天の底に白い雨: [dova](https://dova-s.jp/bgm/detail/22822)
+蝶舞覺醒 Crucifer: [島白 ほわいとあいらんど工房](https://www.youtube.com/watch?v=lr8_mTUI4_c)
+蝶舞道別 ワスレナグサ: [dova](https://dova-s.jp/bgm/detail/9562)
+
+醒來 Lose sight of: [dova](https://dova-s.jp/bgm/detail/23170)
+請求破壞少女 Last Lament: [dova](https://dova-s.jp/bgm/detail/22926)
+杜洛斯和馬可班 霧の中の夢: [dova](https://dova-s.jp/bgm/detail/22451)
+說服杜洛斯 Go to the top: [dova](https://dova-s.jp/bgm/detail/13152)
+---
+## BGS
+@[備註]列車: ???
+@[備註]直升機: ???
+@[備註]警報聲: ???
+心跳聲: [効果音ラボ](https://soundeffect-lab.info/sound/anime/)
+---
+## SE
+@[備註]腳踏車衝鋒: ???
+有馬打軍團: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+蘭斯闖入列車: [小森平](https://taira-komori.net/attack01tw.html)
+@[備註]蘭斯打敗軍團: ???
+蘭斯被刺: [Pixabay](https://pixabay.com/zh/sound-effects/htf-blood-splatter-explode-478992/)
+少女使用能力: [効果音ラボ](https://soundeffect-lab.info/sound/anime/)
+裝甲列車撞擊: [効果音ラボ](https://soundeffect-lab.info/sound/machine/machine2.html)
+@[備註]列車巨人低吼: ???
+@[備註]通訊通知音: ???
+大地懶踏地聲音: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+火車煞車: [効果音ラボ](https://soundeffect-lab.info/sound/machine/)
+
+鳥叫聲: [効果音ラボ](https://soundeffect-lab.info/sound/animal/)
+辦公室三人探頭/縮回來: [効果音ラボ](https://soundeffect-lab.info/sound/anime/)
+軍團襲來: [youtube](https://www.youtube.com/watch?v=Y8d7EA5nX_g)
+蘭斯的劍: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+冰室的槍: [効果音ラボ](https://soundeffect-lab.info/sound/battle/battle2.html)
+@[備註]進入回憶: ???
+@[備註]回憶斷線: ???
+巴西爾自爆: [Pixabay](https://pixabay.com/zh/sound-effects/epic-cinematic-explosion-454857/)
+深海吼叫: [Pixabay](https://pixabay.com/zh/sound-effects/horror-deep-sea-monster-roar-329857/)
+吃掉巴西爾: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+馬面鯨衝出: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+吞噬蝶舞: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+蝶舞配音: [COEIROINK:ナースロボ＿タイプＴ](https://booth.pm/ja/items/3876737)
+
+@[備註]來電鈴聲: ???
+接通電話: [効果音ラボ](https://soundeffect-lab.info/sound/machine/)
+@[備註]筆記本: ???

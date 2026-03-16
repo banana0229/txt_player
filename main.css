@@ -165,7 +165,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: calc(var(--main_w) * 0.02) calc(var(--main_w) * 0.05);
+  padding: calc(var(--main_h) * 0.02) calc(var(--main_w) * 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -336,6 +336,91 @@ body {
 }
 
 /* ================================ */
+/*  長文字                          */
+/* ================================ */
+#long_text_holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(74% - 8px);
+  display: grid;
+  grid-template-columns: 90%;
+  grid-template-rows: 90%;
+  justify-content: center;
+  align-content: center;
+}
+#long_text_holder:has(#long_text:empty) {
+  opacity: 0;
+  pointer-events: none;
+}
+#text_holder:has(#text:empty) + #long_text_holder {
+  height: 100%;
+}
+#long_text_bg {
+  position: relative;
+  z-index: 200;
+  margin: auto;
+  padding: 10px 8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100%;
+  background: #000c;
+  backdrop-filter: blur(2px);
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 -2px 4px #fff1;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+#long_text_holder[size="L" i] { grid-template-columns: 90%; }
+#long_text_holder[size="M" i] { grid-template-columns: 70%; }
+#long_text_holder[size="S" i] { grid-template-columns: 50%; }
+#long_text {
+  height: 100%;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  overflow: hidden auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #0000;
+  white-space: pre-wrap;
+}
+#long_text h1, #long_text h2, #long_text h3 {
+  all: unset;
+  display: block;
+  font-weight: bold;
+  line-height: 1.4em;
+  margin: 4px 0;
+}
+#long_text h1 { font-size: 1.9em; }
+#long_text h2 { font-size: 1.6em; }
+#long_text h3 { font-size: 1.3em; }
+#long_text h6 {
+  all: unset;
+  display: block;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  opacity: .5;
+}
+#long_text hr {
+  all: unset;
+  display: block;
+  height: 1px;
+  background: #fff6;
+  width: 100%;
+  margin: 1em 0;
+}
+#long_text a {
+  all: unset;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0 2px;
+}
+
+/* ================================ */
 /*  文字方框                        */
 /* ================================ */
 #text_holder {
@@ -373,23 +458,23 @@ body {
   scrollbar-color: #fff #0000;
 }
 @media (max-width: 768px) {
-  #name {
+  #name, #long_text_name {
     font-size: 16px;
     height: 22px;
     line-height: 22px;
   }
-  #text {
+  #text, #long_text {
     font-size: 14px;
     line-height: 22px;
   }
 }
 @media (max-width: 560px) {
-  #name {
+  #name, #long_text_name {
     font-size: 14px;
     height: 18px;
     line-height: 18px;
   }
-  #text {
+  #text, #long_text {
     font-size: 12px;
     line-height: 18px;
   }
