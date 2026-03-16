@@ -15,8 +15,10 @@ const Player = (() => {
     find("#next_btn").addEventListener("keydown", e => e.preventDefault());
   });
   document.addEventListener("keydown", (e) => {
-    if(e.keyCode == 32) Player.next_play();
-    e.preventDefault();
+    if(e.keyCode == 32) {
+      Player.next_play();
+      e.preventDefault();
+    }
   });
 
   /* ================================ */
