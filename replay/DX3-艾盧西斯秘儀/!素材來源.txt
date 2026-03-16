@@ -2,8 +2,8 @@
 標題畫面:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
 ```
 @[背景]標題畫面
-@[CVSA]雨
-@[CVSA]霧
+@[CVSA:雨]雨
+@[CVSA:霧]霧
 @[長文字]
 ## 角色立繪
 PC1-蘭斯洛特: sh 繪
