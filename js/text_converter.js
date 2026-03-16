@@ -104,8 +104,8 @@ const TextConverter = (() => {
   function del_note_and_rn(text) {
     return text
       .replace(/\r\n/g, "\n").replace(/\r/g, "\n")
-      .replace(/@\[備註\][^@]*/g, "")
-      .replace(/```備註.*?```/gs, "");
+      .replace(/@\[備註\].*\n?/g, "")
+      .replace(/```備註.*?```\n?/gs, "");
   }
   function get_no_asset_text(text) {
     return text
