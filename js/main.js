@@ -52,14 +52,6 @@ function wait(sec) {
 /* ================================ */
 let cur_word_id = null;
 let cur_word_file = {};
-function get_word_url(file_id, tab_name) {
-  file_id = file_id.replace(/^google_word\//, "").trim();
-  if(!file_id) return null;
-  let get_url = "https://script.google.com/macros/s/AKfycbwvYFK-HeY8uVvp4k6OHUQxt3qAn5RjpU-HTPvhwzS6fLufYp3tW-OyhJ-7xU-TdxaM/exec";
-  let url = `${get_url}?id=${file_id}`;
-  if(tab_name) url += `&tab=${tab_name}`;
-  return url;
-}
 async function get_file_cnt_text(url, tab_name) {
   if(!window.XMLHttpRequest) {
     alert('無法連線，請更換瀏覽器');
