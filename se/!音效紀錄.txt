@@ -29,10 +29,12 @@
     ピッ。一滴の涙
     https://soundeffect-lab.info/sound/various/
 
-  ヒヨドリの鳴き声3.mp3
-    鳴きながら飛び去る
-    https://soundeffect-lab.info/sound/animal/
-  
+  https://soundeffect-lab.info/sound/animal/
+    ヒヨドリの鳴き声3.mp3
+      鳴きながら飛び去る
+    馬の鳴き声2.mp3
+      ヒヒヒン
+
   心臓の鼓動1.mp3
     4回連続
     https://soundeffect-lab.info/sound/anime/
@@ -48,6 +50,8 @@
       映画風
     重いパンチ3.mp3
       メキメキと顔面にめり込む
+    オーラ1.mp3
+      光を身にまとう
 
   https://soundeffect-lab.info/sound/battle/battle2.html
     サブマシンガンの弾倉をセット.mp3
