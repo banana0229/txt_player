@@ -34,7 +34,8 @@ const Player = (() => {
   });
   Object.defineProperty(obj, "reset_show", {
     writable: false, value: () => {
-      find("#bg_effect_holder").innerHTML = "";
+      clear_bg_effect();
+      clear_bg_show_img();
       find("#tachie_holder").innerHTML = "";
       find("#text").innerHTML = "";
       find("#long_text").innerHTML = "";
@@ -177,25 +178,31 @@ const Player = (() => {
   function set_bg_effect(eid, url) {
     if(!url) return;
     let el = find(`.bg_effect[eid="${eid}"]`);
-    if(!el) el = new_el_to_el("#bg_effect_holder", "div.bg_effect", {eid});
-    el.style.setProperty("--img", `url(${url})`);
+    if(!el) el = new_el_to_el("#effect_holder", "div.bg_effect", {eid});
+    el.style.setProperty("--img", `url(${url}?${Date.now()})`);
   }
   function delete_bg_effect(eid) {
     if(!eid) return;
     let el = find(`.bg_effect[eid="${eid}"]`);
     if(el) el.remove();
   }
+  function clear_bg_effect() {
+    find_all(".bg_effect").forEach(el => el.remove());
+  }
   Object.defineProperty(obj, "set_bg_show_img", { writable: false, value: set_bg_show_img });
   function set_bg_show_img(siid, url) {
     if(!url) return;
     let el = find(`.bg_show_img[siid="${siid}"]`);
-    if(!el) el = new_el_to_el("#bg_effect_holder", "img.bg_show_img", {siid});
+    if(!el) el = new_el_to_el("#effect_holder", "img.bg_show_img", {siid});
     el.src = url;
   }
   function delete_bg_show_img(siid) {
     if(!siid) return;
     let el = find(`.bg_show_img[siid="${siid}"]`);
     if(el) el.remove();
+  }
+  function clear_bg_show_img() {
+    find_all(".bg_show_img").forEach(el => el.remove());
   }
 
   /* ================================ */
@@ -209,7 +216,7 @@ const Player = (() => {
       case "背景": return Player.set_bg(play_cnt.url);
       case "背景效果": return set_bg_effect(play_cnt.id, play_cnt.url);
       case "背景效果刪除": return delete_bg_effect(play_cnt.id);
-      case "背景效果清空": return find_all(".bg_effect").forEach(el => el.remove());
+      case "背景效果清空": return clear_bg_effect();
 
       case "CVSIMG": return CanvasEffect.add_cvs_img(play_cnt.id, play_cnt);
       case "CVSA": return CanvasEffect.add_animation(play_cnt.id, play_cnt.ef_name, play_cnt);
@@ -221,7 +228,7 @@ const Player = (() => {
 
       case "圖片": return set_bg_show_img(play_cnt.id, play_cnt.url);
       case "圖片刪除": return delete_bg_show_img(play_cnt.id);
-      case "圖片清空": return find_all(".bg_show_img").forEach(el => el.remove());
+      case "圖片清空": return clear_bg_show_img();
 
       case "TXTA": return TextAnimation.create(play_cnt.index, play_cnt.str, play_cnt);
       case "TXTA_del": return TextAnimation.remove(play_cnt.index);

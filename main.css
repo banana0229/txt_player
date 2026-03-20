@@ -169,7 +169,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-#bg_effect_holder, #fight_canvas, #canvas_effect_holder canvas {
+#effect_holder, #fight_canvas, #effect_holder canvas {
   pointer-events: none;
   user-select: none;
   position: absolute;
@@ -182,7 +182,7 @@ body {
 #fight_canvas {
   object-fit: contain;
 }
-#bg_effect_holder .bg_effect {
+#effect_holder .bg_effect {
   user-select: none;
   position: absolute;
   top: 0;
@@ -191,7 +191,7 @@ body {
   height: 100%;
   background: var(--img, none) no-repeat center / cover;
 }
-#bg_effect_holder .bg_show_img {
+#effect_holder .bg_show_img {
   user-select: none;
   position: absolute;
   top: 5%;

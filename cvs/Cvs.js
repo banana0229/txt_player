@@ -16,7 +16,7 @@ const Cvs = (() => {
 
     let ctx = canvas.getContext("2d");
     Object.defineProperty(canvas, "ctx", { writable: false, value: ctx });
-  
+
     /* ================================ */
     /*  重設                            */
     /* ================================ */

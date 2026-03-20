@@ -38,6 +38,7 @@ const CanvasEffect = (() => {
       case "橫向速度線": cur_efs[key] = add_speed_h(); break;
       case "警告": cur_efs[key] = add_warning(); break;
       case "HUD框": cur_efs[key] = add_hud_frame(args); break;
+      case "氣泡": cur_efs[key] = add_bubble(args); break;
       default: return;
     }
     cur_efs[key].interval = start_run(key, cur_efs[key]);
@@ -94,7 +95,7 @@ const CanvasEffect = (() => {
   /* ================================ */
   function new_cvs() {
     let cvs = Cvs.create().set_size(960, 720);
-    find("#canvas_effect_holder").append(cvs);
+    find("#effect_holder").append(cvs);
     return cvs;
   }
 
@@ -162,6 +163,15 @@ const CanvasEffect = (() => {
     });
     hud_frame.init();
     return {cvs, cvsa_arr: [hud_frame]};
+  }
+  /* 氣泡 */
+  function add_bubble(args) {
+    let cvs = new_cvs();
+    let bubble = new Cvsa_bubble(cvs, {
+      color: args.color || "#fffd",
+    });
+    bubble.init();
+    return {cvs, cvsa_arr: [bubble]};
   }
 
   /* ================================ */

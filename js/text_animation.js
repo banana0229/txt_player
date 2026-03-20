@@ -35,7 +35,7 @@ const TextAnimation = (() => {
       if(c == "\n") new_el_to_el(el, "br");
       else new_el_to_el(el, "span.hide", c);
     });
-    find("#canvas_effect_holder").append(el);
+    find("#effect_holder").append(el);
     el.style.setProperty("--w", el.offsetWidth);
     el.style.setProperty("--h", el.offsetHeight);
     return el;
