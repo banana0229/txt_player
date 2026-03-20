@@ -1,6 +1,8 @@
 ```圖片
 標題畫面:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
 ```
+@[備註]目前更新到：場景18
+
 @[背景]標題畫面
 @[CVSA:雨]雨
 @[CVSA:霧]霧
@@ -18,11 +20,12 @@ PC4-有馬 颯人: sh 繪
 @[備註]大賀輝生: ???
 @[備註]大賀大地懶: ???
 阿里翁: sh 繪
+阿里翁馬型態: sh 繪
 @[備註]巴西爾: ???
 @[備註]霧谷: ???
 ---
 ## 其他立繪
-軍團-狼: Nano Banana 2 [原圖 sh 繪](https://images.plurk.com/2W5zdW16QZXMDVSHQgZk5u.png)
+軍團-狼: Gemini (Nano Banana 2) [原圖 sh 繪](https://images.plurk.com/2W5zdW16QZXMDVSHQgZk5u.png)
 @[備註]軍團-大刀: ???
 @[備註]軍團-火槍: ???
 @[備註]軍團-騎兵: ???
@@ -39,7 +42,7 @@ PC4-有馬 颯人: sh 繪
 列車: [aipict](https://aipict.com/specialized/train/)
 直升機城市上空: [unsplash](https://unsplash.com/photos/aerial-view-of-city-buildings-during-night-time-9B6zreeED6c)
 裝甲列車: [ゲームまてりあるず](https://game-materials.com/control-room/)
-列車巨人: Nano Banana 2 [原圖 sh 繪](https://images.plurk.com/6zychmzZaW7TmeD9pgDwDm.png)
+列車巨人: Gemini (Nano Banana 2) [原圖 sh 繪](https://images.plurk.com/6zychmzZaW7TmeD9pgDwDm.png)
 月台: [みんちりえ](https://min-chi.material.jp/fm/bg_c/station_platform/)
 走廊: [みんちりえ](https://min-chi.material.jp/fm/bg_c/building_hallway/)
 會議室: [aipict](http://aipict.com/general/conference_room/)
@@ -47,12 +50,14 @@ PC4-有馬 颯人: sh 繪
 公園: [CreativeFreaks](https://creativefreaks.net/%e3%83%95%e3%83%aa%e3%83%bc%e7%b4%a0%e6%9d%90/)
 辦公室: [みんちりえ](https://min-chi.material.jp/fm/bg_c/medium_office/)
 @[備註]戰鬥血色: ???
-MM地區廢墟: Nano Banana 2
+MM地區廢墟: Gemini (Nano Banana 2)
 ---
 ## 背景效果
 速度線: [ARCA - booth](https://shuarts-arca.booth.pm/items/4186217)
 @[備註]場景11回憶: ???
 @[備註]巴西爾自爆: ???
+@[備註]水-進出場景特效: ???
+@[備註]阿里翁變身光芒: ???
 `
 @[長文字]
 ## BGM
@@ -89,12 +94,20 @@ MM地區廢墟: Nano Banana 2
 請求破壞少女 Last Lament: [dova](https://dova-s.jp/bgm/detail/22926)
 杜洛斯和馬可班 霧の中の夢: [dova](https://dova-s.jp/bgm/detail/22451)
 說服杜洛斯 Go to the top: [dova](https://dova-s.jp/bgm/detail/13152)
+霧谷雄吾的命令 待ち伏せ: [dova](https://dova-s.jp/bgm/detail/19966)
+決意救出少女 知恵と知識の探求者: [youtube](https://www.youtube.com/watch?v=JjxaE3hmzPQ)
+跨越死亡 海上: [dova](https://dova-s.jp/bgm/detail/7040)
+阿里翁嚇人 雪小屋: [dova](https://dova-s.jp/bgm/detail/21625)
+阿里翁變身 戦いの旅路を征く: [dova](https://dova-s.jp/bgm/detail/12447)
+第一個謊言 滅びた大地に祈りを: [dova](https://dova-s.jp/bgm/detail/21747)
+少女請求破壞 Frozen_Labyrinth: [dova](https://dova-s.jp/bgm/detail/9905)
 ---
 ## BGS
 @[備註]列車: ???
 @[備註]直升機: ???
 @[備註]警報聲: ???
 心跳聲: [効果音ラボ](https://soundeffect-lab.info/sound/anime/)
+@[備註]水中聲音: ???
 ---
 ## SE
 @[備註]腳踏車衝鋒: ???
@@ -126,3 +139,7 @@ MM地區廢墟: Nano Banana 2
 @[備註]來電鈴聲: ???
 接通電話: [効果音ラボ](https://soundeffect-lab.info/sound/machine/)
 @[備註]筆記本: ???
+@[備註]跳入水中: ???
+光: [効果音ラボ](https://soundeffect-lab.info/sound/battle/)
+馬叫: [効果音ラボ](https://soundeffect-lab.info/sound/animal/)
+馬跑: [効果音ラボ](https://soundeffect-lab.info/sound/animal/)
