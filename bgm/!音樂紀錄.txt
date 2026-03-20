@@ -181,6 +181,50 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
     https://dova-s.jp/bgm/detail/16181
     海 天空 氣泡 夏天
 
+  十字架.mp3
+    https://dova-s.jp/bgm/detail/643
+    悲壯
+
+  ポテトチップス.mp3
+    https://dova-s.jp/bgm/detail/19990
+    在玩電腦的感覺
+
+  待ち伏せ.mp3
+    https://dova-s.jp/bgm/detail/19966
+
+  海上.mp3
+    https://dova-s.jp/bgm/detail/7040
+    海上的船 強力
+
+  それでも僕たちの日常はまだまだ続く.mp3
+    https://dova-s.jp/bgm/detail/382
+    散步
+
+  バックヤードで、一人.mp3
+    https://dova-s.jp/bgm/detail/21962
+    懷念 鄉愁 可愛 音樂盒
+
+  雪小屋.mp3
+    https://dova-s.jp/bgm/detail/21625
+    想念
+
+  フォンコール.mp3
+    https://dova-s.jp/bgm/detail/21584
+    當機的聲音
+
+  灼熱のユーロビート.mp3
+    https://dova-s.jp/bgm/detail/23108
+    加速
+
+  龍太鼓.mp3
+    https://dova-s.jp/bgm/detail/23222
+
+  恐竜の世界.mp3
+    https://dova-s.jp/bgm/detail/18654
+
+  戦いの旅路を征く.mp3
+    https://dova-s.jp/bgm/detail/12447
+
   ---- 場景11 ----
     https://dova-s.jp/bgm/detail/22985
     https://dova-s.jp/bgm/detail/20606
@@ -219,6 +263,9 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   qgSqntqyrcGg0gKvUHSw.mp3
     警報が鳴る.mp3
 
+  BMYyWi17ih5FVydxasQL.mp3
+    水中.mp3
+
   Integral_One_Material_Loop.mp3
     Integral-one-material_loop(決戰).ogg
     https://downloads.khinsider.com/game-soundtracks/album/hat-world-new-testament-windows-gamerip-2019
@@ -254,6 +301,10 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
 
   owFXVRWGXOLKNAmDcpc5.ogg
     ワスレナグサ.ogg
+
+  rcZLIqyTZUY2p0Wq535V.mp3
+    知恵と知識の探求者.mp3
+    https://www.youtube.com/watch?v=JjxaE3hmzPQ
 
 |================================|
 |  使用                          |
