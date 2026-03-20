@@ -264,6 +264,7 @@ body {
   pointer-events: none;
   height: 0;
   position: relative;
+  z-index: 0;
   --one_w: calc(var(--main_w) * 0.9 / 6);
   --one_p: calc(var(--one_w) * 0.9);
 }

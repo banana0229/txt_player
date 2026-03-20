@@ -295,8 +295,15 @@ const Player = (() => {
       tachie.style.setProperty("--c", play_cnt.c);
       tachie.style.setProperty("--r", "");
     }
-    if(play_cnt.i == "bottom") find("#tachie_holder").prepend(tachie);
-    if(play_cnt.i == "top") find("#tachie_holder").append(tachie);
+    set_tachie_zindex(tachie, play_cnt.i);
+  }
+  function set_tachie_zindex(tachie, index) {
+    if(!index) return;
+    let zindex_arr = [...find_all("#tachie_holder img")].map(el => +el.style.zIndex || 0);
+    let bottom_i = Math.min(...zindex_arr);
+    let top_i = Math.max(...zindex_arr);
+    if(index == "bottom") tachie.style.zIndex = bottom_i - 1;
+    if(index == "top") tachie.style.zIndex = top_i + 1;
   }
   function del_tachie(id) {
     if(!id) return;
