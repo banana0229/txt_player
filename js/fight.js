@@ -153,7 +153,7 @@ const Fight = (() => {
   function area_set(area_key, args) {
     let area = areas[area_key];
     if(!area) return;
-    if(args.sort_style) area.sort_style = args.sort_style;
+    if(args.sort_style) area.sort_style = +args.sort_style || 0;
   }
 
   /* ================================ */
