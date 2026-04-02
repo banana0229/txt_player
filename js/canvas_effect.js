@@ -169,6 +169,7 @@ const CanvasEffect = (() => {
     let cvs = new_cvs();
     let bubble = new Cvsa_bubble(cvs, {
       color: args.color || "#fffd",
+      density: +args.density || 1,
     });
     bubble.init();
     return {cvs, cvsa_arr: [bubble]};

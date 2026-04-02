@@ -259,9 +259,16 @@ const Fight = (() => {
     ctx.reset();
     let r = area.r * 0.6;
     let r2 = r * 0.5, r3 = r * 0.866;
-    items[0].draw_to_fight(area.x - r3, area.y + r2, pin_size);
-    items[1].draw_to_fight(area.x     , area.y -  r, pin_size);
-    items[2].draw_to_fight(area.x + r3, area.y + r2, pin_size);
+    if(!area.sort_style) {
+      items[0].draw_to_fight(area.x - r3, area.y + r2, pin_size);
+      items[1].draw_to_fight(area.x     , area.y -  r, pin_size);
+      items[2].draw_to_fight(area.x + r3, area.y + r2, pin_size);
+    }
+    else {
+      items[0].draw_to_fight(area.x - r3, area.y - r2, pin_size);
+      items[1].draw_to_fight(area.x     , area.y +  r, pin_size);
+      items[2].draw_to_fight(area.x + r3, area.y - r2, pin_size);
+    }
   }
   function draw_char_4(area, items) {
     ctx.reset();

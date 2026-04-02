@@ -235,6 +235,21 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   Frozen_Labyrinth.mp3
     https://dova-s.jp/bgm/detail/9905
 
+  空の雫は透明で.mp3
+    https://dova-s.jp/bgm/detail/15719
+    鋼琴
+
+  雫.mp3
+    https://dova-s.jp/bgm/detail/14804
+    溫和
+
+  Tears.mp3
+    https://dova-s.jp/bgm/detail/23267
+    很片尾曲的音樂
+
+  Winter_Envy.mp3
+    https://dova-s.jp/bgm/detail/22851
+
   ---- 場景11 ----
     https://dova-s.jp/bgm/detail/22985
     https://dova-s.jp/bgm/detail/20606
@@ -315,6 +330,10 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
   rcZLIqyTZUY2p0Wq535V.mp3
     知恵と知識の探求者.mp3
     https://www.youtube.com/watch?v=JjxaE3hmzPQ
+
+  hC9tnOYH9ncleznHAjzK.ogg
+    eclipsion.ogg
+    ほわいとあいらんど工房
 
 |================================|
 |  使用                          |
