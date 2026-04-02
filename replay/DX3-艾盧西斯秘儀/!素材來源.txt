@@ -1,9 +1,11 @@
 ```圖片
 標題畫面:https://images.plurk.com/6ty7HKeZMuPW0VJcMyTRb.png
 ```
-@[備註]目前更新到：場景18
-
+```聲音
+結束:./bgm/Tears.mp3
+```
 @[背景]標題畫面
+@[BGM:A]結束
 @[CVSA:雨]雨
 @[CVSA:霧]霧
 @[長文字]
@@ -51,6 +53,9 @@ PC4-有馬 颯人: sh 繪
 辦公室: [みんちりえ](https://min-chi.material.jp/fm/bg_c/medium_office/)
 @[備註]戰鬥血色: ???
 MM地區廢墟: Gemini (Nano Banana 2)
+花海: [国営ひたち海浜公園](https://www.hitachikaihin.jp/flower-plant/flower/nemophila.html)
+洋館接待室: [みにくるlogo](https://www.minikle-onlineshop.com/zh/product-page/%E3%81%8A%E5%B1%8B%E6%95%B7%E7%B7%A805-%E3%83%9B%E3%83%A9%E3%83%BC-%E6%B4%8B%E9%A4%A8%E3%81%AE%E5%BF%9C%E6%8E%A5%E9%96%93-%E5%A4%95%E6%96%B9)
+遊樂園: [UTAIRO BOX](https://sakuranouta.biz/amusement-park-2/)
 ---
 ## 背景效果
 速度線: [ARCA - booth](https://shuarts-arca.booth.pm/items/4186217)
@@ -58,6 +63,7 @@ MM地區廢墟: Gemini (Nano Banana 2)
 @[備註]巴西爾自爆: ???
 @[備註]水-進出場景特效: ???
 @[備註]阿里翁變身光芒: ???
+@[備註]落幕: ???
 `
 @[長文字]
 ## BGM
@@ -101,6 +107,10 @@ MM地區廢墟: Gemini (Nano Banana 2)
 阿里翁變身 戦いの旅路を征く: [dova](https://dova-s.jp/bgm/detail/12447)
 第一個謊言 滅びた大地に祈りを: [dova](https://dova-s.jp/bgm/detail/21747)
 少女請求破壞 Frozen_Labyrinth: [dova](https://dova-s.jp/bgm/detail/9905)
+
+海雪 雫: [dova](https://dova-s.jp/bgm/detail/14804)
+無可取代之物 Winter_Envy: [dova](https://dova-s.jp/bgm/detail/22851)
+遊樂園 プロローグに花束を添えて: [dova](https://dova-s.jp/bgm/detail/20912)
 ---
 ## BGS
 @[備註]列車: ???

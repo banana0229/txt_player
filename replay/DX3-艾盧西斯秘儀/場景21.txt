@@ -1,12 +1,12 @@
 ```圖片
-歐式古典辦公室:https://images.plurk.com/646MdUDq3eIHdEFYfLFCgm.png
+洋館接待室:https://images.plurk.com/646MdUDq3eIHdEFYfLFCgm.png
 德蕾絲:https://images.plurk.com/1Gin7RZx9eQiz95WZzxrfD.png
 杜洛斯:https://images.plurk.com/1K9V0MWwbxRa02IdOSDPXT.png
 ```
 ```聲音
 無可取代之物:./bgm/Winter_Envy.mp3
 ```
-@[背景]歐式古典辦公室
+@[背景]洋館接待室
 @[BGM:A]無可取代之物
 @[文字:GM]場景21：無可取代之物
 場景角色：PC2
