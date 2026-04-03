@@ -12,19 +12,20 @@
 ## 角色立繪
 PC1-蘭斯洛特: sh 繪
 PC2-杜洛斯·謝佛德: 銀羽 繪
-PC3-冰室 新隆: [紙娃娃](https://picrew.me/ja/image_maker/611021)
+PC3-冰室 新隆: [picrew](https://picrew.me/ja/image_maker/611021)
 PC4-有馬 颯人: sh 繪
 ---
 ## NPC立繪
 @[備註]少女/蝶舞翠: ???
 @[備註]艾潔: ???
-@[備註]大賀牧羊犬: ???
 @[備註]大賀輝生: ???
-@[備註]大賀大地懶: ???
+@[備註]大賀-牧羊犬: ???
+@[備註]大賀-大地懶: ???
 阿里翁: sh 繪
-阿里翁馬型態: sh 繪
-@[備註]巴西爾: ???
-@[備註]霧谷: ???
+阿里翁-馬型態: sh 繪
+@[備註]巴西爾·格拉斯: ???
+@[備註]霧谷雄吾: ???
+@[備註]德蕾絲·布魯姆: ???
 ---
 ## 其他立繪
 軍團-狼: Gemini (Nano Banana 2) [原圖 sh 繪](https://images.plurk.com/2W5zdW16QZXMDVSHQgZk5u.png)
@@ -36,7 +37,7 @@ PC4-有馬 颯人: sh 繪
 ---
 ## 其他
 @[備註]標題文字: ???
-@[備註]馬面鯨: ???
+馬面鯨: [オーマ - booth](https://oooma.booth.pm/items/6086570)
 筆記本: [ツカッテ](https://tsukatte.com/schedule-book/)
 ---
 ## 背景圖
@@ -54,7 +55,7 @@ PC4-有馬 颯人: sh 繪
 @[備註]戰鬥血色: ???
 MM地區廢墟: Gemini (Nano Banana 2)
 花海: [国営ひたち海浜公園](https://www.hitachikaihin.jp/flower-plant/flower/nemophila.html)
-洋館接待室: [みにくるlogo](https://www.minikle-onlineshop.com/zh/product-page/%E3%81%8A%E5%B1%8B%E6%95%B7%E7%B7%A805-%E3%83%9B%E3%83%A9%E3%83%BC-%E6%B4%8B%E9%A4%A8%E3%81%AE%E5%BF%9C%E6%8E%A5%E9%96%93-%E5%A4%95%E6%96%B9)
+洋館接待室: [みにくる](https://www.minikle-onlineshop.com/zh/product-page/%E3%81%8A%E5%B1%8B%E6%95%B7%E7%B7%A805-%E3%83%9B%E3%83%A9%E3%83%BC-%E6%B4%8B%E9%A4%A8%E3%81%AE%E5%BF%9C%E6%8E%A5%E9%96%93-%E5%A4%95%E6%96%B9)
 遊樂園: [UTAIRO BOX](https://sakuranouta.biz/amusement-park-2/)
 ---
 ## 背景效果
