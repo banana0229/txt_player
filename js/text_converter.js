@@ -113,7 +113,7 @@ const TextConverter = (() => {
       .replace(/^`|`$/g, ""); /* 頭尾空白分隔點去除 */
   }
   function get_command_arr(str) {
-    let command_str_arr = str.match(/@\[[^\]]*\][^@]*/g) || [];
+    let command_str_arr = str.match(/@\[[^\]]*\][^]*?(?=@\[|$)/g) || [];
     return command_str_arr
       .map(command_txt => get_command(command_txt))
       .filter(v => v);
