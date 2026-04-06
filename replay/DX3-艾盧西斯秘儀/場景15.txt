@@ -10,7 +10,7 @@
 蘭斯微笑:https://images.plurk.com/2Ski1lLOGIyIdsjLvyC2f7.png
 ```
 ```聲音
-夢:./bgm/霧の中の夢.mp3
+夢:./bgm/Camino -進むべき路-.ogg.enc
 頂端:./bgm/Go_to_the_top.mp3
 ```
 @[背景]廢墟

@@ -11,7 +11,7 @@
 少女-繃帶:./imgs/2cbecfb34c7630aac54de4c299efe4dbfbf9fcec3c0a562e8ae3ed2d98b7054d.png
 ```
 ```聲音
-明亮:./bgm/New_Breath.mp3
+明亮:./bgm/Homemade Cooking.ogg.enc
 ```
 @[背景]樓內
 @[BGM:A]明亮
