@@ -108,7 +108,7 @@ const Fight = (() => {
       });
       cvs.fp(...dots, {type: "Z"});
       let alpha = area.leave || 1 - Math.abs(area.enter || area_alpha);
-      ctx.style = {alpha};
+      ctx.style = {color: main_color, alpha};
       ctx.stroke();
       ctx.style = {bg: main_color, filter: "blur(5px)", alpha: alpha * 0.3};
       ctx.fill();
