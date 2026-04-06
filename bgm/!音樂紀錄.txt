@@ -260,6 +260,28 @@ https://studio.youtube.com/channel/UClUAlTxNxLE5WW4YQ8cg0nQ/music
     https://dova-s.jp/bgm/detail/18486
     https://dova-s.jp/bgm/detail/16210
 
+-------- 付費 --------
+
+  -------- SOUND AIRYLUVS --------
+    Atelier Sandbox Game Music
+      Homemade Cooking.ogg.enc
+      The wind and sea.ogg.enc
+      10-Comical-Out.ogg.enc
+  
+    Epic FPS Battle Game Music Collection
+      B8d toys.ogg.enc
+
+    Legendary Boss Fight Game Music
+      Apocalypse Doors.ogg.enc
+
+  -------- 趣味工房にんじんわいん --------
+    Alchemist Garden -神々の森の錬金術師-
+      ひとりぼっち.ogg.enc
+    
+  -------- ruha(Pastel Tone Music) --------
+    Elemental Notes
+      Camino -進むべき路-.ogg.enc
+
 -------- 其他 --------
 
   PerituneMaterial_Raid_FolkMetal2.mp3

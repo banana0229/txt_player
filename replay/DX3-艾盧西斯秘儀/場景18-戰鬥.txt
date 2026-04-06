@@ -16,7 +16,7 @@
 花海:https://images.plurk.com/2lkgDw9Gkgq1Hd4IvzCpvx.png
 ```
 ```聲音
-請求破壞:./bgm/Frozen_Labyrinth.mp3
+請求破壞:./bgm/Apocalypse Doors.ogg.enc
 不死不滅:./bgm/hC9tnOYH9ncleznHAjzK.ogg
 海雪:./bgm/雫.mp3
 ```
