@@ -18,8 +18,8 @@
 阿里翁:https://images.plurk.com/3q8uBmU1zZCc0vUYiGs50L.png
 ```
 ```聲音
-軍團:./bgm/Kurba.mp3
-悲傷:./bgm/悲しみに暮れながら.mp3
+軍團:./bgm/B8d toys.ogg.enc
+悲傷:./bgm/ひとりぼっち.ogg.enc
 心跳:./bgm/心臓の鼓動1.mp3
 生氣:./bgm/ZPKh4gq5LmPqTuGCP1zM.ogg
 回憶:./se/W1sZYHv4DJZlge5uvGcT.mp3

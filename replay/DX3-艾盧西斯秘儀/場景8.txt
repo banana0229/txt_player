@@ -4,8 +4,8 @@
 蝶舞:./imgs/1a42d1fce67c4dd85dbf08f7820c80b9f8cee7be5eec7453ae05132eb8021058.png
 ```
 ```聲音
-溫柔的:./bgm/Mauve.mp3
-鳥叫聲:./se/ヒヨドリの鳴き声3.mp3
+溫柔的:./bgm/The wind and sea.ogg.enc
+鳥叫聲:./se/スズメの鳴き声1.mp3
 ```
 @[背景]樓內
 @[BGM:A]溫柔的
