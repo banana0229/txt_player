@@ -182,8 +182,8 @@ const TextConverter = (() => {
     let imgs_str = text.match(/```圖片[^`]*```/)?.[0] || "";
     let lines = imgs_str.split("\n").slice(1, -1).filter(v => v);
     lines.forEach(img_str => {
-      let key = img_str.replace(/:.*/, "");
-      let val = img_str.replace(/^[^:]*:/, "");
+      let key = img_str.replace(/:.*/, "").trim();
+      let val = img_str.replace(/^[^:]*:/, "").trim();
       if(key && val && !imgs[key]) imgs[key] = val;
     });
     return imgs;
@@ -193,8 +193,8 @@ const TextConverter = (() => {
     let sounds_str = text.match(/```聲音[^`]*```/)?.[0] || "";
     let lines = sounds_str.split("\n").slice(1, -1).filter(v => v);
     lines.forEach(sound_str => {
-      let key = sound_str.replace(/:.*/, "");
-      let val = sound_str.replace(/^[^:]*:/, "");
+      let key = sound_str.replace(/:.*/, "").trim();
+      let val = sound_str.replace(/^[^:]*:/, "").trim();
       if(key && val && !sounds[key]) sounds[key] = val;
     });
     return sounds;
