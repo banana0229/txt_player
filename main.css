@@ -207,21 +207,19 @@ body {
 #guide_btn {
   all: unset;
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 4px;
+  left: 4px;
 
-  outline: 1px solid #fff;
   border-radius: 50%;
-  border: 1px solid;
-  width: 20px;
-  height: 20px;
+  border: 2px solid;
+  width: 18px;
+  height: 18px;
 
-  line-height: 20px;
+  line-height: 18px;
   font-family: ui-monospace;
   font-weight: bold;
   text-align: center;
   color: #000;
-  background: #fff;
   opacity: .5;
   cursor: pointer;
 }
