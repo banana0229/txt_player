@@ -1,0 +1,230 @@
+body {
+  margin: 0;
+  background: #aaa;
+  font-family: system-ui;
+}
+#main {
+  margin: 0 auto;
+  width: 1200px;
+  max-width: 100%;
+  height: 100vh;
+  background: #fafafa;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  overflow: hidden;
+}
+
+/* ================================ */
+/*  目錄                            */
+/* ================================ */
+#menu {
+  box-sizing: border-box;
+  padding: 8px;
+  width: 220px;
+  background: #333;
+  color: #fff;
+  overflow: hidden auto;
+  display: flex;
+  flex-direction: column;
+  line-height: 24px;
+  font-size: 16px;
+  scrollbar-color: #fff6 #0000;
+  scrollbar-width: thin;
+}
+#menu .item {
+  padding: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+#menu .items {
+  padding: 8px;
+}
+#menu .items_title {
+  cursor: pointer;
+  font-weight: bold;
+}
+#menu .items_title:before {
+  content: "";
+  display: inline-block;
+  width: .5em;
+  height: .7em;
+  position: relative;
+  top: -1px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  margin-right: 6px;
+}
+#menu .items_title.open:before {
+  transform: rotate(90deg);
+}
+#menu .sub_item {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 8px;
+  line-height: 24px;
+  opacity: .75;
+}
+#menu .items_title:not(.open) ~ .sub_item {
+  display: none;
+}
+#menu .sub_item span {
+  font-size: 12px;
+  margin-left: 6px;
+  opacity: .8;
+}
+
+/* ================================ */
+/*  內容                            */
+/* ================================ */
+#content {
+  scrollbar-color: #3336 #0000;
+  scrollbar-width: thin;
+  overflow: hidden scroll;
+  scroll-behavior: smooth;
+  overflow-wrap: anywhere;
+}
+.section {
+  padding: 32px 48px;
+  font-size: 18px;
+}
+.section .section_title {
+  font-weight: bold;
+  padding: 4px 16px;
+  margin: 0 -24px;
+  background: #6281cc;
+  color: #fff;
+  font-size: 28px;
+}
+#content h2 {
+  all: unset;
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 2px 12px;
+  margin: 48px -12px 12px;
+  color: #111112;
+  background: #d7e2f8;
+}
+#content .section_title + * {
+  margin-top: 24px;
+}
+#content .text {
+  line-height: 32px;
+}
+#content .text + .text {
+  margin-top: 24px;
+}
+#content a {
+  all: unset;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ef6b3a;
+  font-weight: bold;
+}
+/* 圖片 */
+#content img {
+  display: block;
+  margin: 16px 8px;
+  border-radius: 6px;
+  border: 1px solid #0001;
+  box-shadow: 6px 6px 12px #0003;
+  max-width: calc(100% - 16px);
+}
+/* 文字強調 */
+#content text {
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid #0003;
+  font-family: monospace;
+}
+#content b { all: unset; font-weight: bold; }
+#content c { color: #000; }
+#content [red] { color: #c11; }
+#content [blue] { color: #16e; }
+#content [orange] { color: #ea3; }
+#content [green] { color: #281; }
+#content [bg_red] { background: #fbe2e2; }
+#content [bg_green] { background: #daf4da; }
+
+/* ================================ */
+/*  範例                            */
+/* ================================ */
+#content code {
+  display: block;
+  margin: 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #0006;
+  padding: 8px 12px;
+
+  white-space: pre;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: monospace;
+  background: #fff;
+    overflow: auto;
+}
+#content code.ex {
+  color: #0005;
+}
+#content .color_desc {
+  display: grid;
+  row-gap: 8px;
+  grid-template-columns: auto 1fr;
+}
+#content .other_desc {
+  margin-top: 24px;
+}
+
+/* ================================ */
+/*  折疊                            */
+/* ================================ */
+.foldbox {
+  background: #eaeff8;
+  margin: 24px 0;
+  border-radius: 8px;
+  border: 1px solid #d0d9ef;
+  box-shadow: 4px 4px 8px #0002;
+  overflow: hidden;
+}
+.fold_head {
+  font-weight: bold;
+  color: #00298c;
+  padding: 8px 48px 8px 16px;
+  line-height: 28px;
+  background: #b6cbf6;
+  cursor: pointer;
+}
+.fold_head:before {
+  content: "";
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  margin-right: 8px;
+}
+.fold_head.fold:before {
+  transform: rotate(-90deg);
+}
+.fold_head.fold ~ .fold_body {
+  display: none;
+}
+.fold_body {
+  padding: 24px 16px;
+  margin: 0 8px;
+  border-top: 1px solid #b9c7e9;
+  line-height: 26px;
+  font-size: 16px;
+}
+.fold_head + .fold_body {
+  border-top: none;
+}
+#content .fold_body code:first-child {
+  margin-top: 0;
+}
+#content .fold_body code:last-child {
+  margin-bottom: 0;
+}

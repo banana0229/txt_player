@@ -1,0 +1,118 @@
+<div class="section">
+  <div class="section_title" tag="目錄分頁格式">目錄分頁格式</div>
+    <div class="text">
+      一個文件只能有一個目錄分頁，且名稱固定叫做 <text>!目錄</text> ，半形驚嘆號是必要的。<br/>
+      目錄分頁的作用是 <text>註冊可播放的段落</text> 和 <text>封面設定</text> 。<br/>
+      目錄分頁不能播放BGM、也不能下一頁，所以如果需要開場或詳細說明，要另外寫一個開場的播放分頁。
+    </div>
+    <div class="text">這是一個目錄分頁的範例：</div>
+    <code>
+      ```圖片
+      背景圖片:https://picsum.photos/600/400
+      ```
+      @[背景]背景圖片
+      @[劇本名]範例用劇本名
+      @[說明]這是用來示範目錄分頁的範例內容
+      
+      @[段落]顯示段落1
+      段落分頁1
+      
+      @[段落]顯示段落2
+      段落分頁2
+    </code>
+    <div class="text">詳細指令使用可以看 <text>目錄分頁指令</text> 的說明。</div>
+</div>
+
+<div class="section">
+  <div class="section_title" tag="目錄分頁指令">目錄分頁指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="目錄@[劇本名]">@[劇本名]</div>
+    <div class="fold_body">
+      <code>
+        @[劇本名]<c red>某某劇本標題</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>要顯示的劇本標題。</div>
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        封面:https://picsum.photos/600/400
+        ```
+        @[背景]封面
+        <c>@[劇本名]範例劇本名</c>
+        @[說明]範例說明
+        範例說明
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="目錄@[說明]">@[說明]</div>
+    <div class="fold_body">
+      <code>
+        @[說明]<c red>說明內容說明內容說明內容說明內容
+        說明內容說明內容說明內容說明內容
+        說明內容說明內容說明內容</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          會顯示在對話框內，會包含換行。<br/>
+          可以用來簡介這個劇本，或是寫上GM和玩家列表。
+        </div>
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        封面:https://picsum.photos/600/400
+        ```
+        @[背景]封面
+        @[劇本名]範例劇本名
+        <c>@[說明]範例說明
+        範例說明</c>
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="目錄@[段落]">@[段落]</div>
+    <div class="fold_body">
+      <code>
+        @[段落]<c red>A&lt;br&gt;段落顯示名稱</c>
+        <c blue>段落分頁名稱A</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          顯示在側邊的名稱，可以寫上 <text>&lt;br&gt;</text> 來把文字換行。
+        </div>
+        <b blue>藍色：</b><div>不會顯示出來，用來指定實際要播放的 <text>播放分頁</text> 的名稱。</div>
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        封面:https://picsum.photos/600/400
+        ```
+        @[背景]封面
+        @[劇本名]範例劇本名
+        @[說明]範例說明
+        範例說明
+        
+        <c>@[段落]開場
+        名單與開場白
+
+        @[段落]B&lt;br&gt;段落顯示名稱
+        段落B
+
+        @[段落]C&lt;br&gt;段落顯示名稱
+        段落C</c>
+      </code>
+    </div>
+  </div>
+</div>

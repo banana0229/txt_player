@@ -1,0 +1,86 @@
+<div class="section">
+  <div class="section_title" tag="聲音指令">聲音指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[BGM]">@[BGM]</div>
+    <div class="fold_body">
+      <code>
+        @[BGM:<c red>ID</c>]<c blue>音檔的名稱</c><c orange>,volume:0.5</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>自取一個ID，之後要停止BGM時會用到。</div>
+        <b blue>藍色：</b><div>素材註冊區的音檔名稱。</div>
+        <b blue>橘色：</b><div>音量設定，數值在0~1之間。</div>
+      </div>
+      <div class="other_desc">
+        可以同時播放多種BGM，可以當作一個是音樂、一個是環境循環播放的音效。<br/>
+        例如 ID_A 用來播放音樂、ID_B 用來播放海浪的聲音。<br/>
+        同ID再次使用可以替換掉原本在撥放的BGM。<br/>
+        藍色和橘色部分留空，會變成取消BGM。<br/>
+        一旦設定就會在同一個分頁內一直延續使用，不需要每一個對話都設。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```聲音
+        散步:音樂網址
+        腳步聲:循環音效的網址
+        戰鬥:音樂網址
+        ```
+        @[背景]道路
+        <c>@[BGM:主要音樂]散步</c>
+        <c>@[BGM:背景音效]腳步聲</c>
+        @[文字:GM]描述城外道路
+        `
+        <c>@[BGM:主要音樂]戰鬥</c>
+        <c>@[BGM:背景音效]</c>
+        @[文字:GM]怪物出現了
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[BGM清空]">@[BGM清空]</div>
+    <div class="fold_body">
+      <code>
+        @[BGM清空]
+      </code>
+      <div class="other_desc">
+        固定要這麼寫，作用是一口氣把所有BGM都停止。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[SE]">@[SE]</div>
+    <div class="fold_body">
+      <code>
+        @[SE]<c blue>音檔名稱</c><c orange>,delay:0.6,volume:0.5</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b blue>藍色：</b><div>素材註冊區的音檔名稱。</div>
+        <b orange>橘色：</b><div>音量和延遲的設定。</div>
+      </div>
+      <div class="other_desc">
+        <text>delay</text> 會稍微延遲一下才播放，單位是秒，預設是0秒。<br/>
+        <text>volume</text> 音量設定，數值在0~1之間。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```聲音
+        箱子倒下:音效檔案的網址
+        抽屜打開:音效檔案的網址
+        踢倒罐子:音效檔案的網址
+        ```
+        <c>@[SE]箱子倒下
+        @[SE]抽屜打開,delay:0.6
+        @[SE]踢倒罐子,delay:1.2</c>
+        @[文字:旁白]OOO正在翻箱倒櫃
+      </code>
+      這樣就是同一個對話內輪流播放三個音效。<br/>
+      如果不寫delay的話會三個音效同時播放。
+    </div>
+  </div>
+</div>

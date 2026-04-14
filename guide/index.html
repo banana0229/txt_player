@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>團錄撥放器說明</title>
+    <meta charset="utf-8"/>
+    <meta name="viewwport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="./main.css"/>
+    <script src="./main.js"></script>
+    <script src="../js/universal.js"></script>
+  </head>
+  <body>
+    <main id="main">
+      <div id="menu">
+        <div class="item">建立檔案</div>
+        <div class="item">素材註冊區</div>
+        <div class="item">目錄分頁格式</div>
+        <div class="items">
+          <div class="items_title">目錄分頁指令</div>
+          <div class="sub_item" target="目錄@[劇本名]">@[劇本名]</div>
+          <div class="sub_item" target="目錄@[說明]">@[說明]</div>
+          <div class="sub_item" target="目錄@[段落]">@[段落]</div>
+          <div class="sub_item" target="@[背景]">@[背景]</div>
+        </div>
+        <div class="item">播放分頁格式</div>
+        <div class="items">
+          <div class="items_title">基本指令</div>
+          <div class="sub_item">@[文字]</div>
+          <div class="sub_item">@[立繪]</div>
+          <div class="sub_item">@[立繪清空]</div>
+          <div class="sub_item">@[背景]</div>
+        </div>
+        <div class="items">
+          <div class="items_title">文字指令</div>
+          <div class="sub_item">@[文字]</div>
+          <div class="sub_item">@[長文字]</div>
+          <div class="sub_item">@[動態文字]</div>
+          <div class="sub_item">@[動態文字清空]</div>
+        </div>
+        <div class="items">
+          <div class="items_title">圖片指令</div>
+          <div class="sub_item">@[立繪]</div>
+          <div class="sub_item">@[立繪清空]</div>
+          <div class="sub_item">@[背景]</div>
+          <div class="sub_item">@[背景效果]</div>
+          <div class="sub_item">@[背景效果清空]</div>
+          <div class="sub_item">@[圖片]</div>
+          <div class="sub_item">@[圖片清空]</div>
+        </div>
+        <div class="items">
+          <div class="items_title">聲音指令</div>
+          <div class="sub_item">@[BGM]</div>
+          <div class="sub_item">@[BGM清空]</div>
+          <div class="sub_item">@[SE]</div>
+        </div>
+        <div class="items">
+          <div class="items_title">效果指令</div>
+          <div class="sub_item">@[可動圖片]</div>
+          <div class="sub_item">@[CVSA]<span>循環特效動畫</span></div>
+          <div class="sub_item">@[CVSFX]<span>單次特效</span></div>
+          <div class="sub_item">@[CVSSW]<span>過場特效動畫</span></div>
+          <div class="sub_item">@[CVS清空]</div>
+        </div>
+        <div class="items">
+          <div class="items_title">其他指令</div>
+          <div class="sub_item">@[禁止跳過]</div>
+          <div class="sub_item">@[備註]</div>
+        </div>
+        <div class="item">備註區</div>
+        <div class="items">
+          <div class="items_title">遊戲指令</div>
+          <div class="sub_item">@[#:標記]</div>
+          <div class="sub_item">@[跳到]</div>
+          <div class="sub_item">@[選項]</div>
+          <div class="sub_item">@[數值]</div>
+          <div class="sub_item">@[判斷跳到]</div>
+        </div>
+      </div>
+      <div id="content"></div>
+    </main>
+  </body>
+</html>

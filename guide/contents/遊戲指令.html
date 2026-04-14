@@ -1,0 +1,174 @@
+<div class="section">
+  <div class="section_title" tag="遊戲指令">遊戲指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[#:標記]">@[#:標記]</div>
+    <div class="fold_body">
+      <code>
+        @[#:<c red>ID</c>]
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>為標記自取一個ID。</div>
+      </div>
+      <div class="other_desc">
+        標記位置用，之後設定選項時可以指定跳到哪一段劇情。
+        正常播放時，跟標記在同一個 <text>播放片段</text> 的其他指令都會被跳過。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        @[立繪:A]s:一般
+        @[文字:A]A走到公園
+        `
+        <c bg_green green>@[#:選擇吃]</c>
+        <c bg_red red>@[立繪:A]A頭像
+        @[文字:A]A在公園</c>
+        `
+        @[文字:A]A說話
+      </code>
+      <div class="color_desc">
+        <b>正常播放時：</b><div>
+          走到公園的片段播放完，按下空白鍵時會播放A說話的部分。<br/>
+          紅底的部分不會被執行(跟<c bg_green green>標記</c>在同一個播放片段內)。
+        </div>
+        <b>跳至播放時：</b><div>
+          紅底的部分會被執行，且不等待空白鍵，直接馬上執行綠底的部分。<br/>
+          作用是使用 <text>@[跳到]</text> 指令時，把一些 立繪/背景/音效 等等錯過的設定補上。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[跳到]">@[跳到]</div>
+    <div class="fold_body">
+      <code>
+        @[跳到:<c blue>段落分頁的名稱</c><c red>#目標頁內標記名稱</c>]
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>要跳到的標記位置。</div>
+        <b blue>藍色：</b><div>要跳到的段落分頁名稱。</div>
+      </div>
+      <div class="other_desc">
+        作用是片段播放完畢後，可能要銜接的位置不一定是下一個播放片段。<br/>
+        執行到這個指令就會自動跳去指定位置(也就是 <text>@[#:標記]</text> 的位置)。<br/>
+        只有指定段落分頁、沒有指定標記名稱的話，就會跳到目標段落的第一句。<br/>
+        可以只寫標記位置不寫段落分頁名稱、可以只寫段落分頁名稱不寫標記位置。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[選項]">@[選項]</div>
+    <div class="fold_body">
+      <code>
+        @[選項]
+        [<c orange>選項1</c>]<c red>#同一頁內標記名稱</c>
+        [<c orange>選項2</c>]<c red>#同一頁內標記名稱</c>
+        [<c orange>選項3</c>]<c blue>段落分頁的名稱</c><c red>#目標頁內標記名稱</c>
+        [<c orange>選項4</c>]<c blue>段落分頁的名稱</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b orange>橘色：</b><div>選項要顯示的文字。</div>
+        <b blue>藍色：</b><div>要跳到的段落分頁名稱。</div>
+        <b red>紅色：</b><div>要跳到的標記位置。</div>
+      </div>
+      <div class="other_desc">
+        作用是顯示選項，選項後面是對應要跳到的位置。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[數值]">@[數值]</div>
+    <div class="fold_body">
+      <code>
+        @[數值:<c red>ID</c>]<c orange>設定:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>為數值取一個ID，例如「經過走廊的次數」之類的。</div>
+        <b orange>橘色：</b><div>直接設定或者增減。</div>
+      </div>
+      <div class="other_desc">
+        <text>set:0</text> 直接把指定ID的數值設定成某數值。<br/>
+        <text>add:0</text> 對指定ID的數值加上某數。<br/>
+        橘色部分留空的話，會把指定ID的數值歸零。
+      </div>
+      <div class="other_desc">
+        以上數值都只能是整數，上限9999、下限-9999。<br/>
+        數值是跨段落儲存的，也就是只要在同一個網址內就可以沿用，可以延續到下一個場景不會被自動歸零。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        <c>@[數值:AAA]set:20</c>
+        @[文字:提示]此時AAA會是20
+        `
+        <c>@[數值:AAA]add:5</c>
+        @[文字:提示]此時AAA會是25
+        `
+        <c>@[數值:AAA]add:-1</c>
+        @[文字:提示]此時AAA會是24
+        `
+        <c>@[數值:AAA]</c>
+        @[文字:提示]此時AAA會是0
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[判斷跳到]">@[判斷跳到]</div>
+    <div class="fold_body">
+      <code>
+        @[判斷跳到]
+        [<c orange>AA=5</c>]<c red>#目標頁內標記名稱</c>
+        [<c orange>AA<5</c>]<c blue>段落分頁的名稱</c>
+        [<c orange>以上皆非</c>]<c blue>段落分頁的名稱</c><c red>#目標頁內標記名稱</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b orange>橘色：</b><div>檢查的條件。</div>
+        <b blue>藍色：</b><div>要跳到的段落分頁名稱。</div>
+        <b red>紅色：</b><div>要跳到的標記位置。</div>
+      </div>
+      <div class="other_desc">
+        紅藍的部分跟 <text>@[跳到]</text> 是一樣的概念。<br/>
+        只要橘色部分的條件符合，就會跳到指定的位置。<br/>
+        如果都不符合就會跳過判斷，繼續下一個對話。<br/>
+        寫上「以上皆非」這個條件的話就必定會被判斷。
+      </div>
+    </div>
+    <div class="fold_body">
+      條件的寫法：<br/>
+      <code>
+        [<c red>數值ID</c><c blue>=</c><c orange>5</c>]
+        [<c red>數值ID</c><c blue>=</c><c orange>5</c>,<c red>數值ID</c><c blue>=</c><c orange>5</c>]
+        [<c green>以上皆非</c>]
+        [<c green>else</c>]
+      </code>
+      <div class="color_desc">
+        <b red>紅色：</b><div>要被檢查的數值ID。</div>
+        <b blue>藍色：</b><div>判斷方式，有這些 <text>=</text> <text><</text> <text>></text> <text><=</text> <text>>=</text> 。</div>
+        <b orange>橘色：</b><div>判斷數字。</div>
+        <b green>綠色：</b><div>特定關鍵字，如果以上都不符合就選這一項的意思。</div>
+      </div>
+      <div class="other_desc">
+        如果有多個數值同時判斷就用逗號隔開，用逗號隔開的情況需要全部符合才算是通過。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code>
+        @[判斷跳到]
+        [A=5,B=5]#第一段
+        [A=5]#第二段
+        [B=5]#第二段
+        [以上皆非]#第三段
+      </code>
+      AB同時是5的話，就跳到第一段。<br/>
+      只有A是5、或者只有B是5，就跳到第二段。<br/>
+      AB都不是5，就跳到第三段。<br/>
+    </div>
+  </div>
+</div>

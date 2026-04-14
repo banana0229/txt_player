@@ -1,0 +1,216 @@
+<div class="section">
+  <div class="section_title" tag="圖片指令">圖片指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[立繪]">@[立繪]</div>
+    <div class="fold_body">
+      <code>
+        @[立繪:<c red>ID</c>]<c blue>圖片名稱</c><c orange>,設定A:值,設定B:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          建立出來的立繪的ID，必定要取一個ID。<br/>
+          後續可以讓立繪移動或者變暗就要指定ID。
+        </div>
+        <b blue>藍色：</b><div>使用的圖片名稱，對同一個ID做設定的話會切換圖片。</div>
+        <b orange>橘色：</b><div>
+          各種設定，例如位置、大小、狀態等等的。<br/>
+          一律使用半形逗號隔開。
+        </div>
+      </div>
+      <div class="other_desc">
+        藍色和橘色同時空著的話，會把指定ID的立繪移除。
+      </div>
+      <div class="other_desc">
+        <text>z:0</text> 大小，不寫的話預設值是1。<br/>
+        <text>l:0</text> left位置，負數往左正數往右，預設是0。<br/>
+        <text>r:0</text> right位置，負數往右正數往左，預設沒有值。<br/>
+        <text>c:0</text> center位置，從正中間開始算，負數往左正數往右，預設沒有值。<br/>
+        <text>s:暗</text> 把圖片顯示成深色的樣子。<br/>
+        <text>s:黑</text> 把圖片完全變成黑色，剩下剪影輪廓。<br/>
+        <text>s:隱藏</text> 圖片暫時隱藏，保留位置和大小等等的設定。<br/>
+        <text>s:一般</text> 把圖片狀態清空，位置和大小不變，只是 <text>s:</text> 這類的設定會取消。<br/>
+        <text>i:top</text> 把圖片拉到最上層，會遮住其他立繪。<br/>
+        <text>i:bottom</text> 把圖片拉到最下層，會被其他立繪遮住。
+      </div>
+      <div class="other_desc">
+        <text>l</text> <text>r</text> <text>c</text> 這三個位置相關的數值，起點都是0。
+        位置設定可以寫負數，也可以寫小數點。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        <c>@[立繪:A]測試圖片A1</c>
+        @[文字:提示]顯示A在左邊
+        `
+        <c>@[立繪:A]s:暗
+        @[立繪:B]測試圖片B,r:0,z:2</c>
+        @[文字:提示]A變暗，顯示B在右邊，尺寸是兩倍大
+        `
+        <c>@[立繪:A]s:一般
+        @[立繪:B]s:暗</c>
+        @[文字:提示]B變暗，A亮回來
+        `
+        <c>@[立繪:A]測試圖片A2</c>
+        @[文字:提示]A換了一張圖
+        `
+        <c>@[立繪:A]s:暗
+        @[立繪:B]s:一般,l:1</c>
+        @[文字:提示]A變暗，B亮回來而且移動到A的旁邊一格
+        `
+        <c>@[立繪:A]s:一般
+        @[立繪:B]</c>
+        @[文字:提示]A亮回來，B直接刪除
+
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[立繪清空]">@[立繪清空]</div>
+    <div class="fold_body">
+      <code>
+        @[立繪清空]
+      </code>
+      <div class="other_desc">
+        固定要這麼寫，作用是一口氣把所有立繪都刪除。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[背景]">@[背景]</div>
+    <div class="fold_body">
+      <code>
+        @[背景]<c red>背景圖片的名稱</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>素材註冊區的圖片名稱，這張圖會被指定為背景圖。</div>
+      </div>
+      <div class="other_desc">
+        這個指令在 <text>目錄分頁</text> 也可以使用。<br/>
+        如果在 <text>播放分頁</text> 的中途使用，會替換掉原本的背景圖片。
+      </div>
+    </div>
+    <div class="fold_body">
+      <text>目錄分頁</text> 的範例：<br/>
+      <code class="ex">
+        ```圖片
+        <c>封面:https://picsum.photos/600/400</c>
+        ```
+        <c>@[背景]封面</c>
+        @[劇本名]範例劇本名
+        @[說明]範例說明
+        範例說明
+      </code>
+      <text>播放分頁</text> 的範例：<br/>
+      <code class="ex">
+        ```圖片
+        <c>公園:https://picsum.photos/600/400
+        街道:https://picsum.photos/600/400</c>
+        角色A:https://picsum.photos/600/400
+        ```
+        <c>@[背景]公園</c>
+        @[文字:A]A說話內容A說話內容A說話內容
+        `
+        @[文字:B]B說話內容B說話內容B說話內容
+        `
+        <c>@[背景]街道</c>
+        @[文字:A]A說話內容A說話內容A說話內容
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[背景效果]">@[背景效果]</div>
+    <div class="fold_body">
+      <code>
+        @[背景效果:<c red>ID</c>]<c blue>圖片的名稱</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>自取一個ID，之後要刪除時會用到。</div>
+        <b blue>藍色：</b><div>素材註冊區的圖片名稱。</div>
+      </div>
+      <div class="other_desc">
+        背景效果是疊加在背景上面的，例如速度線、起霧、畫面紅紅的之類的。<br/>
+        可以用透明/半透明的圖片來疊。<br/>
+        藍色圖片名稱不寫的話就是刪除這個背景效果。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        道路:https://picsum.photos/600/400
+        霧GIF:https://picsum.photos/600/400
+        ```
+        @[背景]道路
+        @[文字:A]走在路上
+        `
+        <c>@[背景效果:霧]霧GIF</c>
+        @[文字:A]起霧了
+        `
+        @[文字:A]文字文字文字
+        `
+        <c>@[背景效果:霧]</c>
+        @[文字:A]霧散了
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[背景效果清空]">@[背景效果清空]</div>
+    <div class="fold_body">
+      <code>
+        @[背景效果清空]
+      </code>
+      <div class="other_desc">
+        固定要這麼寫，作用是一口氣把所有背景效果都刪除。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[圖片]">@[圖片]</div>
+    <div class="fold_body">
+      <code>
+        @[圖片:<c red>ID</c>]<c blue>圖片的名稱</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>自取一個ID，之後要刪除時會用到。</div>
+        <b blue>藍色：</b><div>素材註冊區的圖片名稱。</div>
+      </div>
+      <div class="other_desc">
+        圖片是疊加在背景上面的，用來暫時展示圖片。<br/>
+        會在畫面中央自動縮小但不放大。<br/>
+        圖片可以和背景效果穿插圖層。<br/>
+        藍色部分不寫的話就是刪除這個圖片展示。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        舊照片:https://picsum.photos/600/400
+        ```
+        <c>@[圖片:照片A]舊照片</c>
+        @[文字:GM]描述角色發現了一張照片
+        `
+        @[文字:A]角色發現照片的描述
+        `
+        <c>@[圖片:照片A]</c>
+        @[文字:A]角色把照片收起來的描述
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[圖片清空]">@[圖片清空]</div>
+    <div class="fold_body">
+      <code>
+        @[圖片清空]
+      </code>
+      <div class="color_desc">
+        固定要這麼寫，作用是一口氣把所有展示圖片都刪除。
+      </div>
+    </div>
+  </div>
+</div>

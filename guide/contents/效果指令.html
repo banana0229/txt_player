@@ -1,0 +1,200 @@
+<div class="section">
+  <div class="section_title" tag="效果指令">效果指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[可動圖片]">@[可動圖片]</div>
+    <div class="fold_body">
+      <code>
+        @[可動圖片:<c red>ID</c>]<c blue>圖片的名稱</c><c orange>,設定A:值,設定B:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          建立出來的圖片的ID，必定要取一個ID。<br/>
+          後續可以讓圖片移動/縮放/刪除就要指定ID。
+        </div>
+        <b blue>藍色：</b><div>素材註冊區的圖片名稱。</div>
+        <b orange>橘色：</b><div>對圖片設定位置、大小、透明度。</div>
+      </div>
+      <div class="other_desc">
+        橘色部分可以設定這些：<br/>
+        <text>x:0</text> 圖片在畫面上的水平位置，-1最左、0置中、1最右。<br/>
+        <text>y:0</text> 圖片在畫面上的垂直位置，-1最上、0置中、1最下。<br/>
+        <text>w:1</text> 圖片的寬度，1是原始大小、0.5一半、0縮小到隱藏、2兩倍大。<br/>
+        <text>h:1</text> 圖片的高度，1是原始大小、0.5一半、0縮小到隱藏、2兩倍大。<br/>
+        <text>cx:0</text> 圖片的縮放/移動基準點，0是圖片的正中間、-1最左、1最右。<br/>
+        <text>cy:0</text> 圖片的縮放/移動基準點，0是圖片的正中間、-1最上、1最下。<br/>
+        <text>a:1</text> 透明度，1不透明、0.5半透明、0透明。
+      </div>
+      <div class="other_desc">
+        用來控制圖片在畫面上移動、縮放，會有動態。<br/>
+        寬高：會是圖片原始大小，畫布是960 x 720 px，圖片本身大小要自己調好。<br/>
+        藍色和橘色同時空著的話，會把指定ID的圖片移除。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        電影海報:https://picsum.photos/600/400
+        ```
+        ```聲音
+        紙張翻動聲:音效網址
+        ```
+        <c>@[可動圖片:海報]電影海報,x:0,y:-1,w:0,h:0</c>
+        @[文字:A]說話內容
+        `
+        @[SE]紙張翻動聲
+        <c>@[可動圖片:海報]電影海報,y:0,w:1,h:1</c>
+        @[文字:GM]打開海報的描述
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[CVSA]">@[CVSA]</div>
+    <div class="fold_body">
+      <code>
+        @[CVSA:<c red>ID</c>]<c blue>使用的效果名稱</c><c orange>,設定:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>自取一個ID，之後要刪除時會用到。</div>
+        <b blue>藍色：</b><div>想要使用的效果。</div>
+        <b orange>橘色：</b><div>有一部分效果需要另外填設定。</div>
+      </div>
+      <div class="other_desc">
+        藍色和橘色同時留空就是刪除。<br/>
+        CVSA也可以用在 <text>目錄分頁</text> ，在 <text>目錄分頁</text> 時不需要ID，開頭只需要寫 <text>@[CVSA]</text> 。<br/>
+        會顯示一層隨機產生的動態效果，並且循環播放。
+      </div>
+    </div>
+    <div class="fold_body">
+      有這些效果可以用：<br/>
+      <code>
+        @[CVSA:ID]雨
+        @[CVSA:ID]霧
+        @[CVSA:ID]橫向速度線
+        @[CVSA:ID]警告
+        @[CVSA:ID]HUD框,img:圖片的名稱
+        @[CVSA:ID]氣泡,color:#hex
+      </code>
+    </div>
+    <div class="fold_body">
+      <text>目錄分頁</text> 的範例：<br/>
+      <code class="ex">
+        ```圖片
+        封面:https://picsum.photos/600/400
+        ```
+        @[背景]封面
+        <c>@[CVSA]橫向速度線</c>
+        @[劇本名]範例劇本名
+        @[說明]範例說明
+        範例說明
+      </code>
+      <text>播放分頁</text> 的範例：<br/>
+      <code class="ex">
+        ```圖片
+        公園:https://picsum.photos/600/400
+        ```
+        @[背景]公園
+        <c>@[CVSA:效果A]氣泡,color:#ffffff</c>
+        @[文字:A]A說話內容A說話內容A說話內容
+        `
+        @[文字:B]B說話內容B說話內容B說話內容
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[CVSFX]">@[CVSFX]</div>
+    <div class="fold_body">
+      <code>
+        @[CVSFX]<c blue>使用的效果名稱</c><c orange>,設定A:值,設定B:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b blue>藍色：</b><div>想要使用的效果。</div>
+        <b orange>橘色：</b><div>有一部分效果需要另外填設定。</div>
+      </div>
+      <div class="other_desc">
+        不需要取ID，單次播放完就會自動刪除的特效動畫。
+      </div>
+    </div>
+    <div class="fold_body">
+      有這些效果可以用：<br/>
+      <code>
+        @[CVSFX]血
+        @[CVSFX]水波紋,x:0.5,y:0.4
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[CVSSW]">@[CVSSW]</div>
+    <div class="fold_body">
+      <code>
+        @[CVSSW:<c red>ID</c>]<c blue>使用的效果名稱</c><c orange>,設定A:值,設定B:值</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          自取一個ID，之後要刪除時會用到。<br/>
+          可以半途切換開或關。
+        </div>
+        <b blue>藍色：</b><div>想要使用的效果。</div>
+        <b orange>橘色：</b><div>
+          設定要使用的效果是開啟還是關閉。<br/>
+          有一部分效果需要另外填設定。
+        </div>
+      </div>
+      <div class="other_desc">
+        藍色和橘色同時留空，就是不播放開關動畫直接刪除。<br/>
+        CVSSW是把螢幕開或關的動態效果，轉場效果動畫。
+      </div>
+      <div class="other_desc">
+        橘色的部分可以控制的選項：<br/>
+        <text>s:關</text> 關閉螢幕，動畫的最後會停留在有一塊遮擋住畫面的東西，例如變成一片黑。<br/>
+        <text>s:開</text> 打開螢幕，動畫的最後會是遮住畫面的東西被移除，且這個ID的CVSSW會被移除。
+      </div>
+    </div>
+    <div class="fold_body">
+      有這些效果可以用：<br/>
+      <code>
+        @[CVSSW:ID]衝過,s:開/關
+        @[CVSSW:ID]雪花雜訊,s:開/關,color:顏色
+        @[CVSSW:ID]電視螢幕,s:開/關
+        @[CVSSW:ID]溶解,s:開/關,color:顏色
+        @[CVSSW:ID]眨眼,s:開/關
+      </code>
+      color：指定顏色，可以直接寫「黑」或「白」，或者寫hex，例如「#6b2f2f」。<br/>
+      color預設是「白」。
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        ```圖片
+        房間:https://picsum.photos/600/400
+        客廳:https://picsum.photos/600/400
+        ```
+        @[背景]房間
+        @[文字:GM]描述房間
+        `
+        <c>@[CVSSW:離開房間]衝過,s:關</c>
+        @[文字:GM]描述角色離開房間，畫面會變成一片黑
+        `
+        @[背景]客廳
+        <c>@[CVSSW:離開房間]衝過,s:開</c>
+        @[文字:GM]描述角色抵達客廳
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[CVS清空]">@[CVS清空]</div>
+    <div class="fold_body">
+      <code>
+        @[CVS清空]
+      </code>
+      <div class="other_desc">
+        固定要這麼寫，清除所有CVS系列的動畫。<br/>
+        包含：可動圖片、CVSA、CVSFX、CVSSW。
+      </div>
+    </div>
+  </div>
+</div>

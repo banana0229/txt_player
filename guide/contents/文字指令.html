@@ -1,0 +1,155 @@
+<div class="section">
+  <div class="section_title" tag="文字指令">文字指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[文字]">@[文字]</div>
+    <div class="fold_body">
+      <code>
+        @[文字:<c red>顯示的名字</c>]<c blue>對話文字對話文字
+        對話文字對話文字對話文字對話文字
+
+        對話文字</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>顯示在對話框上面的名字。</div>
+        <b blue>藍色：</b><div>顯示在對話框內的文字，可以換行。</div>
+      </div>
+      <div class="other_desc">
+        不寫紅色部分和冒號的話就會是無名字的顯示，可以當系統或旁白用。<br/>
+        紅藍都不寫可以清除對話框(連底色都不顯示)。<br/>
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code>
+        @[文字:AAA]對話文字對話文字
+        對話文字對話文字對話文字對話文字
+
+        對話文字
+      </code>
+      系統或旁白範例：<br/>
+      <code>
+        @[文字]【AAA】獲得了道具
+      </code>
+      隱藏對話框的範例：<br/>
+      <code>
+        @[文字]
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[長文字]">@[長文字]</div>
+    <div class="fold_body">
+      <code>
+        @[長文字:<c red>L</c>]<c blue>文字內容文字內容文字內容
+        文字內容文字內容文字內容文字內容
+
+        文字內容文字內容文字內容</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>
+          設定長文字視窗的寬度。<br/>
+          <text>L</text> <text>M</text> <text>S</text> 三種尺寸，預設是 <text>L</text> 。
+        </div>
+        <b blue>藍色：</b><div>
+          要顯示的內容文字，可以換行。<br/>
+          藍色內容留空就會取消顯示。
+        </div>
+      </div>
+      <div class="other_desc">
+        藍色內容有ㄧ些特殊樣式可用：
+        <text># 文字</text> 會顯示成大標題。<br/>
+        <text>## 文字</text> 會顯示成中標題。<br/>
+        <text>### 文字</text> 會顯示成小標題。<br/>
+        <text>-# 文字</text> 會顯示成縮小的文字。<br/>
+        <text>---</text> 會顯示成分隔線。<br/>
+        <text>[文字](網址)</text> 會顯示成超連結。
+      </div>
+      <div class="other_desc">
+        可以寫一頁都是長文字的 <text>播放分頁</text> 用來放使用的素材來源。<br/>
+        超連結可以用來連到來源的網站。
+      </div>
+    </div>
+    <div class="fold_body">
+      顯示情報的範例：<br/>
+      <code class="ex">
+        @[文字:GM]發現情報的描述
+        <c>@[長文字:S]### 情報
+        資料資料資料資料資料
+        資料資料資料</c>
+        `
+        <c>@[長文字]</c>
+        @[文字:A]角色A發現情報的反應RP
+      </code>
+      素材來源頁的範例：<br/>
+      <code>
+        @[長文字]
+        ## 圖像來源
+        ### 立繪
+        角色A：OOOO
+        角色B：XXXX
+        ---
+        ### 物件圖
+        OOO [網站名稱](網址)
+        XXXX [網站名稱](網址)
+        `
+        @[長文字]
+        ## 聲音來源
+        ### 音樂
+        [曲名A](網址)
+        [曲名B](網址)
+        ---
+        ### 音效
+        [音效網站](網址)
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[動態文字]">@[動態文字]</div>
+    <div class="fold_body">
+      <code>
+        @[動態文字:<c red>2</c>]<c orange>設定A:值,設定B:值</c>
+        <c blue>文字內容文字內容文字內容文字內容</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>顯示的位置設定，從下往上數第幾行。</div>
+        <b blue>藍色：</b><div>要顯示的文字，不可換行。</div>
+        <b orange>橘色：</b><div>設定顏色、延遲。</div>
+      </div>
+      <div class="other_desc">
+        藍色和橘色留空可以刪除文字。<br/>
+        建議同時使用 <text>@[文字]</text> 指令，把普通對話框隱藏避免擋住。
+      </div>
+      <div class="other_desc">
+        橘色可設定的部分：
+        <text>color:#fff</text> 文字顏色，格式是HEX。<br/>
+        <text>border_color:#000</text> 文字的邊框顏色，格式是HEX。<br/>
+        <text>delay:0</text> 延遲幾秒之後再開始顯示，單位是秒，可以小數點。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code>
+        @[動態文字:1]color:#fff,border_color:#faa
+        文字內容文字內容文字內容文字內容
+        @[動態文字:2]color:#fff,border_color:#faa,delay:3
+        文字內容文字內容
+        `
+        @[動態文字:1]
+      </code>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[動態文字清空]">@[動態文字清空]</div>
+    <div class="fold_body">
+      <code>
+        @[動態文字清空]
+      </code>
+      <div class="other_desc">
+        固定要這麼寫，作用是一口氣把所有動態文字都清空。
+      </div>
+    </div>
+  </div>
+</div>

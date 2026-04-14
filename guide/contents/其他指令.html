@@ -1,0 +1,69 @@
+<div class="section">
+  <div class="section_title" tag="其他指令">其他指令</div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[禁止跳過]">@[禁止跳過]</div>
+    <div class="fold_body">
+      <code>
+        @[禁止跳過:<c red>秒數</c>]
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>要等待的時間，單位是秒，最長可以15秒。</div>
+      </div>
+      <div class="other_desc">
+        強制等待指定秒數，用來播放演出避免跳過。
+      </div>
+    </div>
+  </div>
+  <div class="foldbox">
+    <div class="fold_head" tag="@[備註]">@[備註]</div>
+    <div class="fold_body">
+      <code>
+        @[備註]<c red>內容內容內容內容內容</c>
+      </code>
+      <div class="color_desc">
+        <b>黑色：</b><div>固定要這麼寫。</div>
+        <b red>紅色：</b><div>不會顯示出來的東西，就算是指令也不會被顯示出來。</div>
+      </div>
+      <div class="other_desc">
+        這個指令只能讓單行變成備註，如果需要多行變備註可以改用 <text>備註區</text> 。
+      </div>
+    </div>
+    <div class="fold_body">
+      範例：<br/>
+      <code class="ex">
+        <c>@[備註]</c>內容內容內容內容內容
+        
+        <c>@[備註]</c>@[文字:GM]說話說話
+        
+        <c>@[備註]</c>@[文字:玩家A]說話說話第一行
+        <c>@[備註]</c>說話第二行
+      </code>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section_title" tag="備註區">備註區</div>
+  <div class="text">
+    用 <text>```備註</text> 和 <text>```</text> 包住內容。<br/>
+    用這個區塊包起來的東西，包括指令和 <text>`</text> 都不會被撥放。
+  </div>
+  <code>
+    <c bg_green green>@[文字:玩家B]說話內容
+    `</c>
+    <c bg_red><b>```備註</b>
+    <c red>文字內容文字內容文字內容
+    @[文字:GM]顯示文字
+    @[背景]某張圖片
+    `
+    @[立繪:玩家A]圖片名稱
+    @[文字:玩家A]說話說話1
+    `</c>
+    <b>```</b></c>
+    <c bg_green green>@[文字:玩家A]說話說話2</c>
+  </code>
+  <div class="text">
+    範例的綠底部分會正常撥放，紅底部分會被跳過。<br/>
+  </div>
+</div>
